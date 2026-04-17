@@ -7,26 +7,25 @@
     --accent: #556B2F;
     --accent_hover: #6B8E23;
 }
-
+ 
 * {
     margin: 0;
     padding: 0;
     outline: none;
     border: none;
     text-decoration: none;
-    text-transform: capitalize;
     transition: 0.1s linear;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+ 
 body {
     background-color: var(--bg);
 }
-
-
+ 
+ 
 /* NAVBAR */
-
+ 
 nav {
     background: #228B22;
     padding: 10px 20px;
@@ -35,7 +34,7 @@ nav {
     justify-content: space-between;
     position: relative;
 }
-
+ 
 .logo {
     color: #fff;
     font-size: 22px;
@@ -43,17 +42,17 @@ nav {
     width: 100px;
     left: 100px;
 }
-
+ 
 .menu {
     list-style: none;
     display: flex;
     gap: 20px;
 }
-
+ 
 .menu li {
     position: relative;
 }
-
+ 
 .menu a {
     color: #fff;
     text-decoration: none;
@@ -61,15 +60,15 @@ nav {
     padding: 8px;
     display: block;
 }
-
+ 
 .menu a:hover {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
 }
-
-
+ 
+ 
 /* Dropdown */
-
+ 
 .dropdown {
     display: none;
     position: absolute;
@@ -79,36 +78,36 @@ nav {
     border-radius: 5px;
     overflow: hidden;
 }
-
+ 
 .dropdown a {
     color: #333;
     padding: 10px;
 }
-
+ 
 .dropdown a:hover {
     background: #f2f2f2;
 }
-
+ 
 .menu li:hover .dropdown {
     display: block;
 }
-
-
+ 
+ 
 /* Search */
-
+ 
 .search-box {
     display: flex;
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
 }
-
+ 
 .search-box input {
     border: none;
     padding: 6px 10px;
     outline: none;
 }
-
+ 
 .search-box button {
     border: none;
     background: #008000;
@@ -116,31 +115,21 @@ nav {
     padding: 6px 12px;
     cursor: pointer;
 }
-
-
-/* Cart */
-
-.cart {
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    position: relative;
-}
-
-.cart span {
-    position: absolute;
-    top: -8px;
-    right: -10px;
-    background: red;
-    color: #fff;
-    border-radius: 50%;
-    padding: 3px 6px;
-    font-size: 12px;
-}
-
-
+ h3{
+    color: #13131a;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: normal;
+    text-indent: 20%;
+ }
+ p{
+    color: #171414;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+    text-indent: 20%;
+ }
+ 
 /* Login Button */
-
+ 
 .login-btn {
     background: #fff;
     color: #32CD32;
@@ -150,10 +139,10 @@ nav {
     cursor: pointer;
     font-weight: bold;
 }
-
-
+ 
+ 
 /* Modal Login */
-
+ 
 .modal {
     display: none;
     position: fixed;
@@ -165,7 +154,7 @@ nav {
     justify-content: center;
     align-items: center;
 }
-
+ 
 .modal-content {
     background: #fff;
     padding: 30px;
@@ -174,7 +163,7 @@ nav {
     text-align: center;
     animation: fadeIn 0.3s ease-in-out;
 }
-
+ 
 .modal-content input {
     width: 100%;
     padding: 10px;
@@ -182,7 +171,7 @@ nav {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
+ 
 .modal-content button {
     width: 100%;
     padding: 10px;
@@ -192,7 +181,7 @@ nav {
     border-radius: 5px;
     cursor: pointer;
 }
-
+ 
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -203,17 +192,17 @@ nav {
         transform: scale(1);
     }
 }
-
-
+ 
+ 
 /* Mobile */
-
+ 
 .menu-toggle {
     display: none;
     font-size: 25px;
     color: #fff;
     cursor: pointer;
 }
-
+ 
 @media(max-width:768px) {
     .menu {
         flex-direction: column;
@@ -235,41 +224,40 @@ nav {
         display: none;
     }
 }
-
+ 
 #Agenda {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
 }
-
+ 
 .calendario-mensal {
     border-collapse: collapse;
-    width: 100%;
+    width: 30%;
     margin-bottom: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     /* Sombra moderna */
     background-color: white;
 }
-
 .calendario-mensal caption {
     font-size: 1.5em;
     font-weight: bold;
     padding: 15px;
-    background-color: #007bff;
+    background-color: rgb(13, 77, 0);
     /* Azul moderno */
     color: white;
     text-transform: uppercase;
 }
-
+ 
 .calendario-mensal th {
-    background-color: #f8f9fa;
+    background-color: #f8faf8;
     color: #333;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     border: 1px solid #ddd;
 }
-
+ 
 .calendario-mensal td {
     border: 1px solid #ddd;
     width: 14.28%;
@@ -281,24 +269,80 @@ nav {
     color: #555;
     transition: background 0.3s;
 }
-
-
+ 
+ 
 /* Efeito Hover e destaque */
-
+ 
 .calendario-mensal td:hover {
-    background-color: #e9ecef;
+    background-color: rgb(233, 239, 233);
     cursor: pointer;
 }
-
-
+ 
+ 
 /* Célula de Evento/Registro */
-
+ 
 .calendario-mensal .evento {
-    background-color: #d1ecf1;
-    color: #0c5460;
+    background-color: rgb(211, 241, 209);
+    color: #657943;
     font-size: 0.8em;
     padding: 2px 4px;
     margin-top: 5px;
     border-radius: 4px;
-    border-left: 3px solid #0c5460;
+    border-left: 3px solid rgb(13, 77, 0);
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+ 
+  /* Estilo dos cabeçalhos dos dias */
+  th {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: #666;
+  }
+ 
+  /* Estilo das células de dias */
+  td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+  }
+ 
+  /* Efeito de hover nos dias */
+  td:hover {
+    background-color: #e6f2ff;
+    cursor: pointer;
+  }
+ 
+  /* Destaque para o dia atual */
+  .dia-atual {
+    background-color:var(--accent);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+ 
+  /* Dias de fim de semana com cor diferente */
+  .fim-de-semana {
+    color: #888;
+  }
+ 
+  .date-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+ 
+  /* Oculta o campo de data, mas mantém o calendário funcional */
+  .hidden-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
