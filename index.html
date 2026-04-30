@@ -1,0 +1,836 @@
+<html>
+ 
+<head>
+  <title> Portillo para o TCC </title>
+  <link rel="stylesheet" type="text/css" href="estilo.css" />
+  <script src="botaoes.js"></script>
+</head>
+ 
+<body>
+  <nav>
+    <div class="logo">
+      <img src="Logotipo.png" width=100 heigth=100>
+    </div>
+ 
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+ 
+    <ul class="menu" id="menu">
+      <li><a href="#">Início</a></li>
+      <li>
+        <a href="#">Sobre nós ▾</a>
+        <div class="dropdown">
+          <a href="#">Agenda</a>
+          <a href="#">Kanban</a>
+          <a href="#">Trabalhos</a>
+          <a href="#">Feedbacks</a>
+ 
+        </div>
+      </li>
+      <li><a href="#">Contato</a></li>
+      <li><a href="#">Patrocinadores</a></li>
+ 
+    </ul>
+ 
+    <div class="search-box">
+      <input type="text" placeholder="Buscar...">
+      <button><img width="25" height="25" src="https://img.icons8.com/ios/25/search--v1.png"
+          alt="search--v1" /></button>
+    </div>
+
+  </nav>
+  <div class="Sobre nós ▾">
+    <wbr>
+    <h3>Um resumo sobre a Fitorremediação em solos ácidos. </h3>
+    <wbr>
+    <p style="text-align: center;"> O objeto de estudo deste projeto consiste na fitorremediação sobre Drenagem Ácida de
+      Mina, mais conhecida como <strong>DAM</strong>,problema proveniente das atividades de mineração de metais e
+      carvão. Caracteriza-se pelo baixo nível de potencial hidrogeniônico (pH), alta condutibilidade térmica e grande
+      concentração de minerais. Após iniciada é muito difícil ser contida, encerra apenas quando os reagentes são
+      totalmente esgotados.A <strong>DAM</strong> é um fator de risco para a contaminação de recursos hídricos, devido
+      ao relacionamento dela com metais pesados. Os objetivos deste projeto consistem em estudar o fenômeno da
+      <strong>DAM</strong> e contribuir com a saúde dos seres humanos, através da preservação do solo e dos recursos
+      hídricos.Foram utilizadas amostras de solos de áreas de mineração na região de Jundiaí/SP, onde a mineradora
+      Itabrás opera.Nessas amostras, foi cultivada a planta milheto<strong> Pennisetum glaucum </strong> conhecida pela
+      adaptabilidade a solos de baixo nível de fertilidade, para verificar seu desenvolvimento e possível capacidade de
+      fitorremediação através da análise química do solo.
+    </p>
+  </div>
+  <wbr>
+  <wbr>
+
+  </div>
+    <!-- JANEIRO -->
+    <style>
+      .calendario-mensal {
+        width: 150px;
+        font-size: 10px;
+        border-collapse: collapse;
+      }
+      .calendario-mensal td, .calendario-mensal th {
+        padding: 2px;
+        text-align: center;
+      }
+ 
+  .cal { width: 250px; border: 1px solid #2a652b; font-family: sans-serif; }
+  .cal-header { display: flex; justify-content: space-between; padding: 10px; background: #eee; }
+  .cal-header button { cursor: pointer; }
+  .cal-body { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; padding: 10px; }
+  .day { padding: 5px; }
+</style>
+</head>
+<body>
+ 
+<div class="cal">
+  <div class="cal-header">
+      <button id="prev">&lt;</button>
+      <span id="month-year"></span>
+      <button id="next">&gt;</button>
+  </div>
+ 
+ 
+<script>
+  const monthYear = document.getElementById('month-year');
+  const daysContainer = document.getElementById('days');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+ 
+  let date = new Date();
+ 
+  function render() {
+      date.setDate(1);
+      const month = date.getMonth();
+      const year = date.getFullYear();
+     
+      monthYear.textContent = date.toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
+     
+      // Simples gerador de dias (apenas números para exemplo)
+      daysContainer.innerHTML = '';
+      for(let i=1; i<=31; i++) {
+          daysContainer.innerHTML += `<div class="day">${i}</div>`;
+      }
+  }
+ 
+  prevBtn.addEventListener('click', () => {
+      date.setMonth(date.getMonth() - 1);
+      render();
+  });
+ 
+  nextBtn.addEventListener('click', () => {
+      date.setMonth(date.getMonth() + 1);
+      render();
+  });
+ 
+  render();
+</script>
+ 
+    <center>
+    <table class="calendario-mensal" border="0">
+      <caption>Janeiro 2026</caption>
+      <thead>
+        <tr>
+          <th>Dom</th>
+          <th>Seg</th>
+          <th>Ter</th>
+          <th>Qua</th>
+          <th>Qui</th>
+          <th>Sex</th>
+          <th>Sáb</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="dia">1 </td>
+          <td class="dia">2</td>
+          <td class="dia">3</td>
+        <tr>
+          <td class="dia">4</td>
+          <td class="dia">5</td>
+          <td class="dia">6</td>
+          <td class="dia">7</td>
+ 
+          <td class="dia">8</td>
+          <td class="dia">9</td>
+          <td class="dia">10</td>
+        <tr>
+          <td class="dia">11</td>
+          <td class="dia">12</td>
+          <td class="dia">13</td>
+          <td class="dia">14</td>
+          <td class="dia">15</td>
+          <td class="dia">16</td>
+ 
+          <td class="dia">17</td>
+        <tr>
+          <td class="dia">18</td>
+          <td class="dia">19</td>
+          <td class="dia">20</td>
+          <td class="dia">21</td>
+          <td class="dia">22</td>
+          <td class="dia">23</td>
+          <td class="dia">24</td>
+        <tr>
+          <td class="dia">25</td>
+          <td class="dia">26</td>
+          <td class="dia">27</td>
+          <td class="dia">28</td>
+          <td class="dia">29</td>
+          <td class="dia">30</td>
+          <td class="dia">31</td>
+        </tr>
+    </tbody>
+    </table>
+ 
+    <!-- FEVEREIRO -->
+    <table class="calendario-mensal" border="0">
+      <caption>Fevereiro 2026</caption>
+      <thead>
+        <tr>
+          <th>Dom</th>
+          <th>Seg</th>
+          <th>Ter</th>
+          <th>Qua</th>
+          <th>Qui</th>
+          <th>Sex</th>
+          <th>Sáb</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td class="dia">1 </td>
+        <td class="dia">2</td>
+        <td class="dia">3</td>
+        <td class="dia">4</td>
+        <td class="dia">5</td>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+        <tr>
+          <td class="dia">8</td>
+          <td class="dia">9</td>
+          <td class="dia">10</td>
+          <td class="dia">11</td>
+          <td class="dia">12</td>
+          <td class="dia">13</td>
+          <td class="dia">14</td>
+        <tr>
+          <td class="dia">15</td>
+          <td class="dia">16</td>
+          <td class="dia">17</td>
+          <td class="dia">18</td>
+          <td class="dia">19</td>
+          <td class="dia">20</td>
+          <td class="dia">21</td>
+        <tr>
+          <td class="dia">22</td>
+          <td class="dia">23</td>
+          <td class="dia">24</td>
+          <td class="dia">25</td>
+          <td class="dia">26</td>
+          <td class="dia">27</td>
+          <td class="dia">28</td>
+      </tbody>
+      </table>
+  </div>
+  <table class="calendario-mensal" border="0">
+    <caption>Março 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+      <td class="dia">4</td>
+      <td class="dia">5</td>
+      <td class="dia">6</td>
+      <td class="dia">7</td>
+      <tr>
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+        <td class="dia">12</td>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+      <tr>
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+        <td class="dia">19</td>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+      <tr>
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+        <td class="dia">24</td>
+        <td class="dia">25<div class="evento">Primeiro entregável do TCC</div>
+        <td class="dia">26</td>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+      <tr>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+        <td class="dia">31</td>
+      </tr>
+ 
+ 
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Abril 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="dia">1 </td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+      <td class="dia">4</td>
+      <tr>
+        <td class="dia">5</td>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+ 
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+      <tr>
+        <td class="dia">12</td>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+      <tr>
+        <td class="dia">19</td>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+        <td class="dia">24</td>
+        <td class="dia">25</td>
+      <tr>
+        <td class="dia">26</td>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Maio 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="dia">1 </td>
+      <td class="dia">2</td>
+      <tr>
+        <td class="dia">3</td>
+        <td class="dia">4</td>
+        <td class="dia">5</td>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+      <tr>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+        <td class="dia">12</td>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+      <tr>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+        <td class="dia">19</td>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+ 
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+      <tr>
+        <td class="dia">24</td>
+        <td class="dia">25</td>
+        <td class="dia">26</td>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+      <tr>
+        <td class="dia">31</td>
+      </tr>
+ 
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Junho 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+      <td class="dia">4</td>
+      <td class="dia">5</td>
+      <td class="dia">6</td>
+      <tr>
+        <td class="dia">7</td>
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+        <td class="dia">12</td>
+        <td class="dia">13</td>
+      <tr>
+        <td class="dia">14</td>
+ 
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+        <td class="dia">19</td>
+        <td class="dia">20</td>
+      <tr>
+        <td class="dia">21</td>
+ 
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+        <td class="dia">24</td>
+        <td class="dia">25</td>
+        <td class="dia">26</td>
+        <td class="dia">27</td>
+      <tr>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+      </tr>
+ 
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Julho 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+      <td class="dia">4</td>
+      <tr>
+        <td class="dia">5</td>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+ 
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+      <tr>
+        <td class="dia">12</td>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+ 
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+      <tr>
+        <td class="dia">19</td>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+ 
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+        <td class="dia">24</td>
+        <td class="dia">25</td>
+      <tr>
+        <td class="dia">26</td>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+        <td class="dia">31</td>
+ 
+       
+      </tr>
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Agosto 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <tr>
+        <td class="dia">3</td>
+        <td class="dia">4</td>
+        <td class="dia">5</td>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+      <tr>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+        <td class="dia">12</td>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+      <tr>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+        <td class="dia">19</td>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+      <tr>
+        <td class="dia">24</td>
+        <td class="dia">25</td>
+        <td class="dia">26</td>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+      <tr>
+        <td class="dia">31</td>
+      </tr>
+ 
+ 
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Setembro 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td></td>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+      <td class="dia">4</td>
+      <td class="dia">5</td>
+      <tr>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+ 
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+        <td class="dia">12</td>
+      <tr>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+        <td class="dia">19</td>
+      <tr>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+        <td class="dia">24</td>
+        <td class="dia">25</td>
+        <td class="dia">26</td>
+      <tr>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+ 
+ 
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Outubro 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+      <tr>
+        <td class="dia">4</td>
+        <td class="dia">5</td>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+        <td class="dia">10</td>
+      <tr>
+        <td class="dia">11</td>
+        <td class="dia">12</td>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+        <td class="dia">17</td>
+      <tr>
+        <td class="dia">18</td>
+        <td class="dia">19</td>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+        <td class="dia">24</td>
+      <tr>
+        <td class="dia">25</td>
+        <td class="dia">26</td>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+        <td class="dia">31</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+ 
+  <table class="calendario-mensal" border="0">
+    <caption>Novembro 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+      <td class="dia">4</td>
+      <td class="dia">5</td>
+      <td class="dia">6</td>
+      <td class="dia">7</td>
+      <tr>
+      <td class="dia">8</td>
+      <td class="dia">9</td>
+      <td class="dia">10</td>
+      <td class="dia">11</td>
+      <td class="dia">12</td>
+      <td class="dia">13</td>
+      <td class="dia">14</td>
+      <tr>
+      <td class="dia">15</td>
+      <td class="dia">16</td>
+      <td class="dia">17</td>
+      <td class="dia">18</td>
+      <td class="dia">19</td>
+      <td class="dia">20</td>
+      <td class="dia">21</td>
+      <tr>
+      <td class="dia">22</td>
+      <td class="dia">23</td>
+      <td class="dia">24</td>
+      <td class="dia">25</td>
+      <td class="dia">26</td>
+      <td class="dia">27</td>
+      <td class="dia">28</td>
+      <tr>
+      <td class="dia">29</td>
+      <td class="dia">30</td>
+      </tr>
+ 
+    </tbody>
+  </table>
+  </div>
+  <table class="calendario-mensal" border="0">
+    <caption>Dezembro 2026</caption>
+    <thead>
+      <tr>
+        <th>Dom</th>
+        <th>Seg</th>
+        <th>Ter</th>
+        <th>Qua</th>
+        <th>Qui</th>
+        <th>Sex</th>
+        <th>Sáb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+      <td></td>
+      <td class="dia">1</td>
+      <td class="dia">2</td>
+      <td class="dia">3</td>
+        <td class="dia">4</td>
+        <td class="dia">5</td>
+        <tr>
+        <td class="dia">6</td>
+        <td class="dia">7</td>
+        <td class="dia">8</td>
+        <td class="dia">9</td>
+        <td class="dia">10</td>
+        <td class="dia">11</td>
+        <td class="dia">12</td>
+        <tr>
+        <td class="dia">13</td>
+        <td class="dia">14</td>
+        <td class="dia">15</td>
+        <td class="dia">16</td>
+        <td class="dia">17</td>
+        <td class="dia">18</td>
+        <td class="dia">19</td>
+        <tr>
+        <td class="dia">20</td>
+        <td class="dia">21</td>
+        <td class="dia">22</td>
+        <td class="dia">23</td>
+        <td class="dia">24</td>
+        <td class="dia">25</td>
+        <td class="dia">26</td>
+        <tr>
+        <td class="dia">27</td>
+        <td class="dia">28</td>
+        <td class="dia">29</td>
+        <td class="dia">30</td>
+        <td class="dia">31</td>
+        </tr>
+ 
+    </tbody>
+  </table>
+  </div>
+ 
+ 
+ 
+    </center>
+ 
+ 
+ 
+ 
+</html>
+ 
+</select>
+</tbody>
+</table>
+<center>
+  <footer>
+    <p>&copy; 2026 - Fitorremediação em solos ácidos</p>
+  </footer>
+</center>
+ 
+</html>
+</body>
