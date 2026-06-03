@@ -1,0 +1,377 @@
+/* ==========================================================================
+   VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+   :root {
+    --main-color: #252c25;
+    --black: #13131a;
+    --bg: #171414;
+    --border: 0.1rem solid rgb(13, 77, 0);
+    --accent: #556B2F;
+    --accent_hover: #6B8E23;
+}
+ 
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: 0.1s linear;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ 
+body {
+    background-color: var(--bg);
+}
+ 
+/* ==========================================================================
+   NAVBAR & MENUS
+   ========================================================================== */
+nav {
+    background: #228B22;
+    padding: 0px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+ 
+.logo {
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100px;
+}
+ 
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center; 
+    flex: 1; 
+    gap: 40px; 
+}
+ 
+.menu li {
+    position: relative;
+}
+ 
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px; 
+    display: block;
+    font-size: 1.05rem;
+}
+ 
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+ 
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    background: #fff;
+    top: 45px; 
+    min-width: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+ 
+.dropdown a {
+    color: #333;
+    padding: 12px;
+}
+ 
+.dropdown a:hover {
+    background: #f2f2f2;
+}
+ 
+.menu li:hover .dropdown {
+    display: block;
+}
+ 
+/* Barra de Busca */
+.search-box {
+    display: flex;
+    background: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+}
+ 
+.search-box input {
+    border: none;
+    padding: 6px 10px;
+    outline: none;
+}
+ 
+.search-box button {
+    border: none;
+    background: #008000;
+    color: #fff;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   CONTEÚDO INSTITUCIONAL (SOBRE NÓS)
+   ========================================================================== */
+h3 {
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: normal;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+ 
+p {
+    color: #dddddd;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+    text-align: justify;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+ 
+/* ==========================================================================
+   LAYOUT E ESTRUTURA (DUAS COLUNAS)
+   ========================================================================== */
+.main-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px; 
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 40px;
+}
+
+.left-content {
+    flex: 1;
+}
+
+.right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Agenda {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%; 
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   CALENDÁRIO INTEGRADO E SETAS (CORRIGIDO E ALINHADO)
+   ========================================================================== */
+.quadrado-calendario {
+    width: 29px; 
+    background: transparent;
+    border: none;
+    padding: 0px; 
+}
+
+/* Container das Setas: Remove espaços para colar perfeitamente no calendário */
+.botoes-navegacao {
+    display: flex;
+    justify-content: space-between;
+    width: 290px; 
+    margin-bottom: 0px; 
+    gap: 0px; 
+}
+
+/* Botões de Seta: Unificados visualmente com o topo do calendário */
+.botoes-navegacao button {
+    flex: 1;
+    background:  #008000;
+    color: #ffffff; 
+    padding: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 0px; 
+    transition: background 0.2s;
+}
+
+.botoes-navegacao button:first-child {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.botoes-navegacao button:last-child {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.botoes-navegacao button:hover {
+    background:  #008000;
+}
+
+/* Estrutura de Tabela do Calendário */
+.calendario-mensal {
+    display: none; 
+    border-collapse: collapse;
+    width: 100%; 
+    margin-bottom: 0px; 
+    background-color: white;
+}
+
+.calendario-mensal.ativo {
+    display: table; 
+}
+
+.calendario-mensal caption {
+    font-size: 1.2rem; 
+    font-weight: bold;
+    padding: 8px 5px; 
+    background-color: #008000 !important; 
+    color: white;
+    text-transform: uppercase;
+    margin-top: 0px; 
+}
+ 
+.calendario-mensal th {
+    background-color: #f8faf8;
+    color: #333;
+    padding: 6px; 
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 0.8rem;
+}
+ 
+.calendario-mensal td {
+    border: 1px solid #ddd;
+    width: 14.28%; 
+    height: 38px; 
+    vertical-align: middle;
+    padding: 4px;
+    color: #555;
+    font-size: 0.85rem;
+    transition: background 0.3s;
+}
+ 
+.calendario-mensal td:hover {
+    background-color: rgb(233, 239, 233);
+    cursor: pointer;
+}
+ 
+.calendario-mensal .evento {
+    background-color: rgb(211, 241, 209);
+    color: #008000;
+    font-size: 0.7rem; 
+    padding: 2px;
+    margin-top: 2px;
+    border-radius: 3px;
+    border-left: 2px solid rgb(13, 77, 0);
+    line-height: 1.1;
+    text-align: left;
+}
+
+.dia-atual {
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+}
+ 
+.fim-de-semana {
+    color: #888;
+}
+
+/* ==========================================================================
+   COMPONENTE OPCIONAL ALTERNATIVO (.CAL)
+   ========================================================================== */
+.cal {
+    width: 253px;
+    border: 1px solid #2a652b;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.cal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    background:  #008000;
+    color: white;
+}
+
+.cal-header button {
+    cursor: pointer;
+    background: transparent;
+    color: white;
+}
+
+.cal-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 10px;
+    background: white;
+}
+
+.day {
+    padding: 5px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+ 
+@media(max-width:768px) {
+    .main-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #008000;
+        display: none;
+        padding: 10px;
+    }
+    .menu.active {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .search-box {
+        display: none;
+    }
+}
+ 
+/* ==========================================================================
+   FORÇAR REMOÇÃO DO LOGIN (CORREÇÃO DE SEGURANÇA)
+   ========================================================================== */
+.login-btn, 
+.modal, 
+#loginModal, 
+.modal-content {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
