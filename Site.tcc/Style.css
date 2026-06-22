@@ -1,0 +1,145 @@
+@import url('https://googleapis.com');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+ 
+ 
+/*cores do site*/
+ 
+:root {
+    --body-color: #1c1c1c;
+    --nav-color: #054905;
+    --side-nav: #696f75;
+    --text-color: #fff;
+    --search-bar: #f2f2f2;
+    --search-text: #012b11;
+    --font-color-dark: #000; /* Ajustado o nome para refletir que é uma cor */
+}
+ 
+body {
+    height: 100vh;
+    background-color: var(--body-color);
+}
+ 
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: var(--nav-color);
+}
+ 
+nav .nav-bar {
+    position: relative;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ 
+nav .nav-bar .logo a {
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+}
+ 
+.nav-bar .nav-links {
+    display: flex;
+    align-items: center;
+}
+ 
+.nav-bar .nav-links li {
+    margin: 0 9px;
+    list-style: none;
+}
+ 
+.nav-links li a {
+    position: relative;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+}
+ 
+.nav-links li a::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+ 
+.nav-links li:hover a::before {
+    opacity: 1;
+}
+ 
+.nav-bar .darkLight-searchBox {
+    display: flex;
+    align-items: center;
+}
+ 
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+ 
+.dark-light i,
+.searchToggle i {
+    position: absolute;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+ 
+.dark-light i.sun {
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+.dark-light.active i.sun {
+    opacity: 1;
+    pointer-events: auto;
+}
+ 
+.dark-light.active i.moon {
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+.searchToggle i.cancel {
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+.searchToggle.active i.cancel {
+    opacity: 1;
+    pointer-events: auto;
+}
+ 
+.searchToggle.active i.search {
+    opacity: 0;
+    pointer-events: none;
+}
