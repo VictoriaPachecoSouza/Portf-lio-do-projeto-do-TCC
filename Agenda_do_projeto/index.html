@@ -1,655 +1,430 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-    <title> Victória Pacheco</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio para o TCC</title>
+
+    <!-- Arquivos externos -->
     <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <script src="botaoes.js" defer></script>
+
+    <style>
+        /* Configurações globais e reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0d1117;
+            /* Fundo escuro padrão do GitHub */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            padding: 20px;
+            padding-top: 80px;
+            /* Evita que o menu fixo cubra o conteúdo */
+        }
+
+        /* Container da seção Hero */
+        .hero-section {
+            max-width: 900px;
+            width: 100%;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        /* Subtítulo superior pequeno */
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .category-title::after {
+            content: " ■";
+            color: #2ea44f;
+            /* Quadrado verde */
+        }
+
+        /* Título principal */
+        .main-title {
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        /* Texto descritivo */
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #8b949e;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            text-align: justify;
+            /* Melhora a leitura de textos longos */
+        }
+
+        /* Container dos botões */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Estilo base dos botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        /* Botão verde (Principal) */
+        .btn-primary {
+            background-color: #1f883d;
+            color: #ffffff;
+            border: 1px solid rgba(240, 246, 252, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #2ea44f;
+        }
+
+        /* Botão escuro (Secundário) */
+        .btn-secondary {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #30363d;
+            color: #ffffff;
+        }
+
+        /* ==================== CALENDÁRIO FLUTUANTE ==================== */
+        .btn-abrir-calendario {
+            position: fixed;
+            bottom: 105px;
+            right: 20px;
+            width: 70px;
+            height: 70px;
+            border: none;
+            border-radius: 50%;
+            background-color: #5cb82a;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-abrir-calendario:hover {
+            background-color: #4da31f;
+            transform: scale(1.08);
+        }
+
+        .btn-abrir-calendario svg {
+            width: 42px;
+            height: 42px;
+            fill: #ffffff;
+        }
+
+        .calendario-flutuante {
+            display: none;
+            position: fixed;
+            right: 20px;
+            bottom: 185px;
+            width: 320px;
+            height: 380px;
+            max-height: 500px;
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            padding: 15px;
+        }
+
+        /* Ajuste para telas menores */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 32px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <nav>
         <div class="logo">
-            <img src="Logotipo.png"  width= 100 heigth= 100>
+            <img src="Logotipo.png" height="50" alt="Logotipo">
         </div>
 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
         <ul class="menu" id="menu">
             <li><a href="#">Início</a></li>
-            <li>
-                <a href="#">Sobre nós ▾</a>
-                <div class="dropdown">
-                    <a href="#">Agenda</a>
-                    <a href="#">Kanban</a>
-                    <a href="#">Trabalhos</a>
-                    <a href="#">Feedbacks</a>
-
-                </div>
-            </li>
-            <li><a href="#">Contato</a></li>
-            <li><a href="#">Patrocinadores</a></li>
-
+            <li><a href="#TiposPlantas">Plantas</a></li>
+            <li><a href="#Kanban">Kanban</a></li>
+            <li><a href="#Equipe">Equipe</a></li>
+            <li><a href="contato.html">Contato</a></li>
         </ul>
 
-        <div class="search-box">
-            <input type="text" placeholder="Buscar...">
-            <button><img width="25" height="25" src="https://img.icons8.com/ios/25/search--v1.png" alt="search--v1"/></button>
-        </div>
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <!-- Ícone Lua (SVG Nativo) -->
+                <svg class="moon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z" />
+                </svg>
+                <!-- Ícone Sol (SVG Nativo) -->
+                <svg class="sun" viewBox="0 0 100 100" width="100" height="100" fill="none" stroke="#FFFFFF"
+                    stroke-width="7" stroke-linecap="square">
+                    <!-- Anel central vazado -->
+                    <circle cx="50" cy="50" r="22" />
 
-        
+                    <!-- Raios com extremidades totalmente retas -->
+                    <g>
+                        <line x1="50" y1="8" x2="50" y2="18" /> <!-- Superior -->
+                        <line x1="50" y1="82" x2="50" y2="92" /> <!-- Inferior -->
+                        <line x1="8" y1="50" x2="18" y2="50" /> <!-- Esquerda -->
+                        <line x1="82" y1="50" x2="92" y2="50" /> <!-- Direita -->
+
+                        <!-- Raios diagonais -->
+                        <line x1="20.5" y1="20.5" x2="27.5" y2="27.5" /> <!-- Superior Esquerda -->
+                        <line x1="72.5" y1="72.5" x2="79.5" y2="79.5" /> <!-- Inferior Direita -->
+                        <line x1="20.5" y1="79.5" x2="27.5" y2="72.5" /> <!-- Inferior Esquerda -->
+                        <line x1="72.5" y1="27.5" x2="79.5" y2="20.5" /> <!-- Superior Direita -->
+                    </g>
+                </svg>
+                <script>const body = document.querySelector("body"),
+                        nav = document.querySelector("nav"),
+                        modeToggle = document.querySelector(".dark-light"),
+                        searchToggle = document.querySelector(".searchToggle"),
+                        sidebarOpen = document.querySelector(".sidebarOpen"),
+                        sidebarClose = document.querySelector(".sidebarClose");
+
+                    // Código do clique para o Modo Escuro
+                    modeToggle.addEventListener("click", () => {
+                        modeToggle.classList.toggle("active");
+                        body.classList.toggle("dark");
+                    });</script>
     </nav>
 
-    
-   
-    </div>
-    <section id="Início">
-<p>
-</p>
+    <!-- Seção Principal (Apresentação do TCC) -->
+    <section class="hero-section" id="Inicio">
+        <p class="category-title">Solo em equilíbrio</p>
+
+        <h1 class="main-title">Seja bem-vindo ao portfólio acadêmico do nosso Trabalho de Conclusão de Curso</h1>
+
+        <p class="description">
+            Este documento foi desenvolvido pelos acadêmicos Dualvid David Muñoz Santana, Pedro Henrique Silvas Santos e
+            Victória Pacheco Souza, concluintes do curso de Desenvolvimento de Sistemas da
+            <a href="https://www.instagram.com/cultoaciencia/" target="_blank" rel="noopener noreferrer"
+                style="color: #58a6ff; text-decoration: underline;">Escola Estadual Culto à Ciência</a>.
+            O objetivo deste portfólio é documentar o processo de criação, a metodologia e os resultados do nosso TCC,
+            intitulado <strong>Solo em equilíbrio</strong>.
+            Nossa pesquisa e desenvolvimento concentram-se em analisar e transmitir conhecimentos sobre as plantas,
+            onde, por sua vez, cada planta mostra habilidades essenciais e úteis no cotidiano.
+            Através da colaboração mútua, unimos nossas competências individuais para entregar uma solução completa e
+            fundamentada para este desafio.
+            A seguir, apresentamos os perfis profissionais de cada integrante, seguidos pelas etapas detalhadas do
+            projeto, cronogramas de execução e as considerações finais do grupo.
+            <br><br>
+            <strong>Agradecemos a leitura.</strong>
+        </p>
+
+        <div class="button-group">
+            <a href="#" class="btn btn-primary">Nossa tragetória</a>
+            <a href="#" class="btn btn-secondary">Conheça os objetivos </a>
+        </div>
     </section>
-    
+    <!--Seção dos tipos de plantas-->
+    <section id="TiposPlantas">
+        <h2 class="plantas-title">Os 5 Tipos de Plantas Estudados</h2>
+
+        <div class="plantas-grid">
+
+            <!-- Tipo 1 -->
+            <div class="planta-card">
+                <div class="planta-icon">🌿</div>
+                <h3>Medicinais</h3>
+                <p>Utilizadas no tratamento de enfermidades e manipulação de fitoterápicos caseiros.</p>
+            </div>
+
+            <!-- Tipo 2 -->
+            <div class="planta-card">
+                <div class="planta-icon">🌱</div>
+                <h3>Ornamentais</h3>
+                <p>Cultivadas pela estética de suas folhagens e flores, harmonizando ambientes internos.</p>
+            </div>
+
+            <!-- Tipo 3 -->
+            <div class="planta-card">
+                <div class="planta-icon">🥗</div>
+                <h3>Alimentícias</h3>
+                <p>Hortaliças e PANCs essenciais para a nutrição e subsistência em hortas urbanas.</p>
+            </div>
+
+            <!-- Tipo 4 -->
+            <div class="planta-card">
+                <div class="planta-icon">🌾</div>
+                <h3>Aquáticas</h3>
+                <p>Plantas que revelam as condições químicas, físicas e a saúde biológica do solo.</p>
+            </div>
+
+            <!-- Tipo 5 -->
+            <div class="planta-card">
+                <div class="planta-icon">🦟</div>
+                <h3>Tóxicas</h3>
+                <p>Espécies que atuam como barreiras naturais contra pragas e insetos vetores.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Seção Kanban -->
     <section id="Kanban">
-      <p>lorem</p>
-          </section>
-          <section id="Trabalhos">
-            <p>
-</p>
-                </section>
-                <section id="Feedbacks">
-                  <p></p>
-                                  </section>
-                      
-                                        </section>
+        <!-- Conteúdo do Kanban vai aqui -->
+        <section id="Kanban">
+            <h2 class="kanban-title">Quadro Kanban do Projeto</h2>
+
+            <div class="kanban-container">
+                <!-- Coluna: A Fazer -->
+                <div class="kanban-column js-column">
+                    <div class="column-header todo">A Fazer</div>
+                    <div class="kanban-cards">
+                        <div class="kanban-card js-card" draggable="true">
+                            <span class="card-tag tag-pesquisa">Pesquisa</span>
+                            <h3>Levantamento botânico</h3>
+                            <p>Análise de plantas e suas propriedades úteis para o cotidiano.</p>
+                        </div>
+                        <div class="kanban-card js-card" draggable="true">
+                            <span class="card-tag tag-doc">Documentação</span>
+                            <h3>Estrutura do relatório</h3>
+                            <p>Montar a introdução e metodologia do portfólio acadêmico.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna: Em Andamento -->
+                <div class="kanban-column js-column">
+                    <div class="column-header doing">Em Andamento</div>
+                    <div class="kanban-cards">
+                        <div class="kanban-card js-card" draggable="true">
+                            <span class="card-tag tag-dev">Desenvolvimento</span>
+                            <h3>Interface Web</h3>
+                            <p>Construção do layout responsivo e estilização com CSS.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna: Concluído -->
+                <div class="kanban-column js-column">
+                    <div class="column-header done">Concluído</div>
+                    <div class="kanban-cards">
+                        <div class="kanban-card js-card" draggable="true">
+                            <span class="card-tag tag-design">Design</span>
+                            <h3>Identidade Visual</h3>
+                            <p>Definição da paleta de cores (Solo em Equilíbrio) e logotipo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Seção da equipe vai aqui-->
+        <section id="Equipe">
+            <h2 class="equipe-title">Nossa Equipe</h2>
+            <div class="equipe-container">
+
+                <!-- Integrante 1: Dualvid -->
+                <div class="profile-card">
+                    <div class="avatar-placeholder">DD</div>
+                    <!-- Caso use foto real, substitua pela tag abaixo:
+            <img src="dualvid.jpg" alt="Dualvid David" class="profile-img"> -->
+                    <h3>Dualvid David M. Santana</h3>
+                    <p class="role">Desenvolvedor Back-End</p>
+                    <p class="bio">Focado na lógica de sistemas, integração de dados e arquitetura estrutural do projeto
+                        Solo em Equilíbrio.</p>
+                    <div class="profile-links">
+                        <a href="#" target="_blank">GitHub</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Integrante 2: Pedro -->
+                <div class="profile-card">
+                    <div class="avatar-placeholder">PH</div>
+                    <h3>Pedro Henrique S. Santos</h3>
+                    <p class="role">Desenvolvedor Front-End</p>
+                    <p class="bio">Responsável por transformar ideias em interfaces digitais elegantes, funcionais,
+                        responsivas e fáceis de usar.</p>
+                    <div class="profile-links">
+                        <a href="#" target="_blank">GitHub</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Integrante 3: Victória -->
+                <div class="profile-card">
+                    <div class="avatar-placeholder">VP</div>
+                    <h3>Victória Pacheco Souza</h3>
+                    <p class="role">Analista de Sistemas & Design</p>
+                    <p class="bio">Especialista no levantamento de requisitos, pesquisa botânica do TCC e criação da
+                        identidade visual da aplicação.</p>
+                    <div class="profile-links">
+                        <a href="#" target="_blank">GitHub</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </section>
+
+    <!-- Seção Agenda e Elementos Flutuantes -->
     <section id="Agenda">
-    <div id="Agenda">
-        <!-- JANEIRO -->
-        <table class="calendario-mensal" border ="0">
-            <caption>Janeiro 2026</caption>
-            <thead>
-                <tr>
-                    <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td><td></td><td></td><td></td>
-                    <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-                    <td class="dia">2</td>
-                    <td class="dia">3</td>
-                    <tr>
-                    <td class="dia">4</td>  
-                    <td class="dia">5</td>
-                      <td class="dia">6</td>
-                       <td class="dia">7</td>
-                        <td class="dia">8</td>
-                         <td class="dia">9</td>
-                          <td class="dia">10</td>
-                          <tr>  
-                          <td class="dia">11</td>  
-                          <td class="dia">12</td>
-                           <td class="dia">13</td>
-                            <td class="dia">14</td>
-                             <td class="dia">15</td>
-                              <td class="dia">16</td>
-                              <tr>
-                                <td class="dia">17</td>
-                                 <td class="dia">18</td>
-                                   <td class="dia">19</td>
-                                    <td class="dia">20</td>
-                                     <td class="dia">21</td>
-                                      <td class="dia">22</td>
-                                        <td class="dia">23</td>
-                                        <tr>
-                                         <td class="dia">24</td>
-                                          <td class="dia">25</td>
-                                           <td class="dia">26</td>
-                                            <td class="dia">27</td>
-                                             <td class="dia">28</td>
-                                              <td class="dia">29</td>  
-                                              <td class="dia">30</td>
-                                              <tr>
-                                               <td class="dia">31</td>
-                                               
-             
-        </table>
-   
-        <!-- FEVEREIRO -->
-        <table class="calendario-mensal" border="0">
-            <caption>Fevereiro 2026</caption>
-            <thead>
-                <tr>
-                    <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-                </tr>
-            </thead>
-            <tbody>
-              <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-              <td class="dia">2</td>
-              <td class="dia">3</td>
-              <td class="dia">4</td>  
-              <td class="dia">5</td>
-                <td class="dia">6</td>
-                 <td class="dia">7</td>
-                 <tr>
-                  <td class="dia">8</td>
-                   <td class="dia">9</td>
-                    <td class="dia">10</td>
-                    <td class="dia">11</td>  
-                    <td class="dia">12</td>
-                     <td class="dia">13</td>
-                      <td class="dia">14</td>
-                      <tr>
-                       <td class="dia">15</td>
-                        <td class="dia">16</td>
-                          <td class="dia">17</td>
-                           <td class="dia">18</td>
-                             <td class="dia">19</td>
-                              <td class="dia">20</td>
-                               <td class="dia">21</td>
-                               <tr>
-                                <td class="dia">22</td>
-                                  <td class="dia">23</td>
-                                   <td class="dia">24</td>
-                                    <td class="dia">25</td>
-                                     <td class="dia">26</td>
-                                      <td class="dia">27</td>
-                                       <td class="dia">28</td>
-                               
-            </tbody>
-        </table>
-    </div>
-    <table class="calendario-mensal" border="0">
-      <caption>Março 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-           <tr>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                <tr>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                         <tr>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <tr>
-                                 <td class="dia">29</td>
-                                 <td class="dia">30</td>
-                                 <td class="dia">31</td>
+        <!-- Botão para abrir o Calendário -->
+        <button class="btn-abrir-calendario"
+            onclick="document.querySelector('.calendario-flutuante').style.display = 'block'">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
+            </svg>
+        </button>
 
-                         
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Abril 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>
-        <tr>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>
-              <tr>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                     <tr>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                              <tr>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <td class="dia">29</td>
-                                 <td class="dia">30</td>
+        <!-- Div do Calendário Flutuante -->
+        <div class="calendario-flutuante">
+            <p>Conteúdo do Calendário (320px x 380px)</p>
+            <!-- Insira a estrutura ou iframe do seu calendário aqui -->
+            <button
+                style="margin-top: 10px; background: #30363d; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;"
+                onclick="this.parentElement.style.display='none'">Fechar</button>
+        </div>
+    </section>
 
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Maio 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <tr>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-             <tr>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                  <tr>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                            <tr>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <td class="dia">29</td>
-                                 <td class="dia">30</td>
-                                 <tr>
-                                 <td class="dia">31</td>
-
-                         
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Junho 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <tr>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-            <td class="dia">8</td>
-            <tr>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                 <td class="dia">15</td>
-                 <tr>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                          <td class="dia">22</td>
-                          <tr>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <td class="dia">29</td>
-                                 <tr>
-                                 <td class="dia">30</td>
-                                 
-
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Julho 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-           <tr>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                <tr>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                         <tr>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <tr>
-                                 <td class="dia">29</td>
-                                 <td class="dia">30</td>
-                                 <td class="dia">31</td>
-
-                         
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Agosto 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-           <tr>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                <tr>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                         <tr>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <tr>
-                                <td class="dia">28</td>
-                                 <td class="dia">29</td>
-                                 <td class="dia">30</td>
-                                 <td class="dia">31</td>
-
-
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Setembro 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-           <tr>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                <tr>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                         <tr>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <td class="dia">30</td>
-
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Outubro 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-           <tr>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                <tr>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                         <tr>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <td class="dia">29</td>
-                                    <td class="dia">30</td>
-                                    <td class="dia">31</td>
-
-      </tbody>
-  </table>
-  </div>
-   
-  <table class="calendario-mensal" border="0">
-      <caption>Novembro 2026</caption>
-      <thead>
-          <tr>
-              <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-          </tr>
-      </thead>
-      <tbody>
-        <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-        <td class="dia">2</td>
-        <td class="dia">3</td>
-        <td class="dia">4</td>  
-        <td class="dia">5</td>
-          <td class="dia">6</td>
-           <td class="dia">7</td>
-           <tr>
-            <td class="dia">8</td>
-             <td class="dia">9</td>
-              <td class="dia">10</td>
-              <td class="dia">11</td>  
-              <td class="dia">12</td>
-               <td class="dia">13</td>
-                <td class="dia">14</td>
-                <tr>
-                 <td class="dia">15</td>
-                  <td class="dia">16</td>
-                    <td class="dia">17</td>
-                     <td class="dia">18</td>
-                       <td class="dia">19</td>
-                        <td class="dia">20</td>
-                         <td class="dia">21</td>
-                         <tr>
-                          <td class="dia">22</td>
-                            <td class="dia">23</td>
-                             <td class="dia">24</td>
-                              <td class="dia">25</td>
-                               <td class="dia">26</td>
-                                <td class="dia">27</td>
-                                 <td class="dia">28</td>
-                                 <tr>
-                                 <td class="dia">29</td>
-                                 <td class="dia">30</td>
-   
-                         
-      </tbody>
-  </table>
-  </div>
-  <table class="calendario-mensal" border="0">
-    <caption>Dezembro 2026</caption>
-    <thead>
-        <tr>
-            <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-        </tr>
-    </thead>
-    <tbody>
-      <td class="dia">1 <div class="evento">Primeiro entregável do TCC</div></td>
-      <td class="dia">2</td>
-      <td class="dia">3</td>
-      <tr>
-      <td class="dia">4</td>  
-      <td class="dia">5</td>
-        <td class="dia">6</td>
-         <td class="dia">7</td>
-          <td class="dia">8</td>
-           <td class="dia">9</td>
-            <td class="dia">10</td>
-            <tr>
-            <td class="dia">11</td>  
-            <td class="dia">12</td>
-             <td class="dia">13</td>
-              <td class="dia">14</td>
-               <td class="dia">15</td>
-                <td class="dia">16</td>
-                  <td class="dia">17</td>
-                  <tr>
-                   <td class="dia">18</td>
-                     <td class="dia">19</td>
-                      <td class="dia">20</td>
-                       <td class="dia">21</td>
-                        <td class="dia">22</td>
-                          <td class="dia">23</td>
-                          <td class="dia">24</td>
-                          <tr>
-                            <td class="dia">25</td>
-                             <td class="dia">26</td>
-                              <td class="dia">27</td>
-                               <td class="dia">28</td>
-                               <td class="dia">29</td>
-                               <td class="dia">30</td>
-                               <td class="dia">31</td>
-   
-   
-    </tbody>
-  </table>
-  </div>
-</section>
-
-         
-           
-                              
-                                   
-</html>
-
-</select>
-</tbody>
-</table>
-<center>
-<footer>
-    <p>&copy; 2026 - Fitorremediação em solos ácidos</p>
-</footer>
-</center>
-</html>
 </body>
+
+</html>

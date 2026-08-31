@@ -22,9 +22,24 @@
 
 body {
     background-color: #fff;
+        height: 100vh;
 }
-
-
+ 
+body.dark {
+    --body-color: #1c1c1c;
+    --nav-color: #1a681a;
+    --side-nav: #1f1f1f;
+    --text-color: #fff;
+    --search-bar: #f2f2f2;
+}
+p {
+ text-align: justify;      /* Justifica o texto */
+  max-width: 2050px;         /* Limita a largura para criar as laterais livres */
+  margin: 0 auto;           /* Centraliza o bloco na horizontal */
+  padding: 20px;  
+  text-transform: none; /* Cancela maiúsculas automáticas e exibe o texto original */
+  font-size: 20px;
+}
 /* NAVBAR */
 
 nav {
@@ -310,3 +325,180 @@ nav {
         /* Reduz espaço para poupar tela */
     }
 }
+
+.nav-bar .darkLight-searchBox {
+    display: flex;
+    align-items: center;
+}
+ 
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+ 
+.dark-light svg,
+.searchToggle svg {
+    position: absolute;
+    color: var(--text-color);
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+ 
+.dark-light svg.sun {
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+.dark-light.active svg.sun {
+    opacity: 1;
+    pointer-events: auto;
+}
+ 
+.dark-light.active svg.moon {
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+.searchToggle svg.cancel {
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+.searchToggle.active svg.cancel {
+    opacity: 1;
+    pointer-events: auto;
+}
+ 
+.searchToggle.active svg.search {
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+/* Caixa de Pesquisa */
+.searchBox {
+    position: relative;
+}
+ 
+.searchBox .search-field {
+    position: absolute;
+    bottom: -85px;
+    right: 5px;
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-color);
+    padding: 3px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+ 
+.searchToggle.active~.search-field {
+    bottom: -74px;
+    opacity: 1;
+    pointer-events: auto;
+}
+ 
+.search-field::before {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    background-color: var(--nav-color);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+ 
+.search-field input {
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--search-text);
+    background-color: var(--search-bar);
+}
+ 
+.search-field .input-search-icon {
+    position: absolute;
+    color: var(--nav-color);
+    fill: currentColor;
+    right: 15px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+ 
+/* Media Query Mobile */
+@media (max-width:790px) {
+    nav .nav-bar .sidebarOpen {
+        display: block;
+    }
+    
+    nav .nav-bar .darkLight-searchBox {
+        min-width: 90px;
+        justify-content: flex-end;
+    }
+    
+    nav .nav-bar .logo {
+        flex: 1;
+        margin-left: 10px;
+    }
+
+    nav .nav-bar .logo a {
+        font-size: 18px;
+    }
+
+    .menu {
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: -100%;
+        top: 0;
+        padding: 20px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+    nav.active .menu {
+        left: 0%;
+    }
+    .menu .logo-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo-toggle .sidebarClose {
+        color: var(--text-color);
+        fill: currentColor;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+    .nav-bar .nav-links {
+        flex-direction: column;
+        padding-top: 30px;
+    }
+    .nav-links li a {
+        display: block;
+        margin-top: 20px;
+    }
+}
+

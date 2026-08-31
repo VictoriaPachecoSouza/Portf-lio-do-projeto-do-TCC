@@ -17,3 +17,4 @@ function goToCart() {
     alert("Redirecionando para o carrinho...");
     window.location.href = "#";
 }
+
