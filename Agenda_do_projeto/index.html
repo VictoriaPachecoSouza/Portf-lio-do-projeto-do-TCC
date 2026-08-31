@@ -1,66 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
+ 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio para o TCC</title>
-
-    <!-- Arquivos externos -->
-    <link rel="stylesheet" type="text/css" href="estilo.css" />
-    <script src="botaoes.js" defer></script>
-
-    <style>
-        /* Configurações globais e reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #0d1117;
-            /* Fundo escuro padrão do GitHub */
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            padding: 20px;
-            padding-top: 80px;
-            /* Evita que o menu fixo cubra o conteúdo */
-        }
-
-        /* Container da seção Hero */
-        .hero-section {
-            max-width: 900px;
-            width: 100%;
-            margin: 60px auto;
-            text-align: center;
-        }
-
-        /* Subtítulo superior pequeno */
-        .category-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8b949e;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-
-        .category-title::after {
-            content: " ■";
-            color: #2ea44f;
-            /* Quadrado verde */
-        }
-
-        /* Título principal */
-        .main-title {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio para o TCC</title>
+ 
+  <!-- Arquivos externos -->
+  <link rel="stylesheet" type="text/css" href="estilo.css" />
+  <script src="botaoes.js" defer></script>
+ 
+  <style>
+    /* =============================
+   MODO ESCURO / CLARO INVERTIDO
+================================ */
+ 
+    /* MODO ESCURO - padrão */
+    body {
+      background-color: #0d1117;
+      color: #ffffff;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+ 
+    /* Elementos no modo escuro */
+    body .main-title,
+    body .plantas-title,
+    body .kanban-title,
+    body .equipe-title,
+    body h2,
+    body h3 {
+      color: #ffffff;
+    }
+ 
+ 
+    /* ================================
+   MODO CLARO
+================================ */
+ 
+    body.dark {
+      background-color: #ffffff;
+      color: #000000;
+    }
+ 
+    /* Textos no modo claro */
+    body.dark .main-title,
+    body.dark .plantas-title,
+    body.dark .kanban-title,
+    body.dark .equipe-title,
+    body.dark h2,
+    body.dark h3 {
+      color: #000000;
+    }
+ 
+    /* TÍTULO SEMPRE BEM CENTRALIZADO */
+    .main-title {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+ 
+    /* Títulos no modo escuro */
+    body .main-title,
+    body .plantas-title,
+    body .kanban-title,
+    body .equipe-title,
+    body h2,
+    body h3 {
+      color: #ffffff;
+    }
+ 
+    /* Textos secundários no modo claro */
+    body.dark .description,
+    body.dark .planta-card p,
+    body.dark .kanban-card p,
+    body.dark .profile-card .bio {
+      color: #555555;
+    }
+ 
+ 
+    /* ================================
+   CARDS
+================================ */
+ 
+    .planta-card,
+    .profile-card,
+    .kanban-column,
+    .kanban-card {
+      transition: background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+    }
+ 
+ 
+    /* Cards no modo escuro */
+    .planta-card,
+    .profile-card,
+    .kanban-column {
+      background-color: #161b22;
+      border-color: #30363d;
+    }
+ 
+    .kanban-card {
+      background-color: #21262d;
+      border-color: #30363d;
+    }
+ 
+ 
+    /* Cards no modo claro */
+    body.dark .planta-card,
+    body.dark .profile-card,
+    body.dark .kanban-column {
+      background-color: #ffffff;
+      border-color: #dddddd;
+    }
+ 
+    body.dark .kanban-card {
+      background-color: #f8f9fa;
+      border-color: #dddddd;
+    }
+ 
+ 
+    /* ================================
+   LUA E SOL
+================================ */
+ 
+    .dark-light {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+ 
+    /* Ícones */
+    .dark-light .moon,
+    .dark-light .sun {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+ 
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+ 
+ 
+    /* 🌙 MODO ESCURO = LUA */
+    .dark-light .moon {
+      opacity: 1;
+    }
+ 
+    .dark-light .sun {
+      opacity: 0;
+    }
+ 
+ 
+    /* ☀️ MODO CLARO = SOL */
+    body.dark .dark-light .moon {
+      opacity: 0;
+    }
+ 
+    body.dark .dark-light .sun {
+      opacity: 1;
+    }
+    .main-title {
             font-size: 44px;
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 24px;
             letter-spacing: -1px;
         }
-
+ 
         /* Texto descritivo */
         .description {
             font-size: 16px;
@@ -71,7 +181,7 @@
             text-align: justify;
             /* Melhora a leitura de textos longos */
         }
-
+ 
         /* Container dos botões */
         .button-group {
             display: flex;
@@ -79,7 +189,7 @@
             gap: 16px;
             flex-wrap: wrap;
         }
-
+ 
         /* Estilo base dos botões */
         .btn {
             display: inline-block;
@@ -90,341 +200,539 @@
             border-radius: 6px;
             transition: background-color 0.2s, transform 0.2s;
         }
-
+ 
         /* Botão verde (Principal) */
         .btn-primary {
             background-color: #1f883d;
             color: #ffffff;
             border: 1px solid rgba(240, 246, 252, 0.1);
         }
-
+ 
         .btn-primary:hover {
             background-color: #2ea44f;
         }
-
+ 
         /* Botão escuro (Secundário) */
         .btn-secondary {
             background-color: #21262d;
             color: #c9d1d9;
             border: 1px solid #30363d;
         }
-
+ 
         .btn-secondary:hover {
             background-color: #30363d;
             color: #ffffff;
         }
-
-        /* ==================== CALENDÁRIO FLUTUANTE ==================== */
-        .btn-abrir-calendario {
-            position: fixed;
-            bottom: 105px;
-            right: 20px;
-            width: 70px;
-            height: 70px;
-            border: none;
-            border-radius: 50%;
-            background-color: #5cb82a;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 9998;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            transition: transform 0.2s, background-color 0.2s;
+ 
+   /* Subtítulo superior pequeno */
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            margin-bottom: 24px;
+            font-weight: 600;
         }
-
-        .btn-abrir-calendario:hover {
-            background-color: #4da31f;
-            transform: scale(1.08);
+ 
+        .category-title::after {
+            content: " ■";
+            color: #2ea44f;
+            /* Quadrado verde */
         }
-
-        .btn-abrir-calendario svg {
-            width: 42px;
-            height: 42px;
-            fill: #ffffff;
+            /* Container da seção Hero */
+        .hero-section {
+            max-width: 900px;
+            width: 100%;
+            margin: 60px auto;
+            text-align: center;
         }
-
-        .calendario-flutuante {
-            display: none;
-            position: fixed;
-            right: 20px;
-            bottom: 185px;
-            width: 320px;
-            height: 380px;
-            max-height: 500px;
-            background-color: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-            padding: 15px;
-        }
-
-        /* Ajuste para telas menores */
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 32px;
-            }
-
-            .button-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-    </style>
+  </style>
 </head>
-
+ 
 <body>
-    <nav>
-        <div class="logo">
-            <img src="Logotipo.png" height="50" alt="Logotipo">
-        </div>
-
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-        <ul class="menu" id="menu">
-            <li><a href="#">Início</a></li>
-            <li><a href="#TiposPlantas">Plantas</a></li>
-            <li><a href="#Kanban">Kanban</a></li>
-            <li><a href="#Equipe">Equipe</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
-
-        <div class="darkLight-searchBox">
-            <div class="dark-light">
-                <!-- Ícone Lua (SVG Nativo) -->
-                <svg class="moon" viewBox="0 0 24 24">
-                    <path
-                        d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z" />
-                </svg>
-                <!-- Ícone Sol (SVG Nativo) -->
-                <svg class="sun" viewBox="0 0 100 100" width="100" height="100" fill="none" stroke="#FFFFFF"
-                    stroke-width="7" stroke-linecap="square">
-                    <!-- Anel central vazado -->
-                    <circle cx="50" cy="50" r="22" />
-
-                    <!-- Raios com extremidades totalmente retas -->
-                    <g>
-                        <line x1="50" y1="8" x2="50" y2="18" /> <!-- Superior -->
-                        <line x1="50" y1="82" x2="50" y2="92" /> <!-- Inferior -->
-                        <line x1="8" y1="50" x2="18" y2="50" /> <!-- Esquerda -->
-                        <line x1="82" y1="50" x2="92" y2="50" /> <!-- Direita -->
-
-                        <!-- Raios diagonais -->
-                        <line x1="20.5" y1="20.5" x2="27.5" y2="27.5" /> <!-- Superior Esquerda -->
-                        <line x1="72.5" y1="72.5" x2="79.5" y2="79.5" /> <!-- Inferior Direita -->
-                        <line x1="20.5" y1="79.5" x2="27.5" y2="72.5" /> <!-- Inferior Esquerda -->
-                        <line x1="72.5" y1="27.5" x2="79.5" y2="20.5" /> <!-- Superior Direita -->
-                    </g>
-                </svg>
-                <script>const body = document.querySelector("body"),
-                        nav = document.querySelector("nav"),
-                        modeToggle = document.querySelector(".dark-light"),
-                        searchToggle = document.querySelector(".searchToggle"),
-                        sidebarOpen = document.querySelector(".sidebarOpen"),
-                        sidebarClose = document.querySelector(".sidebarClose");
-
-                    // Código do clique para o Modo Escuro
-                    modeToggle.addEventListener("click", () => {
-                        modeToggle.classList.toggle("active");
-                        body.classList.toggle("dark");
-                    });</script>
-    </nav>
-
-    <!-- Seção Principal (Apresentação do TCC) -->
-    <section class="hero-section" id="Inicio">
-        <p class="category-title">Solo em equilíbrio</p>
-
-        <h1 class="main-title">Seja bem-vindo ao portfólio acadêmico do nosso Trabalho de Conclusão de Curso</h1>
-
-        <p class="description">
-            Este documento foi desenvolvido pelos acadêmicos Dualvid David Muñoz Santana, Pedro Henrique Silvas Santos e
-            Victória Pacheco Souza, concluintes do curso de Desenvolvimento de Sistemas da
-            <a href="https://www.instagram.com/cultoaciencia/" target="_blank" rel="noopener noreferrer"
-                style="color: #58a6ff; text-decoration: underline;">Escola Estadual Culto à Ciência</a>.
-            O objetivo deste portfólio é documentar o processo de criação, a metodologia e os resultados do nosso TCC,
-            intitulado <strong>Solo em equilíbrio</strong>.
-            Nossa pesquisa e desenvolvimento concentram-se em analisar e transmitir conhecimentos sobre as plantas,
-            onde, por sua vez, cada planta mostra habilidades essenciais e úteis no cotidiano.
-            Através da colaboração mútua, unimos nossas competências individuais para entregar uma solução completa e
-            fundamentada para este desafio.
-            A seguir, apresentamos os perfis profissionais de cada integrante, seguidos pelas etapas detalhadas do
-            projeto, cronogramas de execução e as considerações finais do grupo.
-            <br><br>
-            <strong>Agradecemos a leitura.</strong>
-        </p>
-
-        <div class="button-group">
-            <a href="#" class="btn btn-primary">Nossa tragetória</a>
-            <a href="#" class="btn btn-secondary">Conheça os objetivos </a>
-        </div>
-    </section>
-    <!--Seção dos tipos de plantas-->
-    <section id="TiposPlantas">
-        <h2 class="plantas-title">Os 5 Tipos de Plantas Estudados</h2>
-
-        <div class="plantas-grid">
-
-            <!-- Tipo 1 -->
-            <div class="planta-card">
-                <div class="planta-icon">🌿</div>
-                <h3>Medicinais</h3>
-                <p>Utilizadas no tratamento de enfermidades e manipulação de fitoterápicos caseiros.</p>
-            </div>
-
-            <!-- Tipo 2 -->
-            <div class="planta-card">
-                <div class="planta-icon">🌱</div>
-                <h3>Ornamentais</h3>
-                <p>Cultivadas pela estética de suas folhagens e flores, harmonizando ambientes internos.</p>
-            </div>
-
-            <!-- Tipo 3 -->
-            <div class="planta-card">
-                <div class="planta-icon">🥗</div>
-                <h3>Alimentícias</h3>
-                <p>Hortaliças e PANCs essenciais para a nutrição e subsistência em hortas urbanas.</p>
-            </div>
-
-            <!-- Tipo 4 -->
-            <div class="planta-card">
-                <div class="planta-icon">🌾</div>
-                <h3>Aquáticas</h3>
-                <p>Plantas que revelam as condições químicas, físicas e a saúde biológica do solo.</p>
-            </div>
-
-            <!-- Tipo 5 -->
-            <div class="planta-card">
-                <div class="planta-icon">🦟</div>
-                <h3>Tóxicas</h3>
-                <p>Espécies que atuam como barreiras naturais contra pragas e insetos vetores.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Seção Kanban -->
+  <nav>
+    <div class="logo">
+      <img src="Logotipo.png" height="50" alt="Logotipo">
+    </div>
+ 
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+ 
+    <ul class="menu" id="menu">
+      <li><a href="#">Início</a></li>
+      <li><a href="#TiposPlantas">Plantas</a></li>
+      <li><a href="#Kanban">Kanban</a></li>
+      <li><a href="#Equipe">Equipe</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+ 
+    <div class="darkLight-searchBox">
+ 
+      <div class="dark-light">
+ 
+        <!-- LUA -->
+        <svg class="moon" viewBox="0 0 24 24">
+          <path
+            d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z" />
+        </svg>
+ 
+ 
+        <!-- SOL -->
+        <svg class="sun" viewBox="0 0 100 100" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="square">
+ 
+          <circle cx="50" cy="50" r="22" />
+ 
+          <g>
+            <line x1="50" y1="8" x2="50" y2="18" />
+            <line x1="50" y1="82" x2="50" y2="92" />
+ 
+            <line x1="8" y1="50" x2="18" y2="50" />
+            <line x1="82" y1="50" x2="92" y2="50" />
+ 
+            <line x1="20.5" y1="20.5" x2="27.5" y2="27.5" />
+            <line x1="72.5" y1="72.5" x2="79.5" y2="79.5" />
+ 
+            <line x1="20.5" y1="79.5" x2="27.5" y2="72.5" />
+            <line x1="72.5" y1="27.5" x2="79.5" y2="20.5" />
+          </g>
+ 
+        </svg>
+ 
+      </div>
+ 
+    </div>
+  </nav>
+ 
+  <!-- Script Isolado e Funcional -->
+  <script>
+    const body = document.querySelector("body"),
+      modeToggle = document.querySelector(".dark-light"),
+      searchToggle = document.querySelector(".searchToggle");
+ 
+    // Código do clique para o Modo Escuro
+    modeToggle.addEventListener("click", () => {
+      modeToggle.classList.toggle("active");
+      body.classList.toggle("dark");
+    });
+ 
+    // Alterna o estado ativo do botão de pesquisa ao clicar
+    searchToggle.addEventListener("click", () => {
+      searchToggle.classList.toggle("active");
+    });
+  </script>
+ 
+  <!-- Seção Principal (Apresentação do TCC) -->
+  <section class="hero-section" id="Inicio">
+    <p class="category-title">Solo em equilíbrio</p>
+ 
+    <h1 class="main-title">Seja bem-vindo ao portfólio acadêmico do nosso Trabalho de Conclusão de Curso</h1>
+ 
+    <p class="description">
+      Este documento foi desenvolvido pelos acadêmicos Dualvid David Muñoz Santana, Pedro Henrique Silvas
+      Santos e
+      Victória Pacheco Souza, concluintes do curso de Desenvolvimento de Sistemas da
+      <a href="https://www.instagram.com/cultoaciencia/" target="_blank" rel="noopener noreferrer"
+        style="color: #58a6ff; text-decoration: underline;">Escola Estadual Culto à Ciência</a>.
+      O objetivo deste portfólio é documentar o processo de criação, a metodologia e os resultados do nosso
+      TCC,
+      intitulado <strong>Solo em equilíbrio</strong>.
+      Nossa pesquisa e desenvolvimento concentram-se em analisar e transmitir conhecimentos sobre as plantas,
+      onde, por sua vez, cada planta mostra habilidades essenciais e úteis no cotidiano.
+      Através da colaboração mútua, unimos nossas competências individuais para entregar uma solução completa
+      e
+      fundamentada para este desafio.
+      A seguir, apresentamos os perfis profissionais de cada integrante, seguidos pelas etapas detalhadas do
+      projeto, cronogramas de execução e as considerações finais do grupo.
+      <br><br>
+      <strong>Agradecemos a leitura.</strong>
+    </p>
+ 
+    <div class="button-group">
+      <a href="#" class="btn btn-primary">Nossa tragetória</a>
+      <a href="#" class="btn btn-secondary">Conheça os objetivos </a>
+    </div>
+  </section>
+  <!--Seção dos tipos de plantas-->
+  <section id="TiposPlantas">
+    <h2 class="plantas-title">Os 5 Tipos de Plantas Estudados</h2>
+ 
+    <div class="plantas-grid">
+ 
+      <!-- Tipo 1 -->
+      <div class="planta-card">
+        <div class="planta-icon">🌿</div>
+        <h3>Medicinais</h3>
+        <p>Utilizadas no tratamento de enfermidades e manipulação de fitoterápicos caseiros.</p>
+      </div>
+ 
+      <!-- Tipo 2 -->
+      <div class="planta-card">
+        <div class="planta-icon">🌱</div>
+        <h3>Ornamentais</h3>
+        <p>Cultivadas pela estética de suas folhagens e flores, harmonizando ambientes internos.</p>
+      </div>
+ 
+      <!-- Tipo 3 -->
+      <div class="planta-card">
+        <div class="planta-icon">🥗</div>
+        <h3>Alimentícias</h3>
+        <p>Hortaliças e PANCs essenciais para a nutrição e subsistência em hortas urbanas.</p>
+      </div>
+ 
+      <!-- Tipo 4 -->
+      <div class="planta-card">
+        <div class="planta-icon">🌾</div>
+        <h3>Aquáticas</h3>
+        <p>Plantas que revelam as condições químicas, físicas e a saúde biológica do solo.</p>
+      </div>
+ 
+      <!-- Tipo 5 -->
+      <div class="planta-card">
+        <div class="planta-icon">🦟</div>
+        <h3>Tóxicas</h3>
+        <p>Espécies que atuam como barreiras naturais contra pragas e insetos vetores.</p>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- Seção Kanban -->
+  <section id="Kanban">
+    <!-- Conteúdo do Kanban vai aqui -->
     <section id="Kanban">
-        <!-- Conteúdo do Kanban vai aqui -->
-        <section id="Kanban">
-            <h2 class="kanban-title">Quadro Kanban do Projeto</h2>
-
-            <div class="kanban-container">
-                <!-- Coluna: A Fazer -->
-                <div class="kanban-column js-column">
-                    <div class="column-header todo">A Fazer</div>
-                    <div class="kanban-cards">
-                        <div class="kanban-card js-card" draggable="true">
-                            <span class="card-tag tag-pesquisa">Pesquisa</span>
-                            <h3>Levantamento botânico</h3>
-                            <p>Análise de plantas e suas propriedades úteis para o cotidiano.</p>
-                        </div>
-                        <div class="kanban-card js-card" draggable="true">
-                            <span class="card-tag tag-doc">Documentação</span>
-                            <h3>Estrutura do relatório</h3>
-                            <p>Montar a introdução e metodologia do portfólio acadêmico.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Coluna: Em Andamento -->
-                <div class="kanban-column js-column">
-                    <div class="column-header doing">Em Andamento</div>
-                    <div class="kanban-cards">
-                        <div class="kanban-card js-card" draggable="true">
-                            <span class="card-tag tag-dev">Desenvolvimento</span>
-                            <h3>Interface Web</h3>
-                            <p>Construção do layout responsivo e estilização com CSS.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Coluna: Concluído -->
-                <div class="kanban-column js-column">
-                    <div class="column-header done">Concluído</div>
-                    <div class="kanban-cards">
-                        <div class="kanban-card js-card" draggable="true">
-                            <span class="card-tag tag-design">Design</span>
-                            <h3>Identidade Visual</h3>
-                            <p>Definição da paleta de cores (Solo em Equilíbrio) e logotipo.</p>
-                        </div>
-                    </div>
-                </div>
+      <h2 class="kanban-title">Quadro Kanban do Projeto</h2>
+ 
+      <div class="kanban-container">
+        <!-- Coluna: A Fazer -->
+        <div class="kanban-column js-column">
+          <div class="column-header todo">A Fazer</div>
+          <div class="kanban-cards">
+            <div class="kanban-card js-card" draggable="true">
+              <span class="card-tag tag-pesquisa">Pesquisa</span>
+              <h3>Levantamento botânico</h3>
+              <p>Análise de plantas e suas propriedades úteis para o cotidiano.</p>
             </div>
-        </section>
-        <!--Seção da equipe vai aqui-->
-        <section id="Equipe">
-            <h2 class="equipe-title">Nossa Equipe</h2>
-            <div class="equipe-container">
-
-                <!-- Integrante 1: Dualvid -->
-                <div class="profile-card">
-                    <div class="avatar-placeholder">DD</div>
-                    <!-- Caso use foto real, substitua pela tag abaixo:
-            <img src="dualvid.jpg" alt="Dualvid David" class="profile-img"> -->
-                    <h3>Dualvid David M. Santana</h3>
-                    <p class="role">Desenvolvedor Back-End</p>
-                    <p class="bio">Focado na lógica de sistemas, integração de dados e arquitetura estrutural do projeto
-                        Solo em Equilíbrio.</p>
-                    <div class="profile-links">
-                        <a href="#" target="_blank">GitHub</a>
-                        <a href="#" target="_blank">LinkedIn</a>
-                    </div>
-                </div>
-
-                <!-- Integrante 2: Pedro -->
-                <div class="profile-card">
-                    <div class="avatar-placeholder">PH</div>
-                    <h3>Pedro Henrique S. Santos</h3>
-                    <p class="role">Desenvolvedor Front-End</p>
-                    <p class="bio">Responsável por transformar ideias em interfaces digitais elegantes, funcionais,
-                        responsivas e fáceis de usar.</p>
-                    <div class="profile-links">
-                        <a href="#" target="_blank">GitHub</a>
-                        <a href="#" target="_blank">LinkedIn</a>
-                    </div>
-                </div>
-
-                <!-- Integrante 3: Victória -->
-                <div class="profile-card">
-                    <div class="avatar-placeholder">VP</div>
-                    <h3>Victória Pacheco Souza</h3>
-                    <p class="role">Analista de Sistemas & Design</p>
-                    <p class="bio">Especialista no levantamento de requisitos, pesquisa botânica do TCC e criação da
-                        identidade visual da aplicação.</p>
-                    <div class="profile-links">
-                        <a href="#" target="_blank">GitHub</a>
-                        <a href="#" target="_blank">LinkedIn</a>
-                    </div>
-                </div>
-
+            <div class="kanban-card js-card" draggable="true">
+              <span class="card-tag tag-doc">Documentação</span>
+              <h3>Estrutura do relatório</h3>
+              <p>Montar a introdução e metodologia do portfólio acadêmico.</p>
             </div>
-        </section>
-
-    </section>
-
-    <!-- Seção Agenda e Elementos Flutuantes -->
-    <section id="Agenda">
-        <!-- Botão para abrir o Calendário -->
-        <button class="btn-abrir-calendario"
-            onclick="document.querySelector('.calendario-flutuante').style.display = 'block'">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
-            </svg>
-        </button>
-
-        <!-- Div do Calendário Flutuante -->
-        <div class="calendario-flutuante">
-            <p>Conteúdo do Calendário (320px x 380px)</p>
-            <!-- Insira a estrutura ou iframe do seu calendário aqui -->
-            <button
-                style="margin-top: 10px; background: #30363d; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;"
-                onclick="this.parentElement.style.display='none'">Fechar</button>
+          </div>
         </div>
+ 
+        <!-- Coluna: Em Andamento -->
+        <div class="kanban-column js-column">
+          <div class="column-header doing">Em Andamento</div>
+          <div class="kanban-cards">
+            <div class="kanban-card js-card" draggable="true">
+              <span class="card-tag tag-dev">Desenvolvimento</span>
+              <h3>Interface Web</h3>
+              <p>Construção do layout responsivo e estilização com CSS.</p>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- Coluna: Concluído -->
+        <div class="kanban-column js-column">
+          <div class="column-header done">Concluído</div>
+          <div class="kanban-cards">
+            <div class="kanban-card js-card" draggable="true">
+              <span class="card-tag tag-design">Design</span>
+              <h3>Identidade Visual</h3>
+              <p>Definição da paleta de cores (Solo em Equilíbrio) e logotipo.</p>
+            </div>
+          </div>
+        </div>
+        <style>#Kanban {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+ 
+.kanban-title {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+ 
+/* Container que alinha as colunas lado a lado */
+.kanban-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+ 
+/* Colunas individuais */
+.kanban-column {
+    flex: 1;
+    background-color: #161b22; /* Fundo ligeiramente mais claro que o body */
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 280px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+ 
+/* Cabeçalhos das colunas */
+.column-header {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ffffff;
+}
+ 
+/* Cores temáticas para cada status */
+.column-header.todo {
+    background-color: #30363d; /* Cinza escuro */
+}
+ 
+.column-header.doing {
+    background-color: #9e6a03; /* Amarelo/Laranja queimado */
+}
+ 
+.column-header.done {
+    background-color: #1f883d; /* Verde GitHub */
+}
+ 
+/* Lista de cartões */
+.kanban-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+ 
+/* Estilo do cartão individual */
+.kanban-card {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 16px;
+    cursor: grab;
+    transition: transform 0.2s, border-color 0.2s;
+}
+ 
+.kanban-card:hover {
+    transform: translateY(-2px);
+    border-color: #8b949e;
+}
+ 
+.kanban-card h3 {
+    font-size: 16px;
+    color: #f0f6fc;
+    margin: 8px 0;
+}
+ 
+.kanban-card p {
+    font-size: 14px;
+    color: #8b949e;
+    line-height: 1.4;
+    padding: 0; /* Reseta o padding herdado do 'p' global */
+    margin: 0;
+    text-align: left;
+}
+ 
+/* Etiquetas/Tags coloridas dentro dos cartões */
+.card-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+ 
+.tag-pesquisa { background-color: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
+.tag-doc      { background-color: rgba(236, 72, 153, 0.2); color: #fbcfe8; }
+.tag-dev      { background-color: rgba(34, 197, 94, 0.2);  color: #bbf7d0; }
+.tag-design   { background-color: rgba(234, 179, 8, 0.2);   color: #fef08a; }
+ 
+/* Responsividade para celulares */
+@media (max-width: 900px) {
+    .kanban-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+ </style>
+      </div>
     </section>
-
+    <!--Seção da equipe vai aqui-->
+    <section id="Equipe">
+      <h2 class="equipe-title">Nossa Equipe</h2>
+      <div class="equipe-container">
+ 
+        <!-- Integrante 1: Dualvid -->
+        <div class="profile-card">
+          <div class="avatar-placeholder">DD</div>
+          <!-- Caso use foto real, substitua pela tag abaixo:
+            <img src="dualvid.jpg" alt="Dualvid David" class="profile-img"> -->
+          <h3>Dualvid David M. Santana</h3>
+          <p class="role">Desenvolvedor Back-End</p>
+          <p class="bio">Focado na lógica de sistemas, integração de dados e arquitetura estrutural do
+            projeto
+            Solo em Equilíbrio.</p>
+          <div class="profile-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+ 
+        <!-- Integrante 2: Pedro -->
+        <div class="profile-card">
+          <div class="avatar-placeholder">PH</div>
+          <h3>Pedro Henrique S. Santos</h3>
+          <p class="role">Desenvolvedor Front-End</p>
+          <p class="bio">Responsável por transformar ideias em interfaces digitais elegantes, funcionais,
+            responsivas e fáceis de usar.</p>
+          <div class="profile-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+ 
+        <!-- Integrante 3: Victória -->
+        <div class="profile-card">
+          <div class="avatar-placeholder">VP</div>
+          <h3>Victória Pacheco Souza</h3>
+          <p class="role">Analista de Sistemas & Design</p>
+          <p class="bio">Especialista no levantamento de requisitos, pesquisa botânica do TCC e criação da
+            identidade visual da aplicação.</p>
+          <div class="profile-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+ 
+      </div>
+      <style>.equipe-title {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+ 
+/* Alinhamento dos cards */
+.equipe-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; /* Garante que quebre linha em telas pequenas */
+}
+ 
+/* Card de perfil individual */
+.profile-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 30px 24px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, border-color 0.2s;
+}
+ 
+.profile-card:hover {
+    transform: translateY(-5px);
+    border-color: #2ea44f; /* Destaca com o verde do projeto ao passar o mouse */
+}
+ 
+/* Círculo para foto ou iniciais */
+.avatar-placeholder {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #30363d;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    border: 2px solid #8b949e;
+}
+ 
+.profile-card h3 {
+    font-size: 18px;
+    color: #f0f6fc;
+    margin-bottom: 6px;
+}
+ 
+/* Cargo/Função */
+.profile-card .role {
+    font-size: 14px;
+    color: #2ea44f; /* Verde para destacar a profissão */
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: none;
+    padding: 0;
+}
+ 
+/* Biografia profissional */
+.profile-card .bio {
+    font-size: 14px;
+    color: #8b949e;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 24px;
+}
+ 
+/* Links das redes sociais */
+.profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+ 
+.profile-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    padding: 6px 16px;
+    border-radius: 6px;
+    background-color: #21262d;
+    transition: background-color 0.2s, color 0.2s;
+}
+ 
+.profile-links a:hover {
+    background-color: #30363d;
+    color: #ffffff;
+}
+</style>
+    </section>
+ 
+  </section>
+ 
+  <!-- Seção Agenda e Elementos Flutuantes -->
+  <section id="Agenda">
+    <!-- Botão para abrir o Calendário -->
+    <button class="btn-abrir-calendario"
+      onclick="document.querySelector('.calendario-flutuante').style.display = 'block'">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
+      </svg>
+    </button>
+ 
+    <!-- Div do Calendário Flutuante -->
+    <div class="calendario-flutuante">
+      <p>Conteúdo do Calendário (320px x 380px)</p>
+      <!-- Insira a estrutura ou iframe do seu calendário aqui -->
+      <button
+        style="margin-top: 10px; background: #30363d; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;"
+        onclick="this.parentElement.style.display='none'">Fechar</button>
+    </div>
+  </section>
+ 
 </body>
-
+ 
 </html>
+ 
