@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sou o chatArais, seu assistente virtual!</title>
+   <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+
+body {
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: flex-end;     
+  min-height: 100vh;         
+  box-sizing: border-box;    
+}
+
+
+        
+        .chat-container {
+            width: 330px;
+            height: 400px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            position: relative;
+        }
+
+        
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e8ede8;
+        }
+
+        .chat-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .theme-toggle:hover {
+            background-color: #f0f0f0;
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: #2e7d32;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        
+        .chat-display {
+            flex: 1;
+            background-color: #f7f9f7;
+            border: 1px solid #e8ede8;
+            border-radius: 6px;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #2c3e2c;
+        }
+
+        
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            background-color: #ffffff;
+            border: 1px solid #cbdccb;
+            color: #2c3e2c;
+            padding: 10px;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2e7d32;
+        }
+
+        .btn-enviar {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-enviar:hover {
+            background-color: #1b5e20;
+        }
+
+    
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            z-index: 10;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            width: 350px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border: 1px solid #e0e0e0;
+            color: #2c3e2c;
+        }
+
+        .modal-content h2 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #2e7d32;
+        }
+
+        .modal-content input {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        
+        .chat-container.dark {
+            background-color: #1b1b1b;
+            border-color: #3b3b3b;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .chat-container.dark .chat-header {
+            border-bottom-color: #2b2b2b;
+        }
+
+        .chat-container.dark .chat-title {
+            color: #ffffff;
+        }
+
+        .chat-container.dark .theme-toggle:hover {
+            background-color: #2b2b2b;
+        }
+
+        .chat-container.dark .theme-toggle svg {
+            fill: #ffffff;
+        }
+
+        .chat-container.dark .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        .chat-container.dark .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        .chat-container.dark .chat-display {
+            background-color: #2b2b2b;
+            border-color: #3b3b3b;
+            color: #ffffff;
+        }
+
+        .chat-container.dark input[type="text"] {
+            background-color: #2b2b2b;
+            border-color: #3b3b3b;
+            color: #ffffff;
+        }
+
+        .chat-container.dark input[type="text"]:focus {
+            border-color: #e5e8ed;
+        }
+
+        
+        .chat-container.dark .btn-enviar {
+            background-color: #2e7d32;
+        }
+
+        .chat-container.dark .btn-enviar:hover {
+            background-color: #1b5e20;
+        }
+
+    
+        .chat-container.dark .modal-content {
+            background-color: #2b2b2b;
+            border-color: #3b3b3b;
+            color: #ffffff;
+        }
+
+        .chat-container.dark .modal-content h2 {
+            color: #ffffff;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="chat-container" id="chatContainer">
+        <!-- Barra superior interna contendo o alternador de modo escuro -->
+        <div class="chat-header">
+            <span class="chat-title">chatArais</span>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema">
+                <!-- Ícone Lua (Exibido no modo Claro) -->
+                <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z"/></svg>
+                <!-- Ícone Sol (Exibido no modo Escuro) -->
+                <svg class="sun-icon" viewBox="0 0 24 24"><path d="M6.993 12c0 2.761 2.246 5 5.007 5s5.007-2.239 5.007-5-2.246-5-5.007-5-5.007 2.239-5.007 5zM11 2h2v3h-2zm0 14h2v3h-2zm-7-5h3v2H4zm13 0h3v2h-3zM5.637 5.635l2.121 2.122-1.414 1.414-2.122-2.122zm10.535 10.536 2.122 2.121-1.414 1.414-2.122-2.121zm-10.535 8.414l-2.122-2.122 1.414-1.414 2.122 2.122zm12.656-12.657 1.414-1.414 2.122 2.122-1.414 1.414z"/></svg>
+            </button>
+        </div>
+
+        <!-- Janela Pop-up de Nome -->
+        <div class="modal-overlay" id="janelaNome">
+            <div class="modal-content">
+                <h2>Oi! Estou aqui para te ajudar no que precisar. Me diz, qual é o seu nome?</h2>
+                <input type="text" id="entradaNome" placeholder="Digite seu nome..." autocomplete="off">
+                <button class="btn-enviar" onclick="salvarNome()">Confirmar</button>
+            </div>
+        </div>
+
+        <!-- Tela Principal do Chat -->
+        <div class="chat-display" id="chatDisplay"></div>
+        
+        <div class="input-area">
+            <input type="text" id="inputField" placeholder="Digite sua mensagem..." autocomplete="off">
+            <button class="btn-enviar" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis de Estado
+        let nomeUsuario = "usuário";
+
+        // Elementos do DOM
+        const chatContainer = document.getElementById('chatContainer');
+        const janelaNome = document.getElementById('janelaNome');
+        const entradaNome = document.getElementById('entradaNome');
+        const chatDisplay = document.getElementById('chatDisplay');
+        const inputField = document.getElementById('inputField');
+
+        // Foco inicial na janela de nome
+        entradaNome.focus();
+
+        // Alternador manual do tema interno do bot
+        function toggleTheme() {
+            chatContainer.classList.toggle('dark');
+        }
+
+        // Binds de Teclado (Tecla Enter)
+        entradaNome.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') salvarNome();
+        });
+
+        inputField.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Função para Salvar o Nome
+        function salvarNome() {
+            const nomeDigitado = entradaNome.getInputValue || entradaNome.value.trim();
+            if (nomeDigitado) {
+                nomeUsuario = nomeDigitado;
+                janelaNome.style.display = 'none'; // Fecha o modal
+                appendMessage(`Bot: Prazer em te conhecer, ${nomeUsuario}!`);
+                inputField.focus();
+            }
+        }
+
+        // Função para Adicionar Mensagem na Tela
+        function appendMessage(text) {
+            chatDisplay.innerText += text + "\n";
+            chatDisplay.scrollTop = chatDisplay.scrollHeight; // Auto-scroll
+        }
+
+        // Lógica de Resposta do Bot
+        function getBotResponse(userText) {
+            const text = userText.toLowerCase();
+            const nome = nomeUsuario;
+
+            if (text.includes("bom dia") || text.includes("oi") || text.includes("olá") || text.includes("ola")) {
+            return `Bot: Olá Bom dia! como posso ajudar você ${nome}?`;
+        } else if (text.includes("boa tarde")) {
+            return `Bot: Boa tarde! como posso ajudar você ${nome}?`;
+        } else if (text.includes("boa noite")) {
+            return `Bot: Boa noite! como posso ajudar você ${nome}?`;
+        } else if (text.includes("ajuda") || text.includes("apoio") || text.includes("suporte")) {
+            return `Bot: No que posso lhe ajudar ${nome}? sou feito 100% em javascript e estou para lhe ajudar no que for preciso.`;
+        } else if (text.includes("tchau") || text.includes("adeus")) {
+            return `Bot: Adeus! Tenha um ótimo dia ${nome}!`;
+        } else if (text.includes("tudo bem") || text.includes("estou bem") || text.includes("estou feliz")) {
+            return `Bot: Fico muito feliz em ouvir isso ${nome}! isso me alegra muito! se precisar de algo, estou aqui para ajudar.`;
+        } else if (text.includes("não estou bem") || text.includes("estou triste") || text.includes("estou mal")) {
+            return `Bot: Sinto muito em ouvir isso. ${nome} Se quiser conversar sobre o que está acontecendo, estou aqui para ouvir. Lembre-se de que é importante cuidar de si mesmo e procurar apoio se necessário.`;
+        } else if (text.includes("quero conversar") || text.includes("quero falar")) {
+            return `Bot: Claro! Estou aqui para conversar. Me conte o que lhe esta incomodando ${nome}?`;
+        } else if (text.includes("obrigado") || text.includes("obrigada")) {
+            return `Bot: De nada! Fico feliz em poder ajudar ${nome}. Se tiver mais perguntas ou precisar de algo, é só me chamar!`;
+        } else if (text.includes("sair") || text.includes("fechar")) {
+            const corEncerrado = chatContainer.classList.contains('dark') ? '#ffffff' : '#2e7d32';
+            document.body.innerHTML = `<h2 style='text-align:center; width:100%; color: ${corEncerrado}; margin-top: 50px;'>Chat encerrado.</h2>`;
+            return null;
+        } else {
+            return "Bot: Ainda estou aprendendo a entender isso, sinto muito por isso...";
+        }
+    }
+
+    // Função de Envio de Mensagem
+    function sendMessage() {
+        const userText = inputField.value.trim();
+        if (userText) {
+            appendMessage(`Você: ${userText}`);
+            inputField.value = '';
+
+            const response = getBotResponse(userText);
+            
+            if (response) {
+                setTimeout(() => {
+                    appendMessage(response);
+                }, 400);
+            }
+        }
+    }
+
+    // Escuta comandos externos de postMessage vindos do site principal (se houver)
+    window.addEventListener("message", function(event) {
+        if (event.data === "ativarModoEscuro") {
+            chatContainer.classList.add("dark");
+        } else if (event.data === "ativarModoClaro") {
+            chatContainer.classList.remove("dark");
+        }
+    });
+</script>
+</body>
+</html>
