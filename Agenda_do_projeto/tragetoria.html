@@ -20,7 +20,7 @@
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
         <ul class="menu" id="menu">
-            <li><a href="#">Início</a></li>
+            <li><a href="index.html">Início</a></li>
             <li><a href="#TiposPlantas">Plantas</a></li>
             <li><a href="#Kanban">Kanban</a></li>
             <li><a href="#Equipe">Equipe</a></li>
@@ -64,13 +64,9 @@
 
         </div>
     </nav>
-
-    <h1 class="titulo-trajetoria">
-        Nossa <span class="destaque">Trajetória</span>
-    </h1>
-
-    <h3>Conheça toda a nossa trajetória até aqui</h3>
-
+    <br>
+    <br>
+    <br>
     <style>
         /* MODO ESCURO */
         .titulo-trajetoria {
@@ -90,304 +86,284 @@
         }
 
         body.dark .titulo-trajetoria .destaque {
-            color: #556B2F;
+            color: #228B22;
             /* "Trajetória" continua verde */
+        }
+
+        p {
+            font-size: medium;
+
         }
     </style>
 
-    <strong>Agradecemos a leitura.</strong>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Script Isolado e Funcional -->
-    <script>
-        const body = document.querySelector("body"),
-            modeToggle = document.querySelector(".dark-light"),
-            searchToggle = document.querySelector(".searchToggle");
-
-        // Código do clique para o Modo Escuro
-        modeToggle.addEventListener("click", () => {
-            modeToggle.classList.toggle("active");
-            body.classList.toggle("dark");
-        });
-
-        // Alterna o estado ativo do botão de pesquisa ao clicar
-        searchToggle.addEventListener("click", () => {
-            searchToggle.classList.toggle("active");
-        });
-    </script>
-
-
     <style>
-        /* =============================
-   MODO ESCURO / CLARO INVERTIDO
-================================ */
-
-        /* MODO ESCURO - padrão */
-        body {
-            background-color: #0d1117;
-            color: #ffffff;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Elementos no modo escuro */
-        body .main-title,
-        body .plantas-title,
-        body .kanban-title,
-        body .equipe-title,
-        body h2,
-        body h3 {
-            color: #ffffff;
-        }
-
-
-        /* ================================
-   MODO CLARO
-================================ */
-
-        body.dark {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* Textos no modo claro */
-        body.dark .main-title,
-        body.dark .plantas-title,
-        body.dark .kanban-title,
-        body.dark .equipe-title,
-        body.dark h2,
-        body.dark h3 {
-            color: #000000;
-        }
-
-        /* TÍTULO SEMPRE BEM CENTRALIZADO */
-        .main-title {
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-        }
-
-        /* Títulos no modo escuro */
-        body .main-title,
-        body .plantas-title,
-        body .kanban-title,
-        body .equipe-title,
-        body h2,
-        body h3 {
-            color: #ffffff;
-        }
-
-        /* Textos secundários no modo claro */
-        body.dark .description,
-        body.dark .planta-card p,
-        body.dark .kanban-card p,
-        body.dark .profile-card .bio {
-            color: #555555;
-        }
-
-
-        /* ================================
-   CARDS
-================================ */
-
-        .planta-card,
-        .profile-card,
-        .kanban-column,
-        .kanban-card {
-            transition: background-color 0.3s ease,
-                color 0.3s ease,
-                border-color 0.3s ease;
-        }
-
-
-        /* Cards no modo escuro */
-        .planta-card,
-        .profile-card,
-        .kanban-column {
-            background-color: #161b22;
-            border-color: #30363d;
-        }
-
-        .kanban-card {
-            background-color: #21262d;
-            border-color: #30363d;
-        }
-
-
-        /* Cards no modo claro */
-        body.dark .planta-card,
-        body.dark .profile-card,
-        body.dark .kanban-column {
-            background-color: #ffffff;
-            border-color: #dddddd;
-        }
-
-        body.dark .kanban-card {
-            background-color: #f8f9fa;
-            border-color: #dddddd;
-        }
-
-
-        /* ================================
-   LUA E SOL
-================================ */
-
-        .dark-light {
-            position: relative;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-        }
-
-        /* Ícones */
-        .dark-light .moon,
-        .dark-light .sun {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-
-            transition:
-                opacity 0.3s ease,
-                transform 0.3s ease;
-        }
-
-
-        /* 🌙 MODO ESCURO = LUA */
-        .dark-light .moon {
-            opacity: 1;
-        }
-
-        .dark-light .sun {
-            opacity: 0;
-        }
-
-
-        /* ☀️ MODO CLARO = SOL */
-        body.dark .dark-light .moon {
-            opacity: 0;
-        }
-
-        body.dark .dark-light .sun {
-            opacity: 1;
-        }
-
-        .main-title {
-            font-size: 44px;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
-
-        /* Texto descritivo */
-        .description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #8b949e;
+        .container {
             max-width: 800px;
-            margin: 0 auto 40px auto;
-            text-align: justify;
-            /* Melhora a leitura de textos longos */
+            margin: 0 auto;
         }
 
-        /* Container dos botões */
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* Estilo base dos botões */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background-color 0.2s, transform 0.2s;
-        }
-
-        /* Botão verde (Principal) */
-        .btn-primary {
-            background-color: #1f883d;
-            color: #ffffff;
-            border: 1px solid rgba(240, 246, 252, 0.1);
-        }
-
-        .btn-primary:hover {
-            background-color: #2ea44f;
-        }
-
-        /* Botão escuro (Secundário) */
-        .btn-secondary {
-            background-color: #21262d;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
-        }
-
-        .btn-secondary:hover {
-            background-color: #30363d;
-            color: #ffffff;
-        }
-
-        /* Subtítulo superior pequeno */
-        .category-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8b949e;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-
-        .category-title::after {
-            content: " ■";
-            color: #2ea44f;
-            /* Quadrado verde */
-        }
-
-        /* Container da seção Hero */
-        .hero-section {
-            max-width: 900px;
-            width: 100%;
-            margin: 60px auto;
+        .grafico-container {
+            background-color: #f4f4f9;
+            border: 2px dashed #ccc;
+            padding: 40px;
             text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-weight: bold;
         }
     </style>
     </head>
 
+    <body>
+        <center>
+            <!-- Cabeçalho Principal -->
+            <header class="project-header">
+
+                <h1 class="titulo-trajetoria">
+                    Projeto <span class="destaque">Alpha</span>
+                </h1>
+                <div class="tempo-card">
+                    <div class="tempo-icon">🌾</div>
+                    <h3>Tecnologias</h3>
+                    <p>
+                        <span> HTML5, CSS3, JavaScript</span> |
+                        <span><strong>Duração:</strong> 3 semanas (2026)</span>
+                    </p>
+                </div>
+            </header>
+            <div class="tempo-card">
+                <img src="imagem.jpg" alt="HTML5" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">HTML5</h3>
+                    <p class="card-text">O HTML5 é a quinta e mais recente versão da HyperText Markup Language
+                        (Linguagem de Marcação de Hipertexto), que serve como a espinha dorsal de quase todas as páginas
+                        da internet atual. Em termos simples, ele funciona como o esqueleto de um site, definindo a
+                        estrutura e o significado do conteúdo, indicando ao navegador o que é um título, um parágrafo,
+                        um menu ou um formulário.</p>
+                    
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <main>
+                <!-- O Problema -->
+                <section id="contexto">
+
+                    <h2 class="titulo-trajetoria">
+                        O <span class="destaque">Desafio</span>
+                    </h2>
+                    <p>Muitas pessoas perdem o foco no dia a dia devido a ferramentas de gestão complexas. O objetivo
+                        foi
+                        criar uma interface minimalista e direta.</p>
+                </section>
+                <br>
+                <br>
+                <!-- Linha do Tempo da Trajetória -->
+                <section id="trajetoria">
+                    <h2 class="titulo-trajetoria">
+                        Linha do Tempo <span class="destaque">do Desenvolvimento</span>
+                    </h2>
+                    <ol class="timeline">
+                        <br>
+                        <li>
+                            <h3>Semana 1: Concepção & Wireframes</h3>
+                            <p>Desenho da arquitetura de informação e criação dos primeiros protótipos de baixa
+                                fidelidade
+                                para definir a jornada do usuário.</p>
+                            <!-- Tipo 4 -->
+                            <div class="tempo-card">
+                                <div class="tempo-icon">🌾</div>
+                                <h3>Semana 1: Concepção & Wireframes</h3>
+                                <p>Desenho da arquitetura de informação e criação dos primeiros protótipos de baixa
+                                    fidelidade
+                                    para definir a jornada do usuário.</p>
+                            </div>
+
+                        </li>
+                        <li>
+                            <h3>Semana 2: Estruturação e Estilização</h3>
+                            <p>Foco na escrita de um HTML5 semântico e acessível, seguido pela estilização com CSS
+                                moderno
+                                (Grid e Flexbox) garantindo responsividade.</p>
+                        </li>
+                        <li>
+                            <h3>Semana 3: Interatividade e Testes</h3>
+                            <p>Implementação das funções de adicionar e remover tarefas com JavaScript puro. Realização
+                                de
+                                testes de usabilidade em navegadores diferentes.</p>
+                        </li>
+                    </ol>
+                </section>
+                <br>
+                <br>
+
+                <!-- Aprendizados -->
+                <section id="aprendizados">
+                    <h2 class="titulo-trajetoria">
+                        Desafios & <span class="destaque">Aprendizados</span>
+                    </h2>
+                    <p>O maior desafio foi manipular o armazenamento local do navegador (LocalStorage) para salvar os
+                        dados
+                        do usuário. Superar esse obstáculo me ajudou a entender profundamente a persistência de dados no
+                        Front-end.</p>
+                </section>
+                <br>
+                <br>
+                <!-- Conclusão e Chamada para Ação -->
+                <section id="conclusao">
+                    <h2>Resultados</h2>
+                    <p>O projeto foi concluído no prazo e apresenta uma nota excelente de performance nos testes do
+                        Lighthouse.</p>
+                </section>
+            </main>
+            <br>
+            <br>
+            <!-- Links de Acesso -->
+            <footer class="project-footer">
+                <a href="https://github.com" target="_blank" class="btn">Ver Código no GitHub</a>
+                <a href="https://vercel.app" target="_blank" class="btn btn-primary">Ver Projeto Rodando</a>
+
+
+            </footer>
+            <style>
+                /* Texto descritivo */
+                .description {
+                    font-size: 16px;
+                    line-height: 1.6;
+                    color: #8b949e;
+                    max-width: 800px;
+                    margin: 0 auto 40px auto;
+                    text-align: justify;
+                    /* Melhora a leitura de textos longos */
+                }
+
+                /* Container dos botões */
+                .project-footer {
+                    display: flex;
+                    justify-content: center;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                }
+
+                /* Estilo base dos botões */
+                .btn {
+                    display: inline-block;
+                    padding: 12px 24px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    text-decoration: none;
+                    border-radius: 6px;
+                    transition: background-color 0.2s, transform 0.2s;
+                }
+
+                /* Responsividade: Quebra as colunas conforme a tela diminui */
+                @media (max-width: 1024px) {
+                    .tempo-grid {
+                        grid-template-columns: repeat(3, 1fr);
+                        /* 3 colunas em tablets */
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .tempo-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        /* 2 colunas em telas menores */
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .tempo-grid {
+                        grid-template-columns: 1fr;
+                        /* 1 coluna empilhada em celulares */
+                    }
+                }
+
+                #linha-do-tempo {
+                    padding: 60px 20px;
+                    max-width: 1300px;
+                    margin: 0 auto;
+                }
+
+                .tempo-title {
+                    font-size: 28px;
+                    color: #ffffff;
+                    margin-bottom: 40px;
+                    text-align: center;
+                    font-weight: 600;
+                }
+
+                /* Configuração do Grid de 5 colunas */
+                .tempo-grid {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    /* Cria exatamente 5 colunas iguais */
+                    gap: 20px;
+                }
+
+                /* Card individual de tipo de planta */
+                .tempo-card {
+                    background-color: #161b22;
+                    border: 1px solid #30363d;
+                    border-radius: 10px;
+                    padding: 24px 16px;
+                    text-align: center;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                    transition: transform 0.2s, background-color 0.2s;
+                }
+
+                .tempo-card:hover {
+                    transform: translateY(-4px);
+                    background-color: #1f242c;
+                    border-color: #2ea44f;
+                }
+
+                /* Ícone em destaque */
+                .tempo-icon {
+                    font-size: 40px;
+                    margin-bottom: 16px;
+                }
+
+                .tempo-card h3 {
+                    font-size: 18px;
+                    color: #f0f6fc;
+                    margin-bottom: 12px;
+                    font-weight: 600;
+                }
+
+                .tempo-card p {
+                    font-size: 14px;
+                    color: #8b949e;
+                    line-height: 1.5;
+                    text-align: center;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                /* Botão verde (Principal) */
+                .btn-primary {
+                    background-color: #1f883d;
+                    color: #ffffff;
+                    border: 1px solid rgba(240, 246, 252, 0.1);
+                }
+
+                .btn-primary:hover {
+                    background-color: #2ea44f;
+                }
+
+                /* Botão escuro (Secundário) */
+                .btn {
+                    background-color: #21262d;
+                    color: #c9d1d9;
+                    border: 1px solid #30363d;
+                }
+
+                .btn:hover {
+                    background-color: #30363d;
+                    color: #ffffff;
+                }
+            </style>
+        </center>
 
 
 
@@ -395,6 +371,344 @@
 
 
 
-</body>
+
+        <!-- Script Isolado e Funcional -->
+        <script>
+            const body = document.querySelector("body"),
+                modeToggle = document.querySelector(".dark-light"),
+                searchToggle = document.querySelector(".searchToggle");
+
+            // Código do clique para o Modo Escuro
+            modeToggle.addEventListener("click", () => {
+                modeToggle.classList.toggle("active");
+                body.classList.toggle("dark");
+            });
+
+            // Alterna o estado ativo do botão de pesquisa ao clicar
+            searchToggle.addEventListener("click", () => {
+                searchToggle.classList.toggle("active");
+            });
+        </script>
+
+
+        <style>
+            /* =============================
+   MODO ESCURO / CLARO INVERTIDO
+================================ */
+
+            /* MODO ESCURO - padrão */
+            body {
+                background-color: #0d1117;
+                color: #ffffff;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            /* Elementos no modo escuro */
+            body .main-title,
+            body .plantas-title,
+            body .kanban-title,
+            body .equipe-title,
+            body h2,
+            body h3 {
+                color: #ffffff;
+            }
+
+
+            /* ================================
+   MODO CLARO
+================================ */
+
+            body.dark {
+                background-color: #ffffff;
+                color: #000000;
+            }
+
+            /* Textos no modo claro */
+            body.dark .main-title,
+            body.dark .plantas-title,
+            body.dark .kanban-title,
+            body.dark .equipe-title,
+            body.dark h2,
+            body.dark h3 {
+                color: #000000;
+            }
+
+            /* TÍTULO SEMPRE BEM CENTRALIZADO */
+            .main-title {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+            }
+
+            /* Títulos no modo escuro */
+            body .main-title,
+            body .plantas-title,
+            body .kanban-title,
+            body .equipe-title,
+            body h2,
+            body h3 {
+                color: #ffffff;
+            }
+
+            /* Textos secundários no modo claro */
+            body.dark .description,
+            body.dark .planta-card p,
+            body.dark .kanban-card p,
+            body.dark .profile-card .bio {
+                color: #555555;
+            }
+
+
+            /* ================================
+   CARDS
+================================ */
+
+            .planta-card,
+            .profile-card,
+            .kanban-column,
+            .kanban-card {
+                transition: background-color 0.3s ease,
+                    color 0.3s ease,
+                    border-color 0.3s ease;
+            }
+
+
+            /* Cards no modo escuro */
+            .planta-card,
+            .profile-card,
+            .kanban-column {
+                background-color: #161b22;
+                border-color: #30363d;
+            }
+
+            .kanban-card {
+                background-color: #21262d;
+                border-color: #30363d;
+            }
+
+
+            /* Cards no modo claro */
+            body.dark .planta-card,
+            body.dark .profile-card,
+            body.dark .kanban-column {
+                background-color: #ffffff;
+                border-color: #dddddd;
+            }
+
+            body.dark .kanban-card {
+                background-color: #f8f9fa;
+                border-color: #dddddd;
+            }
+
+
+            /* ================================
+   LUA E SOL
+================================ */
+
+            .dark-light {
+                position: relative;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+            }
+
+            /* Ícones */
+            .dark-light .moon,
+            .dark-light .sun {
+                position: absolute;
+                width: 25px;
+                height: 25px;
+
+                transition:
+                    opacity 0.3s ease,
+                    transform 0.3s ease;
+            }
+
+
+            /* 🌙 MODO ESCURO = LUA */
+            .dark-light .moon {
+                opacity: 1;
+            }
+
+            .dark-light .sun {
+                opacity: 0;
+            }
+
+
+            /* ☀️ MODO CLARO = SOL */
+            body.dark .dark-light .moon {
+                opacity: 0;
+            }
+
+            body.dark .dark-light .sun {
+                opacity: 1;
+            }
+
+            .main-title {
+                font-size: 44px;
+                font-weight: 600;
+                line-height: 1.2;
+                margin-bottom: 24px;
+                letter-spacing: -1px;
+            }
+
+            /* Texto descritivo */
+            .description {
+                font-size: 16px;
+                line-height: 1.6;
+                color: #8b949e;
+                max-width: 800px;
+                margin: 0 auto 40px auto;
+                text-align: justify;
+                /* Melhora a leitura de textos longos */
+            }
+
+            /* Container dos botões */
+            .button-group {
+                display: flex;
+                justify-content: center;
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+
+            /* Estilo base dos botões */
+            .btn {
+                display: inline-block;
+                padding: 12px 24px;
+                font-size: 16px;
+                font-weight: 600;
+                text-decoration: none;
+                border-radius: 6px;
+                transition: background-color 0.2s, transform 0.2s;
+            }
+
+            /* Botão verde (Principal) */
+            .btn-primary {
+                background-color: #1f883d;
+                color: #ffffff;
+                border: 1px solid rgba(240, 246, 252, 0.1);
+            }
+
+            .btn-primary:hover {
+                background-color: #2ea44f;
+            }
+
+            /* Botão escuro (Secundário) */
+            .btn-secondary {
+                background-color: #21262d;
+                color: #c9d1d9;
+                border: 1px solid #30363d;
+            }
+
+            .btn-secondary:hover {
+                background-color: #30363d;
+                color: #ffffff;
+            }
+
+            /* Subtítulo superior pequeno */
+            .category-title {
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #8b949e;
+                margin-bottom: 24px;
+                font-weight: 600;
+            }
+
+            .category-title::after {
+                content: " ■";
+                color: #2ea44f;
+                /* Quadrado verde */
+            }
+
+            /* Container da seção Hero */
+            .hero-section {
+                max-width: 900px;
+                width: 100%;
+                margin: 60px auto;
+                text-align: center;
+            }
+        </style>
+        </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <footer class="footer-portfolio">
+            <div class="footer-container">
+
+                <!-- Identificação do Projeto -->
+                <div class="footer-brand">
+                    <h3>Solo em Equilíbrio</h3>
+                    <p><strong>Trabalho de Conclusão de Curso</strong></p>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">[Sua Instituição de Ensino]</p>
+                </div>
+
+                <!-- Links e Contatos -->
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4>Autor</h4>
+                        <ul>
+                            <li><span>[Seu Nome Completo]</span></li>
+                            <li><span style="color: var(--footer-muted); font-size: 0.8rem;">Graduando</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-group">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li><a href="mailto:seu.email@exemplo.com">seu.email@exemplo.com</a></li>
+                            <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Linha de Direitos Autorais -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 Solo em Equilíbrio. Todos os direitos reservados.</div>
+                <div>Banca Examinadora &bull; TCC</div>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+    </body>
 
 </html>
