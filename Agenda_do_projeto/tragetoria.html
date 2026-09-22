@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -13,33 +12,54 @@
     <script src="botaoes.js" defer></script>
 
     <style>
-        /* =========================================
-           CONFIGURAÇÕES GERAIS
-        ========================================= */
+        /* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: #0d1117;
             color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             transition: background-color 0.3s ease, color 0.3s ease;
-            margin: 0;
+            overflow-x: hidden;
         }
+
+        /* =========================================================
+   MODO CLARO
+   A classe "dark" está sendo usada pelo seu JavaScript
+   para ativar o tema claro.
+========================================================= */
 
         body.dark {
             background-color: #ffffff;
             color: #000000;
         }
 
+        /* =========================================================
+   CONTAINER
+========================================================= */
+
         .container {
-            max-width: 1200px;
             width: 100%;
-            text-align: center;
+            max-width: 1200px;
             margin: 0 auto;
-            font-family: system-ui, -apple-system, sans-serif;
+            padding: 0 20px;
+            text-align: center;
         }
 
-        /* =========================================
-           MODO ESCURO / CLARO
-        ========================================= */
+        /* =========================================================
+   TÍTULOS GERAIS
+========================================================= */
 
         body h2,
         body h3 {
@@ -51,50 +71,11 @@
             color: #000000;
         }
 
-        /* =========================================
-           LUA E SOL
-        ========================================= */
-
-        .dark-light {
-            position: relative;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-        }
-
-        .dark-light .moon,
-        .dark-light .sun {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .dark-light .moon {
-            opacity: 1;
-        }
-
-        .dark-light .sun {
-            opacity: 0;
-        }
-
-        body.dark .dark-light .moon {
-            opacity: 0;
-        }
-
-        body.dark .dark-light .sun {
-            opacity: 1;
-        }
-
-        /* =========================================
-           TÍTULOS
-        ========================================= */
-
         .title {
             font-size: 36px;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 10px;
-            color: #228B22;
+            color: #228b22;
         }
 
         .destaque-title {
@@ -103,12 +84,70 @@
             margin-bottom: 20px;
         }
 
+        .subtitle {
+            color: #8b949e;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        body.dark .subtitle {
+            color: #555555;
+        }
+
+        /* =========================================================
+   LUA E SOL
+========================================================= */
+
+        .dark-light {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark-light .moon,
+        .dark-light .sun {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .dark-light .moon {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        .dark-light .sun {
+            opacity: 0;
+            transform: rotate(-90deg);
+        }
+
+        body.dark .dark-light .moon {
+            opacity: 0;
+            transform: rotate(90deg);
+        }
+
+        body.dark .dark-light .sun {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        /* =========================================================
+   TÍTULO TRAJETÓRIA
+========================================================= */
+
         .titulo-trajetoria {
             color: #ffffff;
         }
 
         .titulo-trajetoria .destaque {
-            color: #556B2F;
+            color: #556b2f;
         }
 
         body.dark .titulo-trajetoria {
@@ -116,27 +155,19 @@
         }
 
         body.dark .titulo-trajetoria .destaque {
-            color: #228B22;
+            color: #228b22;
         }
 
-        .subtitle {
-            color: #8b949e;
-            margin-bottom: 30px;
-        }
-
-        body.dark .subtitle {
-            color: #555555;
-        }
-
-        /* =========================================
-           TECNOLOGIAS
-        ========================================= */
+        /* =========================================================
+   TECNOLOGIAS / CARDS
+========================================================= */
 
         .products-grid {
+            width: 100%;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            padding: 20px;
+            padding: 20px 0;
         }
 
         .product-card {
@@ -145,35 +176,40 @@
             border-radius: 10px;
             padding: 24px 16px;
             text-align: center;
+
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition:
-                transform 0.2s,
-                background-color 0.2s,
-                border-color 0.2s;
 
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            transition:
+                transform 0.2s ease,
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             background-color: #1f242c;
             border-color: #2ea44f;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .product-icon {
             width: 100px;
             height: 100px;
             margin-bottom: 16px;
+
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .product-icon img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
@@ -181,21 +217,23 @@
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 12px;
-            color: #375d3e;
+            color: #5f9f68;
         }
 
         .product-description {
             font-size: 14px;
             color: #8b949e;
-            line-height: 1.5;
+            line-height: 1.6;
             text-align: center;
-            padding: 0;
             margin: 0;
         }
+
+        /* Modo claro */
 
         body.dark .product-card {
             background-color: #ffffff;
             border-color: #dddddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
         }
 
         body.dark .product-card:hover {
@@ -203,72 +241,350 @@
             border-color: #2ea44f;
         }
 
+        body.dark .product-name {
+            color: #2b632b;
+        }
+
         body.dark .product-description {
             color: #555555;
         }
 
-        /* =========================================
-           DESAFIO
-        ========================================= */
+        /* =========================================================
+   DESAFIO
+========================================================= */
 
-        #contexto {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 0 20px;
-            text-align: center;
+        .desafio-section {
+            width: 100%;
+            min-height: 100vh;
+
+            background: #f2f7f1;
+
+            padding: 100px 20px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
         }
 
-        #contexto p {
-            line-height: 1.6;
-            color: #8b949e;
+        .desafio-wrapper {
+            width: 100%;
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 42% 58%;
+
+            align-items: center;
+
+            gap: 60px;
         }
 
-        body.dark #contexto p {
-            color: #555555;
+        /* =========================================================
+   IMAGEM DO DESAFIO
+========================================================= */
+
+        .desafio-image {
+            position: relative;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* =========================================
-           LINHA DO TEMPO
-        ========================================= */
+        .image-decoration {
+            position: absolute;
+
+            width: 280px;
+            height: 300px;
+
+            background: #dcebdc;
+
+            border-radius: 8px;
+
+            top: -20px;
+            right: 30px;
+
+            z-index: 0;
+        }
+
+        .desafio-image img {
+            position: relative;
+            z-index: 1;
+
+            width: 270px;
+            height: 270px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+
+            box-shadow: 0 15px 35px rgba(35, 77, 50, 0.18);
+        }
+
+        /* =========================================================
+   CONTEÚDO DO DESAFIO
+========================================================= */
+
+        .desafio-content {
+            width: 100%;
+            max-width: 550px;
+        }
+
+        .mini-title {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            color: #6f9d68;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .desafio-content h2 {
+            margin: 0 0 20px;
+
+            font-size: clamp(40px, 5vw, 64px);
+
+            line-height: 1.05;
+
+            font-weight: 700;
+
+            letter-spacing: -2px;
+
+            color: #234d32;
+        }
+
+        .desafio-content h2 span {
+            color: #6f9d68;
+        }
+
+        .desafio-content>p {
+            margin: 0 0 30px;
+
+            max-width: 500px;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #536257;
+        }
+
+        /* =========================================================
+   ITENS DO DESAFIO
+========================================================= */
+
+        .desafio-items {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .desafio-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .item-icon {
+            width: 45px;
+            height: 45px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #dcebdc;
+            color: #4f7d50;
+
+            font-size: 24px;
+            font-weight: bold;
+
+            transition: 0.3s ease;
+        }
+
+        .desafio-item:hover .item-icon {
+            background: #4f7d50;
+            color: #ffffff;
+            transform: scale(1.08);
+        }
+
+        .desafio-item strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            font-size: 20px;
+
+            color: #34513c;
+        }
+
+        .desafio-item small {
+            display: block;
+
+            font-size: 15px;
+
+            color: #718075;
+
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+   DESAFIO - MODO CLARO
+========================================================= */
+
+        body.dark .desafio-section {
+            background: #101b14;
+        }
+
+        body.dark .desafio-content h2 {
+            color: #e8f3e9;
+        }
+
+        body.dark .desafio-content h2 span {
+            color: #91c58a;
+        }
+
+        body.dark .desafio-content>p {
+            color: #aebcaf;
+        }
+
+        body.dark .desafio-item strong {
+            color: #dcebdd;
+        }
+
+        body.dark .desafio-item small {
+            color: #91a092;
+        }
+
+        body.dark .item-icon {
+            background: #203725;
+            color: #9dcc91;
+        }
+
+        body.dark .image-decoration {
+            background: #1d3022;
+        }
+
+        /* =========================================================
+   LINHA DO TEMPO
+========================================================= */
+
+        .timeline-section {
+            width: 100%;
+
+            padding: 100px 20px;
+
+            background: #0d1117;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: background-color 0.3s ease;
+            max-width: none;
+            width: 100%;
+            min-height: calc(100vh - 120px);
+        }
 
         .timeline-container {
             width: 100%;
-            max-width: 800px;
-            background: #ffffff;
+            max-width: 1000px;
+
+            margin: 0 auto;
             padding: 40px;
+
+            background: var();
+
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            box-sizing: border-box;
-            margin: 60px auto;
+
+
+            transition:
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
         }
+
+        /* Modo claro */
+
+        body.dark .timeline-section {
+            background: #ffffff;
+        }
+
+        body.dark .timeline-container {
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* =========================================================
+   TÍTULO DA LINHA DO TEMPO
+========================================================= */
 
         .timeline-main-title {
             text-align: center;
+
             font-size: 2rem;
             font-weight: 700;
-            color: #215d1a;
+
+            color: #31ce39;
+
             margin-bottom: 50px;
+
             position: relative;
+        }
+
+        body.dark .timeline-main-title {
+            color: #215d1a;
         }
 
         .timeline-main-title::after {
             content: "";
+
             display: block;
+
             width: 50px;
             height: 4px;
+
             background: #31ce39;
-            margin: 12px auto 0 auto;
+
+            margin: 12px auto 0;
+
             border-radius: 2px;
         }
 
+        /* =========================================================
+   LINHA
+========================================================= */
+
         .timeline {
             position: relative;
+
             padding-left: 35px;
-            border-left: 3px solid #e2f0e5;
+
+            border-left: 3px solid #30363d;
         }
+
+        body.dark .timeline {
+            border-left-color: #1d5e2b;
+        }
+
+        /* =========================================================
+   ITEM DA LINHA
+========================================================= */
 
         .timeline-item {
             position: relative;
+
             margin-bottom: 40px;
         }
 
@@ -276,35 +592,83 @@
             margin-bottom: 0;
         }
 
+        /* =========================================================
+   BOLINHA
+========================================================= */
+
         .timeline-dot {
             position: absolute;
+
             left: -47px;
             top: 5px;
+
             width: 20px;
             height: 20px;
+
             border-radius: 50%;
-            background-color: #ffffff;
+
+            background-color: #161b22;
+
             border: 4px solid #31ce3e;
-            box-shadow: 0 0 0 5px #ffffff;
-            transition: all 0.3s ease;
+
+            box-shadow: 0 0 0 5px #161b22;
+
+            transition:
+                background-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
         }
 
+        body.dark .timeline-dot {
+            background-color: #ffffff;
+            box-shadow: 0 0 0 5px #ffffff;
+        }
+
+        /* =========================================================
+   CONTEÚDO DA ETAPA
+========================================================= */
+
         .timeline-content {
-            background: #f8fafc;
+            background: #21262d;
+
             padding: 24px;
+
             border-radius: 12px;
-            border: 1px solid #edf2f7;
+
+            border: 1px solid #30363d;
+
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease,
-                border-color 0.3s ease;
+                border-color 0.3s ease,
+                background-color 0.3s ease;
         }
+
+        body.dark .timeline-content {
+            background: #fcfafa;
+            border-color: #3c9618;
+        }
+
+        /* =========================================================
+   HOVER DA TIMELINE
+========================================================= */
 
         .timeline-item:hover .timeline-content {
             transform: translateY(-3px);
+
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+
+            border-color: #31ce39;
+
+            background: #1f242c;
+        }
+
+        body.dark .timeline-item:hover .timeline-content {
+            background: #f0f0f0;
+
+            border-color: #cee0cb;
+
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
-            border-color: #cbd5e0;
-            background: #ffffff;
         }
 
         .timeline-item:hover .timeline-dot {
@@ -312,44 +676,81 @@
             transform: scale(1.1);
         }
 
+        /* =========================================================
+   DATA
+========================================================= */
+
         .timeline-date {
             display: inline-block;
+
             font-size: 0.85rem;
             font-weight: 700;
+
             color: #31ce43;
+
             text-transform: uppercase;
+
             letter-spacing: 1px;
+
             margin-bottom: 6px;
         }
 
+        /* =========================================================
+   TÍTULO DA ETAPA
+========================================================= */
+
         .timeline-title {
             font-size: 1.3rem;
+
             font-weight: 600;
-            color: #2d3748;
+
+            color: #ffffff;
+
             margin-bottom: 12px;
+
+            line-height: 1.4;
         }
+
+        body.dark .timeline-title {
+            color: #2d3748;
+        }
+
+        /* =========================================================
+   TEXTO DA ETAPA
+========================================================= */
 
         .timeline-text {
             font-size: 1rem;
-            color: #4a5568;
+
+            color: #c9d1d9;
+
             line-height: 1.6;
         }
 
-        /* =========================================
-           APRENDIZADOS / RESULTADOS
-        ========================================= */
+        body.dark .timeline-text {
+            color: #030303;
+        }
+
+        /* =========================================================
+   APRENDIZADOS / CONCLUSÃO
+========================================================= */
 
         #aprendizados,
         #conclusao {
+            width: 100%;
             max-width: 800px;
+
             margin: 60px auto;
+
             padding: 0 20px;
+
             text-align: center;
         }
 
         #aprendizados p,
         #conclusao p {
             color: #8b949e;
+
             line-height: 1.6;
         }
 
@@ -358,47 +759,82 @@
             color: #555555;
         }
 
-        /* =========================================
-           BOTÕES
-        ========================================= */
+        /* =========================================================
+   DESCRIÇÃO
+========================================================= */
 
         .description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #8b949e;
             max-width: 800px;
-            margin: 0 auto 40px auto;
+
+            margin: 0 auto 40px;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            color: #8b949e;
+
             text-align: justify;
         }
 
+        body.dark .description {
+            color: #555555;
+        }
+
+        /* =========================================================
+   BOTÕES
+========================================================= */
+
         .project-footer {
             display: flex;
+
             justify-content: center;
+
             gap: 16px;
+
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
+
             padding: 12px 24px;
+
             font-size: 16px;
+
             font-weight: 600;
+
             text-decoration: none;
+
             border-radius: 6px;
-            transition: background-color 0.2s, transform 0.2s;
+
             background-color: #21262d;
+
             color: #c9d1d9;
+
             border: 1px solid #30363d;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
         }
 
         .btn:hover {
             background-color: #30363d;
+
             color: #ffffff;
+
+            transform: translateY(-2px);
         }
 
         .btn-primary {
             background-color: #1f883d;
+
             color: #ffffff;
+
             border: 1px solid rgba(240, 246, 252, 0.1);
         }
 
@@ -406,18 +842,115 @@
             background-color: #2ea44f;
         }
 
-        /* =========================================
-           RESPONSIVIDADE
-        ========================================= */
+        /* =========================================================
+   RESPONSIVIDADE - TABLET
+========================================================= */
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
 
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .desafio-wrapper {
+                grid-template-columns: 1fr;
+
+                gap: 70px;
+
+                text-align: center;
+            }
+
+            .desafio-content {
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .desafio-content>p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .desafio-image {
+                order: 1;
+            }
+
+            .desafio-content {
+                order: 2;
+            }
+
+            .desafio-items {
+                text-align: left;
+            }
+        }
+
+        /* =========================================================
+   RESPONSIVIDADE - CELULAR
+========================================================= */
+
+        @media (max-width: 750px) {
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .desafio-section {
+                min-height: auto;
+                padding: 80px 20px;
+            }
+
+            .desafio-wrapper {
+                gap: 60px;
+            }
+
+            .image-decoration {
+                width: 240px;
+                height: 260px;
+
+                right: calc(50% - 120px);
+            }
+
+            .desafio-image img {
+                width: 230px;
+                height: 230px;
+            }
+
+            .desafio-content h2 {
+                font-size: 42px;
+            }
+
+            .desafio-content>p {
+                font-size: 17px;
+            }
+
+            .desafio-item {
+                gap: 15px;
+            }
+
+            .desafio-item strong {
+                font-size: 18px;
+            }
+
+            .desafio-item small {
+                font-size: 14px;
+            }
+
+            .timeline-section {
+                min-height: auto;
+                padding: 70px 15px;
+            }
+
             .timeline-container {
-                padding: 24px 16px;
+                padding: 30px 20px;
+            }
+
+            .timeline-main-title {
+                font-size: 1.6rem;
+                margin-bottom: 40px;
             }
 
             .timeline {
@@ -426,28 +959,15 @@
 
             .timeline-dot {
                 left: -37px;
+
                 width: 16px;
                 height: 16px;
+
                 top: 7px;
             }
 
-            .timeline-main-title {
-                font-size: 1.6rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .destaque-title {
-                font-size: 23px;
-            }
-
-            .timeline-container {
-                padding: 20px 12px;
+            .timeline-content {
+                padding: 20px;
             }
 
             .timeline-title {
@@ -458,7 +978,76 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+        @media (max-width: 480px) {
+
+            .title {
+                font-size: 30px;
+            }
+
+            .destaque-title {
+                font-size: 23px;
+            }
+
+            .desafio-section {
+                padding: 70px 15px;
+            }
+
+            .desafio-content h2 {
+                font-size: 38px;
+            }
+
+            .desafio-content>p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .desafio-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .image-decoration {
+                width: 210px;
+                height: 230px;
+            }
+
+            .timeline-section {
+                padding: 60px 10px;
+            }
+
+            .timeline-container {
+                padding: 25px 15px;
+                border-radius: 12px;
+            }
+
+            .timeline-main-title {
+                font-size: 1.4rem;
+            }
+
+            .timeline-content {
+                padding: 16px;
+            }
+
+            .timeline-title {
+                font-size: 1rem;
+            }
+
+            .timeline-text {
+                font-size: 0.88rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
     </style>
+
 </head>
 
 
@@ -584,7 +1173,7 @@
 
                 <div class="product-icon">
 
-                    <img src="icone html.png" alt="Ícone do HTML5">
+                    <img src="html5_icone_sem_letras.png" alt="Ícone do HTML5">
 
                 </div>
 
@@ -654,20 +1243,106 @@
     <!-- =========================================
          DESAFIO
     ========================================= -->
+    <section class="desafio-section">
 
-    <section id="contexto">
+        <div class="desafio-wrapper">
 
-        <h2 class="titulo-trajetoria">
-            O <span class="destaque">Desafio</span>
-        </h2>
+            <!-- IMAGEM -->
+            <div class="desafio-image">
 
-        <p>
-            Muitas pessoas perdem o foco no dia a dia devido a
-            ferramentas de gestão complexas. O objetivo foi criar
-            uma interface minimalista e direta.
-        </p>
+                <div class="image-decoration"></div>
+
+                <img src="desafio.png" alt="Solo em Equilíbrio">
+
+            </div>
+
+
+            <!-- CONTEÚDO -->
+            <div class="desafio-content">
+
+                <h2>
+                    O <span>Desafio</span>
+                </h2>
+
+                <p>
+                    Muitas pessoas perdem o foco no dia a dia devido a
+                    ferramentas de gestão complexas. O objetivo foi criar
+                    uma interface minimalista e direta.
+                </p>
+
+
+                <div class="desafio-items">
+
+                    <div class="desafio-item">
+
+                        <div class="item-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Interface simples
+                            </strong>
+
+                            <small>
+                                Uma experiência fácil de compreender.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="desafio-item">
+
+                        <div class="item-icon">
+                            ◇
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Organização
+                            </strong>
+
+                            <small>
+                                Informações apresentadas de forma clara.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="desafio-item">
+
+                        <div class="item-icon">
+                            ◎
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Usabilidade
+                            </strong>
+
+                            <small>
+                                Foco nas necessidades do usuário.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
+
 
 
     <!-- =========================================

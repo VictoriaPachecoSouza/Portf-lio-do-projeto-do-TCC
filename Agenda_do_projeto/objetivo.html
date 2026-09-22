@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,7 +14,7 @@
     <style>
         /* =============================
            MODO ESCURO / CLARO INVERTIDO
-        ============================= */
+        ============================== */
 
         /* MODO ESCURO - padrão */
         body {
@@ -33,7 +32,7 @@
             color: #ffffff;
         }
 
-        /* ==============================
+        /* =============================
            MODO CLARO
         ============================== */
 
@@ -51,7 +50,10 @@
             color: #000000;
         }
 
-        /* Título centralizado */
+        /* =============================
+           TÍTULO CENTRALIZADO
+        ============================== */
+
         .main-title {
             text-align: center;
             margin-left: auto;
@@ -60,6 +62,7 @@
         }
 
         /* Textos secundários no modo claro */
+
         body.dark .description,
         body.dark .planta-card p,
         body.dark .kanban-card p,
@@ -67,7 +70,7 @@
             color: #555555;
         }
 
-        /* ==============================
+        /* =============================
            CARDS
         ============================== */
 
@@ -82,6 +85,7 @@
         }
 
         /* Cards no modo escuro */
+
         .planta-card,
         .profile-card,
         .kanban-column {
@@ -95,6 +99,7 @@
         }
 
         /* Cards no modo claro */
+
         body.dark .planta-card,
         body.dark .profile-card,
         body.dark .kanban-column {
@@ -107,7 +112,7 @@
             border-color: #dddddd;
         }
 
-        /* ==============================
+        /* =============================
            LUA E SOL
         ============================== */
 
@@ -123,13 +128,13 @@
             position: absolute;
             width: 25px;
             height: 25px;
-
             transition:
                 opacity 0.3s ease,
                 transform 0.3s ease;
         }
 
         /* Modo escuro = Lua */
+
         .dark-light .moon {
             opacity: 1;
         }
@@ -139,6 +144,7 @@
         }
 
         /* Modo claro = Sol */
+
         body.dark .dark-light .moon {
             opacity: 0;
         }
@@ -147,7 +153,7 @@
             opacity: 1;
         }
 
-        /* ==============================
+        /* =============================
            TÍTULO
         ============================== */
 
@@ -160,6 +166,7 @@
         }
 
         /* Texto descritivo */
+
         .description {
             font-size: 16px;
             line-height: 1.6;
@@ -169,7 +176,7 @@
             text-align: justify;
         }
 
-        /* ==============================
+        /* =============================
            BOTÕES
         ============================== */
 
@@ -213,7 +220,7 @@
             color: #ffffff;
         }
 
-        /* ==============================
+        /* =============================
            CATEGORIA
         ============================== */
 
@@ -231,7 +238,7 @@
             color: #2ea44f;
         }
 
-        /* ==============================
+        /* =============================
            HERO
         ============================== */
 
@@ -242,7 +249,7 @@
             text-align: center;
         }
 
-        /* ==============================
+        /* =============================
            TÍTULO TRAJETÓRIA
         ============================== */
 
@@ -255,6 +262,7 @@
         }
 
         /* Modo claro */
+
         body.dark .titulo-trajetoria {
             color: #000000;
         }
@@ -263,7 +271,7 @@
             color: #228B22;
         }
 
-        /* ==============================
+        /* =============================
            CONTAINER
         ============================== */
 
@@ -272,7 +280,7 @@
             margin: 0 auto;
         }
 
-        /* ==============================
+        /* =============================
            GRÁFICO
         ============================== */
 
@@ -286,7 +294,7 @@
             font-weight: bold;
         }
 
-        /* ==============================
+        /* =============================
            SLIDER
         ============================== */
 
@@ -313,15 +321,25 @@
             display: none;
         }
 
-        /* Cards */
+        /* =============================
+           CARDS DE SERVIÇOS
+        ============================== */
+
         .service-card {
             flex: 0 0 calc(33.333% - 16px);
             min-width: 280px;
             aspect-ratio: 1.15 / 1;
             padding: 40px;
-            border-radius: 0;
-            border: 1px solid transparent;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border-radius: 12px;
+
+            /* Borda verde */
+            border: 2px solid #2ea44f;
+
+            /* Interior verde mais claro */
+            background: #26312a;
+
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.15);
 
             display: flex;
             flex-direction: column;
@@ -332,8 +350,27 @@
 
             transition:
                 transform 0.2s ease,
-                border-color 0.2s ease;
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
         }
+
+        /* =============================
+           HOVER DO CARD
+        ============================== */
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #31ce39;
+            background: #304036;
+
+            box-shadow:
+                0 10px 30px rgba(46, 164, 79, 0.18);
+        }
+
+        /* =============================
+           ÍCONE
+        ============================== */
 
         .service-card .icon-circle {
             margin-bottom: 24px;
@@ -344,26 +381,29 @@
             height: 42px;
         }
 
+        /* =============================
+           TÍTULO DO CARD
+        ============================== */
+
         .service-card h2 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #fafafa;
+            color: #ffffff;
             margin: 10px 0 8px 0;
         }
 
+        /* =============================
+           TEXTO DO CARD
+        ============================== */
+
         .service-card p {
             font-size: 0.85rem;
-            line-height: 1.4;
-            color: #8b949e;
+            line-height: 1.5;
+            color: #c9d1d9;
             margin-bottom: 12px;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px) translateX(5px);
-            border-color: #2ea44f;
-        }
-
-        /* ==============================
+        /* =============================
            BOTÕES DAS SETAS
         ============================== */
 
@@ -373,13 +413,13 @@
             transform: translateY(-50%);
 
             background: #21262d;
-            border: 1px solid #30363d;
+            border: 1px solid #2ea44f;
             color: #c9d1d9;
 
             width: 36px;
             height: 36px;
-            border-radius: 50%;
 
+            border-radius: 50%;
             cursor: pointer;
 
             display: flex;
@@ -390,12 +430,14 @@
             z-index: 10;
 
             transition:
-                background 0.2s,
-                color 0.2s;
+                background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
         }
 
         .nav-btn:hover {
-            background: #30363d;
+            background: #2ea44f;
+            border-color: #31ce39;
             color: #ffffff;
         }
 
@@ -407,7 +449,7 @@
             right: 5px;
         }
 
-        /* ==============================
+        /* =============================
            BOTÃO LEARN
         ============================== */
 
@@ -428,7 +470,7 @@
         }
 
         .btn-learn:hover {
-            color: #2ea44f;
+            color: #31ce39;
         }
 
         .arrow {
@@ -439,53 +481,75 @@
             transform: translateX(4px);
         }
 
-        /* ==============================
-           MODO CLARO DOS CARDS
+        /* =============================
+           MODO CLARO
         ============================== */
 
         body.dark .service-card {
-            border-color: #e1e4e8;
+            background: #f5faf6;
+            border-color: #2ea44f;
+
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark .service-card:hover {
+            background: #eef8f0;
+            border-color: #228b22;
         }
 
         body.dark .service-card h2 {
-            color: #111111;
+            color: #1f3d25;
         }
 
         body.dark .service-card p {
-            color: #555555;
+            color: #536257;
         }
+
+        /* =============================
+           SETAS - MODO CLARO
+        ============================== */
 
         body.dark .nav-btn {
             background: #f6f8fa;
-            border-color: #e1e4e8;
+            border-color: #2ea44f;
             color: #24292e;
         }
 
         body.dark .nav-btn:hover {
-            background: #eaeef2;
+            background: #2ea44f;
+            color: #ffffff;
         }
 
+        /* =============================
+           BOTÃO LEARN - MODO CLARO
+        ============================== */
+
         body.dark .btn-learn {
-            color: #000000;
+            color: #1f3d25;
         }
 
         body.dark .btn-learn:hover {
-            color: #709a34;
+            color: #228b22;
         }
 
-        /* ==============================
+        /* =============================
            RESPONSIVIDADE
         ============================== */
 
         @media (max-width: 900px) {
+
             .service-card {
                 flex: 0 0 calc(50% - 12px);
             }
+
         }
 
         @media (max-width: 600px) {
+
             .service-card {
                 flex: 0 0 85%;
+                padding: 30px;
             }
 
             .slider-wrapper {
@@ -503,8 +567,10 @@
             .hero-section {
                 padding: 0 20px;
             }
+
         }
     </style>
+
 </head>
 
 <body>
@@ -514,6 +580,7 @@
     ============================== -->
 
     <nav>
+
         <div class="logo">
             <img src="Logotipo.png" height="50" alt="Logotipo">
         </div>
@@ -521,11 +588,27 @@
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
         <ul class="menu" id="menu">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#TiposPlantas">Plantas</a></li>
-            <li><a href="index.html#Kanban">Kanban</a></li>
-            <li><a href="index.html#Equipe">Equipe</a></li>
-            <li><a href="contato.html">Contato</a></li>
+
+            <li>
+                <a href="index.html">Início</a>
+            </li>
+
+            <li>
+                <a href="index.html#TiposPlantas">Plantas</a>
+            </li>
+
+            <li>
+                <a href="index.html#Kanban">Kanban</a>
+            </li>
+
+            <li>
+                <a href="index.html#Equipe">Equipe</a>
+            </li>
+
+            <li>
+                <a href="contato.html">Contato</a>
+            </li>
+
         </ul>
 
         <div class="darkLight-searchBox">
@@ -533,23 +616,25 @@
             <div class="dark-light">
 
                 <!-- LUA -->
+
                 <svg class="moon" viewBox="0 0 24 24" fill="white">
+
                     <path
                         d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z">
                     </path>
+
                 </svg>
 
                 <!-- SOL -->
-                <svg class="sun"
-                    viewBox="0 0 100 100"
-                    fill="none"
-                    stroke="#FFFFFF"
-                    stroke-width="7"
+
+                <svg class="sun" viewBox="0 0 100 100" fill="none" stroke="#FFFFFF" stroke-width="7"
                     stroke-linecap="square">
 
-                    <circle cx="50" cy="50" r="22"></circle>
+                    <circle cx="50" cy="50" r="22">
+                    </circle>
 
                     <g>
+
                         <line x1="50" y1="8" x2="50" y2="18"></line>
                         <line x1="50" y1="82" x2="50" y2="92"></line>
 
@@ -561,6 +646,7 @@
 
                         <line x1="20.5" y1="79.5" x2="27.5" y2="72.5"></line>
                         <line x1="72.5" y1="27.5" x2="79.5" y2="20.5"></line>
+
                     </g>
 
                 </svg>
@@ -568,6 +654,7 @@
             </div>
 
         </div>
+
     </nav>
 
 
@@ -592,12 +679,11 @@
             e Victória Pacheco Souza, concluintes do curso de
             Desenvolvimento de Sistemas da
 
-            <a
-                href="https://www.instagram.com/cultoaciencia/"
-                target="_blank"
-                rel="noopener noreferrer"
+            <a href="https://www.instagram.com/cultoaciencia/" target="_blank" rel="noopener noreferrer"
                 style="color: #58a6ff; text-decoration: underline;">
+
                 Escola Estadual Culto à Ciência
+
             </a>.
 
             O objetivo deste portfólio é documentar o processo de criação,
@@ -629,7 +715,12 @@
         <div class="container">
 
             <h1 class="titulo-trajetoria">
-                Nossa <span class="destaque">Trajetória</span>
+
+                Nossa
+                <span class="destaque">
+                    Trajetória
+                </span>
+
             </h1>
 
             <br>
@@ -642,22 +733,30 @@
             <br>
 
             <p>
+
                 A <strong>principal função</strong> deste site é centralizar
                 e simplificar o gerenciamento de dados em tempo real.
 
                 Nossa plataforma transforma métricas complexas em painéis
                 visuais intuitivos, permitindo que usuários tomem decisões
                 estratégicas com rapidez e precisão.
+
             </p>
 
             <br>
+
 
             <!-- ==============================
                  OBJETIVOS
             ============================== -->
 
             <h2 class="titulo-trajetoria">
-                Nossos <span class="destaque">Objetivos</span>
+
+                Nossos
+                <span class="destaque">
+                    Objetivos
+                </span>
+
             </h2>
 
             <br>
@@ -679,27 +778,24 @@
                 <div class="slider-wrapper">
 
                     <!-- SETA ANTERIOR -->
-                    <button
-                        class="nav-btn prev-btn"
-                        aria-label="Anterior">
+
+                    <button class="nav-btn prev-btn" aria-label="Anterior">
+
                         &#10094;
+
                     </button>
 
 
-                    <div
-                        class="services-grid"
-                        id="servicesGrid">
+                    <div class="services-grid" id="servicesGrid">
 
                         <!-- CARD 1 -->
+
                         <article class="service-card">
 
                             <div class="icon-circle">
 
-                                <img
-                                    width="100"
-                                    height="100"
-                                    src="https://img.icons8.com/ios/100/40C057/accessibility2.png"
-                                    alt="Acessibilidade">
+                                <img width="100" height="100"
+                                    src="https://img.icons8.com/ios/100/40C057/accessibility2.png" alt="Acessibilidade">
 
                             </div>
 
@@ -716,13 +812,12 @@
 
 
                         <!-- CARD 2 -->
+
                         <article class="service-card">
 
                             <div class="icon-circle">
 
-                                <img
-                                    width="100"
-                                    height="100"
+                                <img width="100" height="100"
                                     src="https://img.icons8.com/ios-filled/100/40C057/sync-settings.png"
                                     alt="Automação">
 
@@ -741,15 +836,13 @@
 
 
                         <!-- CARD 3 -->
+
                         <article class="service-card">
 
                             <div class="icon-circle">
 
-                                <img
-                                    width="100"
-                                    height="100"
-                                    src="https://img.icons8.com/ios-filled/100/40C057/dashboard.png"
-                                    alt="Performance">
+                                <img width="100" height="100"
+                                    src="https://img.icons8.com/ios-filled/100/40C057/dashboard.png" alt="Performance">
 
                             </div>
 
@@ -766,13 +859,12 @@
 
 
                         <!-- CARD 4 -->
+
                         <article class="service-card">
 
                             <div class="icon-circle">
 
-                                <img
-                                    width="100"
-                                    height="100"
+                                <img width="100" height="100"
                                     src="https://img.icons8.com/external-outline-lafs/100/40C057/external-ic_block_scale-crosschain-outline-lafs.png"
                                     alt="Escalabilidade">
 
@@ -793,10 +885,11 @@
 
 
                     <!-- SETA PRÓXIMA -->
-                    <button
-                        class="nav-btn next-btn"
-                        aria-label="Próximo">
+
+                    <button class="nav-btn next-btn" aria-label="Próximo">
+
                         &#10095;
+
                     </button>
 
                 </div>
@@ -813,11 +906,18 @@
             ============================== -->
 
             <h2 class="titulo-trajetoria">
-                Visualização <span class="destaque">de Dados</span>
+
+                Visualização
+                <span class="destaque">
+                    de Dados
+                </span>
+
             </h2>
 
             <div class="grafico-container">
+
                 Área reservada para a renderização dos gráficos dinâmicos
+
             </div>
 
         </div>
@@ -834,6 +934,7 @@
         <div class="footer-container">
 
             <!-- Identificação -->
+
             <div class="footer-brand">
 
                 <h3>
@@ -854,6 +955,7 @@
 
 
             <!-- Links -->
+
             <div class="footer-links">
 
                 <div class="footer-group">
@@ -877,9 +979,11 @@
                         </li>
 
                         <li>
+
                             <span style="color: var(--footer-muted); font-size: 0.8rem;">
                                 Desenvolvimento de Sistemas
                             </span>
+
                         </li>
 
                     </ul>
@@ -896,18 +1000,22 @@
                     <ul>
 
                         <li>
+
                             <a href="contato.html">
                                 Página de contato
                             </a>
+
                         </li>
 
                         <li>
-                            <a
-                                href="https://www.instagram.com/cultoaciencia/"
-                                target="_blank"
+
+                            <a href="https://www.instagram.com/cultoaciencia/" target="_blank"
                                 rel="noopener noreferrer">
+
                                 Instagram
+
                             </a>
+
                         </li>
 
                     </ul>
@@ -920,15 +1028,20 @@
 
 
         <!-- Direitos autorais -->
+
         <div class="footer-bottom">
 
             <div>
+
                 &copy; 2026 Solo em Equilíbrio.
                 Todos os direitos reservados.
+
             </div>
 
             <div>
+
                 Banca Examinadora &bull; TCC
+
             </div>
 
         </div>
@@ -984,6 +1097,7 @@
                 const gap = parseInt(style.columnGap) || 24;
 
                 return card.offsetWidth + gap;
+
             }
 
 
