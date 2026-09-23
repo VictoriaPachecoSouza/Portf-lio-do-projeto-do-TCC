@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio para o TCC</title>
- 
+
   <!-- Arquivos externos -->
   <link rel="stylesheet" type="text/css" href="estilo.css" />
   <script src="botaoes.js" defer></script>
- 
+
   <style>
     /* =============================
    MODO ESCURO / CLARO INVERTIDO
 ================================ */
- 
+
     /* MODO ESCURO - padrão */
     body {
       background-color: #0d1117;
       color: #ffffff;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
- 
+
     /* Elementos no modo escuro */
     body .main-title,
     body .plantas-title,
@@ -31,17 +31,17 @@
     body h3 {
       color: #ffffff;
     }
- 
- 
+
+
     /* ================================
    MODO CLARO
 ================================ */
- 
+
     body.dark {
       background-color: #ffffff;
       color: #000000;
     }
- 
+
     /* Textos no modo claro */
     body.dark .main-title,
     body.dark .plantas-title,
@@ -51,7 +51,7 @@
     body.dark h3 {
       color: #000000;
     }
- 
+
     /* TÍTULO SEMPRE BEM CENTRALIZADO */
     .main-title {
       text-align: center;
@@ -59,7 +59,7 @@
       margin-right: auto;
       width: 100%;
     }
- 
+
     /* Títulos no modo escuro */
     body .main-title,
     body .plantas-title,
@@ -69,7 +69,7 @@
     body h3 {
       color: #ffffff;
     }
- 
+
     /* Textos secundários no modo claro */
     body.dark .description,
     body.dark .planta-card p,
@@ -77,12 +77,12 @@
     body.dark .profile-card .bio {
       color: #555555;
     }
- 
- 
+
+
     /* ================================
    CARDS
 ================================ */
- 
+
     .planta-card,
     .profile-card,
     .kanban-column,
@@ -91,8 +91,8 @@
         color 0.3s ease,
         border-color 0.3s ease;
     }
- 
- 
+
+
     /* Cards no modo escuro */
     .planta-card,
     .profile-card,
@@ -100,13 +100,13 @@
       background-color: #161b22;
       border-color: #30363d;
     }
- 
+
     .kanban-card {
       background-color: #21262d;
       border-color: #30363d;
     }
- 
- 
+
+
     /* Cards no modo claro */
     body.dark .planta-card,
     body.dark .profile-card,
@@ -114,149 +114,151 @@
       background-color: #ffffff;
       border-color: #dddddd;
     }
- 
+
     body.dark .kanban-card {
       background-color: #f8f9fa;
       border-color: #dddddd;
     }
- 
- 
+
+
     /* ================================
    LUA E SOL
 ================================ */
- 
+
     .dark-light {
       position: relative;
       width: 40px;
       height: 40px;
       cursor: pointer;
     }
- 
+
     /* Ícones */
     .dark-light .moon,
     .dark-light .sun {
       position: absolute;
       width: 25px;
       height: 25px;
- 
+
       transition:
         opacity 0.3s ease,
         transform 0.3s ease;
     }
- 
- 
+
+
     /* 🌙 MODO ESCURO = LUA */
     .dark-light .moon {
       opacity: 1;
     }
- 
+
     .dark-light .sun {
       opacity: 0;
     }
- 
- 
+
+
     /* ☀️ MODO CLARO = SOL */
     body.dark .dark-light .moon {
       opacity: 0;
     }
- 
+
     body.dark .dark-light .sun {
       opacity: 1;
     }
+
     .main-title {
-            font-size: 44px;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
- 
-        /* Texto descritivo */
-        .description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #8b949e;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            text-align: justify;
-            /* Melhora a leitura de textos longos */
-        }
- 
-        /* Container dos botões */
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
- 
-        /* Estilo base dos botões */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background-color 0.2s, transform 0.2s;
-        }
- 
-        /* Botão verde (Principal) */
-        .btn-primary {
-            background-color: #1f883d;
-            color: #ffffff;
-            border: 1px solid rgba(240, 246, 252, 0.1);
-        }
- 
-        .btn-primary:hover {
-            background-color: #2ea44f;
-        }
- 
-        /* Botão escuro (Secundário) */
-        .btn-secondary {
-            background-color: #21262d;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
-        }
- 
-        .btn-secondary:hover {
-            background-color: #30363d;
-            color: #ffffff;
-        }
- 
-   /* Subtítulo superior pequeno */
-        .category-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8b949e;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
- 
-        .category-title::after {
-            content: " ■";
-            color: #2ea44f;
-            /* Quadrado verde */
-        }
-            /* Container da seção Hero */
-        .hero-section {
-            max-width: 900px;
-            width: 100%;
-            margin: 60px auto;
-            text-align: center;
-        }
+      font-size: 44px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    /* Texto descritivo */
+    .description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #8b949e;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      text-align: justify;
+      /* Melhora a leitura de textos longos */
+    }
+
+    /* Container dos botões */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Estilo base dos botões */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    /* Botão verde (Principal) */
+    .btn-primary {
+      background-color: #1f883d;
+      color: #ffffff;
+      border: 1px solid rgba(240, 246, 252, 0.1);
+    }
+
+    .btn-primary:hover {
+      background-color: #2ea44f;
+    }
+
+    /* Botão escuro (Secundário) */
+    .btn-secondary {
+      background-color: #21262d;
+      color: #c9d1d9;
+      border: 1px solid #30363d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #30363d;
+      color: #ffffff;
+    }
+
+    /* Subtítulo superior pequeno */
+    .category-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b949e;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .category-title::after {
+      content: " ■";
+      color: #2ea44f;
+      /* Quadrado verde */
+    }
+
+    /* Container da seção Hero */
+    .hero-section {
+      max-width: 900px;
+      width: 100%;
+      margin: 60px auto;
+      text-align: center;
+    }
   </style>
 </head>
- 
+
 <body>
   <nav>
     <div class="logo">
       <img src="Logotipo.png" height="50" alt="Logotipo">
     </div>
- 
+
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
- 
+
     <ul class="menu" id="menu">
       <li><a href="#">Início</a></li>
       <li><a href="#TiposPlantas">Plantas</a></li>
@@ -264,68 +266,68 @@
       <li><a href="#Equipe">Equipe</a></li>
       <li><a href="contato.html">Contato</a></li>
     </ul>
- 
+
     <div class="darkLight-searchBox">
- 
+
       <div class="dark-light">
- 
+
         <!-- LUA -->
         <svg class="moon" viewBox="0 0 24 24">
           <path
             d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z" />
         </svg>
- 
- 
+
+
         <!-- SOL -->
         <svg class="sun" viewBox="0 0 100 100" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="square">
- 
+
           <circle cx="50" cy="50" r="22" />
- 
+
           <g>
             <line x1="50" y1="8" x2="50" y2="18" />
             <line x1="50" y1="82" x2="50" y2="92" />
- 
+
             <line x1="8" y1="50" x2="18" y2="50" />
             <line x1="82" y1="50" x2="92" y2="50" />
- 
+
             <line x1="20.5" y1="20.5" x2="27.5" y2="27.5" />
             <line x1="72.5" y1="72.5" x2="79.5" y2="79.5" />
- 
+
             <line x1="20.5" y1="79.5" x2="27.5" y2="72.5" />
             <line x1="72.5" y1="27.5" x2="79.5" y2="20.5" />
           </g>
- 
+
         </svg>
- 
+
       </div>
- 
+
     </div>
   </nav>
- 
+
   <!-- Script Isolado e Funcional -->
   <script>
     const body = document.querySelector("body"),
       modeToggle = document.querySelector(".dark-light"),
       searchToggle = document.querySelector(".searchToggle");
- 
+
     // Código do clique para o Modo Escuro
     modeToggle.addEventListener("click", () => {
       modeToggle.classList.toggle("active");
       body.classList.toggle("dark");
     });
- 
+
     // Alterna o estado ativo do botão de pesquisa ao clicar
     searchToggle.addEventListener("click", () => {
       searchToggle.classList.toggle("active");
     });
   </script>
- 
+
   <!-- Seção Principal (Apresentação do TCC) -->
   <section class="hero-section" id="Inicio">
     <p class="category-title">Solo em equilíbrio</p>
- 
+
     <h1 class="main-title">Seja bem-vindo ao portfólio acadêmico do nosso Trabalho de Conclusão de Curso</h1>
- 
+
     <p class="description">
       Este documento foi desenvolvido pelos acadêmicos Dualvid David Muñoz Santana, Pedro Henrique Silvas
       Santos e
@@ -345,64 +347,64 @@
       <br><br>
       <strong>Agradecemos a leitura.</strong>
     </p>
- 
+
     <div class="button-group">
       <a href="tragetoria.html" class="btn btn-primary">Nossa tragetória</a>
       <a href="objetivo.html" class="btn btn-secondary">Conheça os objetivos </a>
     </div>
   </section>
 
-  
+
   <!--Seção dos tipos de plantas-->
   <section id="TiposPlantas">
     <h2 class="plantas-title">Os 5 Tipos de Plantas Estudados</h2>
- 
+
     <div class="plantas-grid">
- 
+
       <!-- Tipo 1 -->
       <div class="planta-card">
         <div class="planta-icon">🌿</div>
         <h3>Medicinais</h3>
         <p>Utilizadas no tratamento de enfermidades e manipulação de fitoterápicos caseiros.</p>
       </div>
- 
+
       <!-- Tipo 2 -->
       <div class="planta-card">
-        <div class="planta-icon">🌴</div>
+        <div class="planta-icon">🌱</div>
         <h3>Ornamentais</h3>
         <p>Cultivadas pela estética de suas folhagens e flores, harmonizando ambientes internos.</p>
       </div>
- 
+
       <!-- Tipo 3 -->
       <div class="planta-card">
         <div class="planta-icon">🥬</div>
         <h3>Alimentícias</h3>
         <p>Hortaliças e PANCs essenciais para a nutrição e subsistência em hortas urbanas.</p>
       </div>
- 
+
       <!-- Tipo 4 -->
       <div class="planta-card">
         <div class="planta-icon">🪷</div>
         <h3>Aquáticas</h3>
         <p>Plantas que revelam as condições químicas, físicas e a saúde biológica do solo.</p>
       </div>
- 
+
       <!-- Tipo 5 -->
       <div class="planta-card">
         <div class="planta-icon">☠️</div>
         <h3>Tóxicas</h3>
         <p>Espécies que atuam como barreiras naturais contra pragas e insetos vetores.</p>
       </div>
- 
+
     </div>
   </section>
- 
+
   <!-- Seção Kanban -->
   <section id="Kanban">
     <!-- Conteúdo do Kanban vai aqui -->
     <section id="Kanban">
       <h2 class="kanban-title">Quadro Kanban do Projeto</h2>
- 
+
       <div class="kanban-container">
         <!-- Coluna: A Fazer -->
         <div class="kanban-column js-column">
@@ -420,7 +422,7 @@
             </div>
           </div>
         </div>
- 
+
         <!-- Coluna: Em Andamento -->
         <div class="kanban-column js-column">
           <div class="column-header doing">Em Andamento</div>
@@ -432,7 +434,7 @@
             </div>
           </div>
         </div>
- 
+
         <!-- Coluna: Concluído -->
         <div class="kanban-column js-column">
           <div class="column-header done">Concluído</div>
@@ -444,130 +446,151 @@
             </div>
           </div>
         </div>
-        <style>#Kanban {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
- 
-.kanban-title {
-    font-size: 28px;
-    color: #ffffff;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: 600;
-}
- 
-/* Container que alinha as colunas lado a lado */
-.kanban-container {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: flex-start;
-}
- 
-/* Colunas individuais */
-.kanban-column {
-    flex: 1;
-    background-color: #161b22; /* Fundo ligeiramente mais claro que o body */
-    border: 1px solid #30363d;
-    border-radius: 8px;
-    padding: 15px;
-    min-width: 280px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
- 
-/* Cabeçalhos das colunas */
-.column-header {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    text-align: center;
-    color: #ffffff;
-}
- 
-/* Cores temáticas para cada status */
-.column-header.todo {
-    background-color: #30363d; /* Cinza escuro */
-}
- 
-.column-header.doing {
-    background-color: #9e6a03; /* Amarelo/Laranja queimado */
-}
- 
-.column-header.done {
-    background-color: #1f883d; /* Verde GitHub */
-}
- 
-/* Lista de cartões */
-.kanban-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
- 
-/* Estilo do cartão individual */
-.kanban-card {
-    background-color: #21262d;
-    border: 1px solid #30363d;
-    border-radius: 6px;
-    padding: 16px;
-    cursor: grab;
-    transition: transform 0.2s, border-color 0.2s;
-}
- 
-.kanban-card:hover {
-    transform: translateY(-2px);
-    border-color: #8b949e;
-}
- 
-.kanban-card h3 {
-    font-size: 16px;
-    color: #f0f6fc;
-    margin: 8px 0;
-}
- 
-.kanban-card p {
-    font-size: 14px;
-    color: #8b949e;
-    line-height: 1.4;
-    padding: 0; /* Reseta o padding herdado do 'p' global */
-    margin: 0;
-    text-align: left;
-}
- 
-/* Etiquetas/Tags coloridas dentro dos cartões */
-.card-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 20px;
-    text-transform: uppercase;
-}
- 
-.tag-pesquisa { background-color: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
-.tag-doc      { background-color: rgba(236, 72, 153, 0.2); color: #fbcfe8; }
-.tag-dev      { background-color: rgba(34, 197, 94, 0.2);  color: #bbf7d0; }
-.tag-design   { background-color: rgba(234, 179, 8, 0.2);   color: #fef08a; }
- 
-/* Responsividade para celulares */
-@media (max-width: 900px) {
-    .kanban-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
- </style>
+        <style>
+          #Kanban {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+
+          .kanban-title {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+          }
+
+          /* Container que alinha as colunas lado a lado */
+          .kanban-container {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            align-items: flex-start;
+          }
+
+          /* Colunas individuais */
+          .kanban-column {
+            flex: 1;
+            background-color: #161b22;
+            /* Fundo ligeiramente mais claro que o body */
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 280px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          }
+
+          /* Cabeçalhos das colunas */
+          .column-header {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #ffffff;
+          }
+
+          /* Cores temáticas para cada status */
+          .column-header.todo {
+            background-color: #30363d;
+            /* Cinza escuro */
+          }
+
+          .column-header.doing {
+            background-color: #9e6a03;
+            /* Amarelo/Laranja queimado */
+          }
+
+          .column-header.done {
+            background-color: #1f883d;
+            /* Verde GitHub */
+          }
+
+          /* Lista de cartões */
+          .kanban-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          /* Estilo do cartão individual */
+          .kanban-card {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            cursor: grab;
+            transition: transform 0.2s, border-color 0.2s;
+          }
+
+          .kanban-card:hover {
+            transform: translateY(-2px);
+            border-color: #8b949e;
+          }
+
+          .kanban-card h3 {
+            font-size: 16px;
+            color: #f0f6fc;
+            margin: 8px 0;
+          }
+
+          .kanban-card p {
+            font-size: 14px;
+            color: #8b949e;
+            line-height: 1.4;
+            padding: 0;
+            /* Reseta o padding herdado do 'p' global */
+            margin: 0;
+            text-align: left;
+          }
+
+          /* Etiquetas/Tags coloridas dentro dos cartões */
+          .card-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+          }
+
+          .tag-pesquisa {
+            background-color: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+          }
+
+          .tag-doc {
+            background-color: rgba(236, 72, 153, 0.2);
+            color: #fbcfe8;
+          }
+
+          .tag-dev {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: #bbf7d0;
+          }
+
+          .tag-design {
+            background-color: rgba(234, 179, 8, 0.2);
+            color: #fef08a;
+          }
+
+          /* Responsividade para celulares */
+          @media (max-width: 900px) {
+            .kanban-container {
+              flex-direction: column;
+              align-items: stretch;
+            }
+          }
+        </style>
       </div>
     </section>
     <!--Seção da equipe vai aqui-->
     <section id="Equipe">
       <h2 class="equipe-title">Nossa Equipe</h2>
       <div class="equipe-container">
- 
+
         <!-- Integrante 1: Dualvid -->
         <div class="profile-card">
           <div class="avatar-placeholder">DD</div>
@@ -583,7 +606,7 @@
             <a href="#" target="_blank">LinkedIn</a>
           </div>
         </div>
- 
+
         <!-- Integrante 2: Pedro -->
         <div class="profile-card">
           <div class="avatar-placeholder">PH</div>
@@ -596,7 +619,7 @@
             <a href="#" target="_blank">LinkedIn</a>
           </div>
         </div>
- 
+
         <!-- Integrante 3: Victória -->
         <div class="profile-card">
           <div class="avatar-placeholder">VP</div>
@@ -609,110 +632,114 @@
             <a href="#" target="_blank">LinkedIn</a>
           </div>
         </div>
- 
+
       </div>
-      <style>.equipe-title {
-    font-size: 28px;
-    color: #ffffff;
-    margin-bottom: 40px;
-    text-align: center;
-    font-weight: 600;
-}
- 
-/* Alinhamento dos cards */
-.equipe-container {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap; /* Garante que quebre linha em telas pequenas */
-}
- 
-/* Card de perfil individual */
-.profile-card {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 12px;
-    padding: 30px 24px;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s, border-color 0.2s;
-}
- 
-.profile-card:hover {
-    transform: translateY(-5px);
-    border-color: #2ea44f; /* Destaca com o verde do projeto ao passar o mouse */
-}
- 
-/* Círculo para foto ou iniciais */
-.avatar-placeholder {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background-color: #30363d;
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px auto;
-    border: 2px solid #8b949e;
-}
- 
-.profile-card h3 {
-    font-size: 18px;
-    color: #f0f6fc;
-    margin-bottom: 6px;
-}
- 
-/* Cargo/Função */
-.profile-card .role {
-    font-size: 14px;
-    color: #2ea44f; /* Verde para destacar a profissão */
-    font-weight: 600;
-    margin-bottom: 16px;
-    text-transform: none;
-    padding: 0;
-}
- 
-/* Biografia profissional */
-.profile-card .bio {
-    font-size: 14px;
-    color: #8b949e;
-    line-height: 1.5;
-    text-align: center;
-    padding: 0;
-    margin-bottom: 24px;
-}
- 
-/* Links das redes sociais */
-.profile-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
- 
-.profile-links a {
-    font-size: 14px;
-    font-weight: 600;
-    color: #c9d1d9;
-    border: 1px solid #30363d;
-    padding: 6px 16px;
-    border-radius: 6px;
-    background-color: #21262d;
-    transition: background-color 0.2s, color 0.2s;
-}
- 
-.profile-links a:hover {
-    background-color: #30363d;
-    color: #ffffff;
-}
-</style>
+      <style>
+        .equipe-title {
+          font-size: 28px;
+          color: #ffffff;
+          margin-bottom: 40px;
+          text-align: center;
+          font-weight: 600;
+        }
+
+        /* Alinhamento dos cards */
+        .equipe-container {
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+          flex-wrap: wrap;
+          /* Garante que quebre linha em telas pequenas */
+        }
+
+        /* Card de perfil individual */
+        .profile-card {
+          background-color: #161b22;
+          border: 1px solid #30363d;
+          border-radius: 12px;
+          padding: 30px 24px;
+          width: 320px;
+          text-align: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .profile-card:hover {
+          transform: translateY(-5px);
+          border-color: #2ea44f;
+          /* Destaca com o verde do projeto ao passar o mouse */
+        }
+
+        /* Círculo para foto ou iniciais */
+        .avatar-placeholder {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          background-color: #30363d;
+          color: #ffffff;
+          font-size: 24px;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 20px auto;
+          border: 2px solid #8b949e;
+        }
+
+        .profile-card h3 {
+          font-size: 18px;
+          color: #f0f6fc;
+          margin-bottom: 6px;
+        }
+
+        /* Cargo/Função */
+        .profile-card .role {
+          font-size: 14px;
+          color: #2ea44f;
+          /* Verde para destacar a profissão */
+          font-weight: 600;
+          margin-bottom: 16px;
+          text-transform: none;
+          padding: 0;
+        }
+
+        /* Biografia profissional */
+        .profile-card .bio {
+          font-size: 14px;
+          color: #8b949e;
+          line-height: 1.5;
+          text-align: center;
+          padding: 0;
+          margin-bottom: 24px;
+        }
+
+        /* Links das redes sociais */
+        .profile-links {
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+        }
+
+        .profile-links a {
+          font-size: 14px;
+          font-weight: 600;
+          color: #c9d1d9;
+          border: 1px solid #30363d;
+          padding: 6px 16px;
+          border-radius: 6px;
+          background-color: #21262d;
+          transition: background-color 0.2s, color 0.2s;
+        }
+
+        .profile-links a:hover {
+          background-color: #30363d;
+          color: #ffffff;
+        }
+      </style>
     </section>
- 
+
   </section>
- 
+
   <!-- Seção Agenda e Elementos Flutuantes -->
   <section id="Agenda">
     <!-- Botão para abrir o Calendário -->
@@ -723,7 +750,7 @@
           d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
       </svg>
     </button>
- 
+
     <!-- Div do Calendário Flutuante -->
     <div class="calendario-flutuante">
       <p>Conteúdo do Calendário (320px x 380px)</p>
@@ -733,46 +760,1520 @@
         onclick="this.parentElement.style.display='none'">Fechar</button>
     </div>
   </section>
- 
+
   <footer class="footer-portfolio">
     <div class="footer-container">
-        
-        <!-- Identificação do Projeto -->
-        <div class="footer-brand">
-            <h3>Solo em Equilíbrio</h3>
-            <p><strong>Trabalho de Conclusão de Curso</strong></p>
-            <p style="font-size: 0.8rem; margin-top: 5px;">[Sua Instituição de Ensino]</p>
+
+      <!-- Identificação do Projeto -->
+      <div class="footer-brand">
+        <h3>Solo em Equilíbrio</h3>
+        <p><strong>Trabalho de Conclusão de Curso</strong></p>
+        <p style="font-size: 0.8rem; margin-top: 5px;">[Sua Instituição de Ensino]</p>
+      </div>
+
+      <!-- Links e Contatos -->
+      <div class="footer-links">
+        <div class="footer-group">
+          <h4>Autor</h4>
+          <ul>
+            <li><span>[Seu Nome Completo]</span></li>
+            <li><span style="color: var(--footer-muted); font-size: 0.8rem;">Graduando</span></li>
+          </ul>
         </div>
 
-        <!-- Links e Contatos -->
-        <div class="footer-links">
-            <div class="footer-group">
-                <h4>Autor</h4>
-                <ul>
-                    <li><span>[Seu Nome Completo]</span></li>
-                    <li><span style="color: var(--footer-muted); font-size: 0.8rem;">Graduando</span></li>
-                </ul>
-            </div>
-            
-            <div class="footer-group">
-                <h4>Contato</h4>
-                <ul>
-                    <li><a href="mailto:seu.email@exemplo.com">seu.email@exemplo.com</a></li>
-                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-                </ul>
-            </div>
+        <div class="footer-group">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="mailto:seu.email@exemplo.com">seu.email@exemplo.com</a></li>
+            <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+          </ul>
         </div>
+      </div>
 
     </div>
 
     <!-- Linha de Direitos Autorais -->
     <div class="footer-bottom">
-        <div>&copy; 2026 Solo em Equilíbrio. Todos os direitos reservados.</div>
-        <div>Banca Examinadora &bull; TCC</div>
+      <div>&copy; 2026 Solo em Equilíbrio. Todos os direitos reservados.</div>
+      <div>Banca Examinadora &bull; TCC</div>
     </div>
-</footer>
+  </footer>
+
+  <style>
+    /* =========================================================
+           CHATBOT - BOTÃO DO ROBÔ
+        ========================================================= */
+
+    .btn-abrir-chat-principal {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+
+      background-color: #5cb82a;
+
+      border: none;
+
+      width: 70px;
+      height: 70px;
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+      z-index: 9999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: transform 0.2s, background-color 0.2s;
+
+      padding: 0;
+    }
+
+    .btn-abrir-chat-principal:hover {
+      background-color: #4da31f;
+      transform: scale(1.08);
+    }
+
+    .btn-abrir-chat-principal svg {
+      width: 58px;
+      height: 58px;
+    }
+
+
+    /* =========================================================
+           JANELA DO CHAT
+           TAMANHO FIXO: 300 X 380
+        ========================================================= */
+
+    .chatbot-principal {
+      position: fixed;
+
+      width: 300px;
+      height: 380px;
+
+      right: 20px;
+      bottom: 100px;
+
+      background: #242424;
+
+      border-radius: 14px;
+
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+      overflow: hidden;
+
+      display: none;
+
+      flex-direction: column;
+
+      z-index: 10000;
+    }
+
+
+    /* =========================================================
+           CABEÇALHO
+        ========================================================= */
+
+    .chatbot-header {
+      height: 55px;
+
+      padding: 10px 12px;
+
+      background: #5cb82a;
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      flex-shrink: 0;
+    }
+
+    .chatbot-header strong {
+      display: block;
+
+      font-size: 16px;
+
+      font-family: Arial, sans-serif;
+    }
+
+    .chatbot-header small {
+      display: block;
+
+      margin-top: 2px;
+
+      font-size: 11px;
+
+      font-family: Arial, sans-serif;
+    }
+
+
+    /* =========================================================
+           BOTÃO FECHAR
+        ========================================================= */
+
+    .chatbot-fechar {
+      width: 30px;
+      height: 30px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: rgba(0, 0, 0, 0.15);
+
+      color: white;
+
+      font-size: 22px;
+
+      line-height: 30px;
+
+      cursor: pointer;
+
+      padding: 0;
+    }
+
+    .chatbot-fechar:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+
+    /* =========================================================
+           ÁREA DAS MENSAGENS
+        ========================================================= */
+
+    .chatbot-mensagens {
+      flex: 1;
+
+      min-height: 0;
+
+      padding: 12px;
+
+      overflow-y: auto;
+
+      background: #303030;
+
+      font-family: Arial, sans-serif;
+    }
+
+
+    /* =========================================================
+           BARRA DE ROLAGEM
+        ========================================================= */
+
+    .chatbot-mensagens::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .chatbot-mensagens::-webkit-scrollbar-track {
+      background: #292929;
+    }
+
+    .chatbot-mensagens::-webkit-scrollbar-thumb {
+      background: #5cb82a;
+      border-radius: 10px;
+    }
+
+
+    /* =========================================================
+           MENSAGENS
+        ========================================================= */
+
+    .mensagem {
+      max-width: 85%;
+
+      padding: 8px 10px;
+
+      margin-bottom: 9px;
+
+      border-radius: 9px;
+
+      font-size: 12px;
+
+      line-height: 1.4;
+
+      color: white;
+
+      word-wrap: break-word;
+    }
+
+    .mensagem span {
+      display: block;
+
+      font-size: 10px;
+
+      font-weight: bold;
+
+      margin-bottom: 3px;
+    }
+
+
+    /* MENSAGEM DO BOT */
+
+    .mensagem.bot {
+      background: #3b3b3b;
+
+      border-bottom-left-radius: 3px;
+    }
+
+    .mensagem.bot span {
+      color: #5cb82a;
+    }
+
+
+    /* MENSAGEM DO USUÁRIO */
+
+    .mensagem.usuario {
+      margin-left: auto;
+
+      background: #5cb82a;
+
+      border-bottom-right-radius: 3px;
+    }
+
+    .mensagem.usuario span {
+      color: white;
+    }
+
+
+    /* =========================================================
+           ÁREA DO INPUT
+        ========================================================= */
+
+    .chatbot-input-area {
+      height: 52px;
+
+      padding: 8px;
+
+      display: flex;
+
+      gap: 6px;
+
+      background: #242424;
+
+      border-top: 1px solid #444;
+
+      flex-shrink: 0;
+    }
+
+
+    /* INPUT */
+
+    .chatbot-input {
+      flex: 1;
+
+      min-width: 0;
+
+      height: 36px;
+
+      padding: 0 9px;
+
+      border-radius: 7px;
+
+      border: 1px solid #555;
+
+      outline: none;
+
+      background: #333;
+
+      color: white;
+
+      font-size: 12px;
+
+      font-family: Arial, sans-serif;
+    }
+
+    .chatbot-input::placeholder {
+      color: #aaa;
+    }
+
+    .chatbot-input:focus {
+      border-color: #5cb82a;
+    }
+
+
+    /* =========================================================
+           BOTÃO ENVIAR
+        ========================================================= */
+
+    .chatbot-enviar {
+      height: 36px;
+
+      padding: 0 10px;
+
+      border: none;
+
+      border-radius: 7px;
+
+      background: #5cb82a;
+
+      color: white;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .chatbot-enviar:hover {
+      background: #4da31f;
+    }
+
+
+    /* =========================================================
+           RESPONSIVO
+        ========================================================= */
+
+    @media (max-width: 450px) {
+
+      .chatbot-principal {
+        width: 300px;
+        height: 380px;
+
+        right: 10px;
+        bottom: 95px;
+      }
+
+      .btn-abrir-chat-principal {
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+  </style>
+  </head>
+
+
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="Style.css">
+
+  <title>Solo em Equilíbrio</title>
+
+  <style>
+    /* =========================================================
+           CHATBOT - BOTÃO DO ROBÔ
+        ========================================================= */
+
+    .btn-abrir-chat-principal {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+
+      background-color: #5cb82a;
+
+      border: none;
+
+      width: 70px;
+      height: 70px;
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+      z-index: 9999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: transform 0.2s, background-color 0.2s;
+
+      padding: 0;
+    }
+
+    .btn-abrir-chat-principal:hover {
+      background-color: #4da31f;
+      transform: scale(1.08);
+    }
+
+    .btn-abrir-chat-principal svg {
+      width: 58px;
+      height: 58px;
+    }
+
+
+    /* =========================================================
+           JANELA DO CHAT
+           TAMANHO FIXO: 300 X 380
+        ========================================================= */
+
+    .chatbot-principal {
+      position: fixed;
+
+      width: 300px;
+      height: 380px;
+
+      right: 20px;
+      bottom: 100px;
+
+      background: #242424;
+
+      border-radius: 14px;
+
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+      overflow: hidden;
+
+      display: none;
+
+      flex-direction: column;
+
+      z-index: 10000;
+    }
+
+
+    /* =========================================================
+           CABEÇALHO
+        ========================================================= */
+
+    .chatbot-header {
+      height: 55px;
+
+      padding: 10px 12px;
+
+      background: #5cb82a;
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      flex-shrink: 0;
+    }
+
+    .chatbot-header strong {
+      display: block;
+
+      font-size: 16px;
+
+      font-family: Arial, sans-serif;
+    }
+
+    .chatbot-header small {
+      display: block;
+
+      margin-top: 2px;
+
+      font-size: 11px;
+
+      font-family: Arial, sans-serif;
+    }
+
+
+    /* =========================================================
+           BOTÃO FECHAR
+        ========================================================= */
+
+    .chatbot-fechar {
+      width: 30px;
+      height: 30px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: rgba(0, 0, 0, 0.15);
+
+      color: white;
+
+      font-size: 22px;
+
+      line-height: 30px;
+
+      cursor: pointer;
+
+      padding: 0;
+    }
+
+    .chatbot-fechar:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+
+    /* =========================================================
+           ÁREA DAS MENSAGENS
+        ========================================================= */
+
+    .chatbot-mensagens {
+      flex: 1;
+
+      min-height: 0;
+
+      padding: 12px;
+
+      overflow-y: auto;
+
+      background: #303030;
+
+      font-family: Arial, sans-serif;
+    }
+
+
+    /* =========================================================
+           BARRA DE ROLAGEM
+        ========================================================= */
+
+    .chatbot-mensagens::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .chatbot-mensagens::-webkit-scrollbar-track {
+      background: #292929;
+    }
+
+    .chatbot-mensagens::-webkit-scrollbar-thumb {
+      background: #5cb82a;
+      border-radius: 10px;
+    }
+
+
+    /* =========================================================
+           MENSAGENS
+        ========================================================= */
+
+    .mensagem {
+      max-width: 85%;
+
+      padding: 8px 10px;
+
+      margin-bottom: 9px;
+
+      border-radius: 9px;
+
+      font-size: 12px;
+
+      line-height: 1.4;
+
+      color: white;
+
+      word-wrap: break-word;
+    }
+
+    .mensagem span {
+      display: block;
+
+      font-size: 10px;
+
+      font-weight: bold;
+
+      margin-bottom: 3px;
+    }
+
+
+    /* MENSAGEM DO BOT */
+
+    .mensagem.bot {
+      background: #3b3b3b;
+
+      border-bottom-left-radius: 3px;
+    }
+
+    .mensagem.bot span {
+      color: #5cb82a;
+    }
+
+
+    /* MENSAGEM DO USUÁRIO */
+
+    .mensagem.usuario {
+      margin-left: auto;
+
+      background: #5cb82a;
+
+      border-bottom-right-radius: 3px;
+    }
+
+    .mensagem.usuario span {
+      color: white;
+    }
+
+
+    /* =========================================================
+           ÁREA DO INPUT
+        ========================================================= */
+
+    .chatbot-input-area {
+      height: 52px;
+
+      padding: 8px;
+
+      display: flex;
+
+      gap: 6px;
+
+      background: #242424;
+
+      border-top: 1px solid #444;
+
+      flex-shrink: 0;
+    }
+
+
+    /* INPUT */
+
+    .chatbot-input {
+      flex: 1;
+
+      min-width: 0;
+
+      height: 36px;
+
+      padding: 0 9px;
+
+      border-radius: 7px;
+
+      border: 1px solid #555;
+
+      outline: none;
+
+      background: #333;
+
+      color: white;
+
+      font-size: 12px;
+
+      font-family: Arial, sans-serif;
+    }
+
+    .chatbot-input::placeholder {
+      color: #aaa;
+    }
+
+    .chatbot-input:focus {
+      border-color: #5cb82a;
+    }
+
+
+    /* =========================================================
+           BOTÃO ENVIAR
+        ========================================================= */
+
+    .chatbot-enviar {
+      height: 36px;
+
+      padding: 0 10px;
+
+      border: none;
+
+      border-radius: 7px;
+
+      background: #5cb82a;
+
+      color: white;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .chatbot-enviar:hover {
+      background: #4da31f;
+    }
+
+
+    /* =========================================================
+           RESPONSIVO
+        ========================================================= */
+
+    @media (max-width: 450px) {
+
+      .chatbot-principal {
+        width: 300px;
+        height: 380px;
+
+        right: 10px;
+        bottom: 95px;
+      }
+
+      .btn-abrir-chat-principal {
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+
+
+
+
+<!-- =========================================================
+         ROBÔ
+    ========================================================= -->
+
+<button class="btn-abrir-chat-principal" onclick="alternarChat()" aria-label="Abrir Chatbot">
+
+
+  <svg viewBox="0 0 512 512">
+    <!-- Corpo e Pescoço -->
+    <path d="M256 310v35h20v-35z" fill="#e1f5fe" />
+    <path d="M236 310v35h20v-35z" fill="#b3e5fc" />
+    <path d="M256 328c-71.8 0-130 58.2-130 130v54h130V328z" fill="#e1f5fe" />
+    <path d="M256 328v184h130v-54c0-71.8-58.2-130-130-130z" fill="#90caf9" />
+    <!-- Cabeça Externa -->
+    <path d="M256 81c-82.3 0-142 55.4-142 110.5s59.7 110.5 142 110.5z" fill="#e1f5fe" />
+    <path d="M256 81v221c82.3 0 142-55.4 142-110.5S338.3 81 256 81z" fill="#b3e5fc" />
+    <!-- Visor Escuro -->
+    <path d="M256 125c-54.1 0-98 29.5-98 66s43.9 66 98 66z" fill="#1a0066" />
+    <path d="M256 125v132c54.1 0 98-29.5 98-66s-43.9-66-98-66z" fill="#12004d" />
+    <!-- Olhos Verdes -->
+    <path d="M210 143h16v40h-16z" fill="#5cb82a" />
+    <path d="M278 143h16v40h-16z" fill="#4da31f" />
+    <!-- Sorriso Verde -->
+    <path d="M214 209c0 10.5 18.8 19 42 19v-19z" fill="#5cb82a" />
+    <path d="M256 209v19c23.2 0 42-8.5 42-19z" fill="#4da31f" />
+    <!-- Orelhas/Fones Laterais -->
+    <path d="M116 172c-15.5 0-28 11.2-28 25s12.5 25 28 25z" fill="#311b92" />
+    <path d="M116 172v50c6.6 0 12-11.2 12-25s-5.4-25-12-25z" fill="#90caf9" />
+    <path d="M396 172v50c15.5 0 28-11.2 28-25s-12.5-25-28-25z" fill="#1a0066" />
+    <path d="M396 172c-6.6 0-12 11.2-12 25s5.4 25 12 25z" fill="#64b5f6" />
+    <!-- Microfone do Headset -->
+    <path d="M394 235c0 23.2-18.8 42-42 42h-40v-14h40c15.5 0 28-12.5 28-28z" fill="#1a0066" />
+    <path d="M312 263c-12.2 0-22 9.8-22 22s9.8 22 22 22 22-9.8 22-22-9.8-22-22-22z" fill="#1a0066" />
+  </svg>
+
+</button>
+
+
+
+<!-- =========================================================
+         CHATBOT
+         DIRETAMENTE NESTA PÁGINA
+    ========================================================= -->
+
+<div class="chatbot-principal" id="chatbotPrincipal">
+
+
+  <!-- CABEÇALHO -->
+
+  <div class="chatbot-header">
+
+    <div>
+
+      <strong>chatArais</strong>
+
+      <small>Assistente virtual 🌱</small>
+
+    </div>
+
+
+    <button class="chatbot-fechar" onclick="fecharChat()" aria-label="Fechar chatbot">
+
+      ×
+
+    </button>
+
+  </div>
+
+
+
+  <!-- MENSAGENS -->
+
+  <div class="chatbot-mensagens" id="chatbotMensagens">
+
+
+    <div class="mensagem bot">
+
+      <span>Bot</span>
+
+      Olá! 👋 Como posso ajudar você?
+
+    </div>
+
+  </div>
+
+
+
+  <!-- INPUT -->
+
+  <div class="chatbot-input-area">
+
+    <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Digite sua mensagem..." autocomplete="off">
+
+
+    <button class="chatbot-enviar" onclick="enviarMensagem()">
+
+      Enviar
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+         JAVASCRIPT DO CHATBOT
+    ========================================================= -->
+
+<script>
+
+  /* =====================================================
+     ABRIR / FECHAR CHAT
+  ===================================================== */
+
+  function alternarChat() {
+
+    const chat =
+      document.getElementById("chatbotPrincipal");
+
+
+    if (chat.style.display === "flex") {
+
+      chat.style.display = "none";
+
+    } else {
+
+      chat.style.display = "flex";
+
+      document
+        .getElementById("chatbotInput")
+        .focus();
+
+    }
+
+  }
+
+
+  /* =====================================================
+     FECHAR CHAT
+  ===================================================== */
+
+  function fecharChat() {
+
+    document
+      .getElementById("chatbotPrincipal")
+      .style.display = "none";
+
+  }
+
+
+  /* =====================================================
+     ADICIONAR MENSAGEM
+  ===================================================== */
+
+  function adicionarMensagem(texto, tipo) {
+
+    const mensagens =
+      document.getElementById("chatbotMensagens");
+
+
+    const mensagem =
+      document.createElement("div");
+
+
+    mensagem.className =
+      "mensagem " + tipo;
+
+
+    const nome =
+      document.createElement("span");
+
+
+    if (tipo === "bot") {
+
+      nome.textContent = "Bot";
+
+    } else {
+
+      nome.textContent = "Você";
+
+    }
+
+
+    mensagem.appendChild(nome);
+
+
+    const conteudo =
+      document.createTextNode(texto);
+
+
+    mensagem.appendChild(conteudo);
+
+
+    mensagens.appendChild(mensagem);
+
+
+    mensagens.scrollTop =
+      mensagens.scrollHeight;
+
+  }
+
+  /* =====================================================
+     RESPOSTAS DO CHATBOT
+  ===================================================== */
+
+  function respostaBot(texto) {
+
+    const mensagem = texto
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    /* =====================================================
+       XINGAMENTOS E OFENSAS
+    ===================================================== */
+
+    const palavrasOfensivas = [
+      "idiota",
+      "burro",
+      "burra",
+      "imbecil",
+      "otario",
+      "retardado",
+      "retardada",
+      "inutil",
+      "estupido",
+      "estupida",
+      "nojento",
+      "nojenta",
+      "babaca",
+      "besta",
+      "palhaco",
+      "desgracado",
+      "desgracada",
+      "lixo",
+      "vai se ferrar",
+      "vai tomar no cu",
+      "tomar no cu",
+      "foda-se",
+      "fodase",
+      "merda",
+      "porra",
+      "caralho",
+      "cacete"
+    ];
+
+    const encontrouOfensa = palavrasOfensivas.some(
+      palavra => mensagem.includes(palavra)
+    );
+
+    if (encontrouOfensa) {
+
+      /* Bloqueia por 1 hora */
+      const umaHora = 60 * 60 * 1000;
+
+      localStorage.setItem(
+        "chatBloqueadoAte",
+        Date.now() + umaHora
+      );
+
+      setTimeout(() => {
+        fecharChat();
+      }, 1800);
+
+      return "⚠️ Esta mensagem fere as normas e os limites de respeito do chat. Você foi bloqueado por 1 hora.";
+    }
+   
+    /* =====================================================
+       VERIFICAR BLOQUEIO
+    ===================================================== */
+
+    const bloqueadoAte = localStorage.getItem("chatBloqueadoAte");
+
+    if (bloqueadoAte) {
+
+      const tempoRestante = Number(bloqueadoAte) - Date.now();
+
+      if (tempoRestante > 0) {
+
+        const minutosRestantes = Math.ceil(
+          tempoRestante / 60000
+        );
+
+        adicionarMensagem(
+          `🚫 Você está temporariamente bloqueado. Tente novamente em aproximadamente ${minutosRestantes} minuto(s).`,
+          "bot"
+        );
+
+        return;
+
+      } else {
+
+        /* O bloqueio terminou */
+        localStorage.removeItem("chatBloqueadoAte");
+      }
+    }
+    /* =====================================================
+   SAUDAÇÕES
+===================================================== */
+
+    if (
+      mensagem.includes("oi") ||
+      mensagem.includes("ola") ||
+      mensagem.includes("olá")
+    ) {
+      return "Olá! 👋 Como posso ajudar você a conhecer o portfólio Solo em Equilíbrio?";
+    }
+
+
+    /* =====================================================
+       BOM DIA
+    ===================================================== */
+
+    if (mensagem.includes("bom dia")) {
+      return "Bom dia! 🌱 Como posso ajudar você com o projeto Solo em Equilíbrio?";
+    }
+
+
+    /* =====================================================
+       BOA TARDE
+    ===================================================== */
+
+    if (mensagem.includes("boa tarde")) {
+      return "Boa tarde! 🌱 Posso contar mais sobre o projeto Solo em Equilíbrio.";
+    }
+
+
+    /* =====================================================
+       BOA NOITE
+    ===================================================== */
+
+    if (mensagem.includes("boa noite")) {
+      return "Boa noite! 🌙 Como posso ajudar você com o nosso portfólio?";
+    }
+
+
+    /* =====================================================
+       AJUDA
+    ===================================================== */
+
+    if (
+      mensagem.includes("ajuda") ||
+      mensagem.includes("suporte") ||
+      mensagem.includes("o que voce pode fazer")
+    ) {
+      return "Posso responder perguntas sobre o Solo em Equilíbrio, o desafio do projeto, seus objetivos, desenvolvimento, tecnologias utilizadas, trajetória, aprendizados e conclusão. 🌱";
+    }
+
+
+    /* =====================================================
+       SOBRE O PROJETO
+    ===================================================== */
+
+    if (
+      mensagem.includes("sobre o projeto") ||
+      mensagem.includes("o que e o projeto") ||
+      mensagem.includes("o que é o projeto") ||
+      mensagem.includes("solo em equilibrio") ||
+      mensagem.includes("solo em equilíbrio")
+    ) {
+      return "O Solo em Equilíbrio é um projeto voltado à conscientização sobre a importância do solo, sua preservação e sua relação com o meio ambiente e a sustentabilidade. 🌱";
+    }
+
+
+    /* =====================================================
+       NOME DO PROJETO
+    ===================================================== */
+
+    if (
+      mensagem.includes("nome do projeto") ||
+      mensagem.includes("nome")
+    ) {
+      return "O nome do projeto é Solo em Equilíbrio. 🌱";
+    }
+
+
+    /* =====================================================
+       OBJETIVO
+    ===================================================== */
+
+    if (
+      mensagem.includes("objetivo") ||
+      mensagem.includes("qual o objetivo") ||
+      mensagem.includes("finalidade do projeto")
+    ) {
+      return "O objetivo do Solo em Equilíbrio é apresentar informações de forma clara e acessível, promovendo a conscientização sobre a importância da preservação do solo e do meio ambiente. 🌎";
+    }
+
+
+    /* =====================================================
+       DESAFIO
+    ===================================================== */
+
+    if (
+      mensagem.includes("desafio") ||
+      mensagem.includes("qual foi o desafio") ||
+      mensagem.includes("problema do projeto")
+    ) {
+      return "O principal desafio foi transformar informações sobre o tema em uma experiência digital simples, organizada e fácil de compreender. 💡";
+    }
+
+
+    /* =====================================================
+       SOLUÇÃO
+    ===================================================== */
+
+    if (
+      mensagem.includes("solucao") ||
+      mensagem.includes("solução") ||
+      mensagem.includes("como resolveram") ||
+      mensagem.includes("como foi resolvido")
+    ) {
+      return "A solução foi desenvolver uma interface organizada e intuitiva, apresentando o conteúdo de maneira visual e objetiva para facilitar a compreensão dos usuários. 💻🌱";
+    }
+
+
+    /* =====================================================
+       DESENVOLVIMENTO
+    ===================================================== */
+
+    if (
+      mensagem.includes("desenvolvimento") ||
+      mensagem.includes("como foi desenvolvido") ||
+      mensagem.includes("como fizeram")
+    ) {
+      return "O projeto foi desenvolvido de forma gradual, passando pela definição do problema, planejamento, criação da interface, implementação das funcionalidades, testes e ajustes finais.";
+    }
+
+
+    /* =====================================================
+       TECNOLOGIAS
+    ===================================================== */
+
+    if (
+      mensagem.includes("tecnologia") ||
+      mensagem.includes("tecnologias") ||
+      mensagem.includes("linguagem") ||
+      mensagem.includes("programacao") ||
+      mensagem.includes("programação")
+    ) {
+      return "O projeto utiliza tecnologias de desenvolvimento web, como HTML para estruturar o conteúdo, CSS para a estilização e JavaScript para adicionar interatividade e funcionalidades. 💻";
+    }
+
+
+    /* =====================================================
+       HTML
+    ===================================================== */
+
+    if (mensagem.includes("html")) {
+      return "O HTML foi utilizado para estruturar as páginas, textos, títulos, imagens, seções e demais elementos do portfólio. 🧩";
+    }
+
+
+    /* =====================================================
+       CSS
+    ===================================================== */
+
+    if (mensagem.includes("css")) {
+      return "O CSS foi utilizado para criar o visual do projeto, incluindo cores, espaçamentos, tamanhos, organização dos elementos, responsividade e efeitos visuais. 🎨";
+    }
+
+
+    /* =====================================================
+       JAVASCRIPT
+    ===================================================== */
+
+    if (
+      mensagem.includes("javascript") ||
+      mensagem.includes("java script") ||
+      mensagem.includes("js")
+    ) {
+      return "O JavaScript foi utilizado para adicionar interatividade ao projeto, incluindo funcionalidades do chatbot e comportamentos dos elementos da página. ⚙️";
+    }
+
+
+    /* =====================================================
+       CHATBOT
+    ===================================================== */
+
+    if (
+      mensagem.includes("chatbot") ||
+      mensagem.includes("chat") ||
+      mensagem.includes("robo") ||
+      mensagem.includes("robô")
+    ) {
+      return "O chatbot foi criado para ajudar os visitantes a encontrar informações sobre o portfólio de maneira rápida e interativa. 🤖🌱";
+    }
+
+
+    /* =====================================================
+       LINHA DO TEMPO
+    ===================================================== */
+
+    if (
+      mensagem.includes("linha do tempo") ||
+      mensagem.includes("timeline") ||
+      mensagem.includes("trajetoria") ||
+      mensagem.includes("trajetória")
+    ) {
+      return "A linha do tempo apresenta as principais etapas da trajetória do projeto, mostrando sua evolução desde o início até os resultados finais. 📅";
+    }
+
+
+    /* =====================================================
+       APRENDIZADOS
+    ===================================================== */
+
+    if (
+      mensagem.includes("aprendizado") ||
+      mensagem.includes("aprendizados") ||
+      mensagem.includes("o que aprenderam") ||
+      mensagem.includes("o que aprendemos")
+    ) {
+      return "Durante o projeto, foram desenvolvidos aprendizados relacionados à programação, organização, trabalho em equipe, resolução de problemas, criação de interfaces e desenvolvimento de soluções digitais. 📚💻";
+    }
+
+
+    /* =====================================================
+       RESULTADOS
+    ===================================================== */
+
+    if (
+      mensagem.includes("resultado") ||
+      mensagem.includes("resultados") ||
+      mensagem.includes("resultado final")
+    ) {
+      return "O resultado foi a criação de um portfólio digital que organiza a trajetória do projeto e apresenta suas etapas, desafios, aprendizados e informações de maneira visual e interativa.";
+    }
+
+
+    /* =====================================================
+       CONCLUSÃO
+    ===================================================== */
+
+    if (
+      mensagem.includes("conclusao") ||
+      mensagem.includes("conclusão") ||
+      mensagem.includes("final do projeto") ||
+      mensagem.includes("como terminou")
+    ) {
+      return "Na conclusão, o projeto mostrou como a tecnologia pode ser utilizada para apresentar informações de forma acessível, organizada e interativa, além de contribuir para os aprendizados da equipe. 🌱💻";
+    }
+
+
+    /* =====================================================
+       SOLO
+    ===================================================== */
+
+    if (mensagem.includes("solo")) {
+      return "O solo é um recurso natural essencial para os ecossistemas, para o crescimento das plantas e para a produção de alimentos. Por isso, sua conservação é fundamental. 🌱";
+    }
+
+
+    /* =====================================================
+       PLANTAS
+    ===================================================== */
+
+    if (
+      mensagem.includes("planta") ||
+      mensagem.includes("plantas")
+    ) {
+      return "As plantas dependem de um solo saudável para obter água e nutrientes necessários ao seu desenvolvimento. 🌿";
+    }
+
+
+    /* =====================================================
+       SUSTENTABILIDADE
+    ===================================================== */
+
+    if (
+      mensagem.includes("sustentabilidade") ||
+      mensagem.includes("sustentavel") ||
+      mensagem.includes("sustentável")
+    ) {
+      return "A sustentabilidade busca utilizar os recursos naturais de maneira responsável, procurando equilibrar as necessidades atuais com a preservação para as futuras gerações. 🌎";
+    }
+
+
+    /* =====================================================
+       MEIO AMBIENTE
+    ===================================================== */
+
+    if (
+      mensagem.includes("meio ambiente") ||
+      mensagem.includes("ambiente")
+    ) {
+      return "O meio ambiente envolve os elementos naturais e as relações entre eles. Preservar o solo, a água, as plantas e os animais é importante para manter esse equilíbrio. 🌎🌱";
+    }
+
+
+    /* =====================================================
+       IMPORTÂNCIA DO SOLO
+    ===================================================== */
+
+    if (
+      mensagem.includes("importancia do solo") ||
+      mensagem.includes("importância do solo") ||
+      mensagem.includes("por que o solo e importante") ||
+      mensagem.includes("por que o solo é importante")
+    ) {
+      return "O solo é importante porque participa do crescimento das plantas, da produção de alimentos, do armazenamento de água e do funcionamento dos ecossistemas. 🌱";
+    }
+
+
+    /* =====================================================
+       PRESERVAÇÃO
+    ===================================================== */
+
+    if (
+      mensagem.includes("preservacao") ||
+      mensagem.includes("preservação") ||
+      mensagem.includes("conservar o solo") ||
+      mensagem.includes("conservacao") ||
+      mensagem.includes("conservação")
+    ) {
+      return "A preservação do solo pode envolver práticas responsáveis de uso da terra, redução da erosão, manutenção da vegetação e cuidados para evitar sua degradação. 🌱";
+    }
+
+
+    /* =====================================================
+       USUÁRIO / INTERFACE
+    ===================================================== */
+
+    if (
+      mensagem.includes("interface") ||
+      mensagem.includes("design") ||
+      mensagem.includes("visual")
+    ) {
+      return "A interface foi pensada para ser simples, organizada e intuitiva, facilitando a navegação e permitindo que o visitante encontre as informações do projeto com facilidade. 🎨";
+    }
+
+
+    /* =====================================================
+       RESPONSIVIDADE
+    ===================================================== */
+
+    if (
+      mensagem.includes("responsivo") ||
+      mensagem.includes("responsividade") ||
+      mensagem.includes("celular") ||
+      mensagem.includes("mobile")
+    ) {
+      return "A responsividade permite que o portfólio se adapte a diferentes tamanhos de tela, como computadores, tablets e celulares. 📱💻";
+    }
+
+
+    /* =====================================================
+       AGRADECIMENTO
+    ===================================================== */
+
+    if (
+      mensagem.includes("obrigado") ||
+      mensagem.includes("obrigada") ||
+      mensagem.includes("valeu")
+    ) {
+      return "De nada! 😊 Foi um prazer ajudar você a conhecer o Solo em Equilíbrio.";
+    }
+
+
+    /* =====================================================
+       TCHAU
+    ===================================================== */
+
+    if (
+      mensagem.includes("tchau") ||
+      mensagem.includes("adeus") ||
+      mensagem.includes("ate mais") ||
+      mensagem.includes("até mais")
+    ) {
+      return "Tchau! 👋 Obrigado por conhecer o nosso portfólio. Até a próxima! 🌱";
+    }
+
+
+    /* =====================================================
+       RESPOSTA PADRÃO
+    ===================================================== */
+
+    return "Ainda estou aprendendo! 🤖 Você pode perguntar sobre o projeto, objetivo, desafio, solução, trajetória, tecnologias, HTML, CSS, JavaScript, chatbot, aprendizados, resultados, solo, sustentabilidade ou meio ambiente. 🌱";
+  }
+  /* =====================================================
+     ENVIAR MENSAGEM
+  ===================================================== */
+
+  function enviarMensagem() {
+
+    const input =
+      document.getElementById("chatbotInput");
+
+
+    const texto =
+      input.value.trim();
+
+
+    if (texto === "") {
+
+      return;
+
+    }
+
+
+    /* MOSTRA MENSAGEM DO USUÁRIO */
+
+    adicionarMensagem(
+      texto,
+      "usuario"
+    );
+
+
+    /* LIMPA INPUT */
+
+    input.value = "";
+
+
+    /* RESPOSTA DO BOT */
+
+    setTimeout(function () {
+
+      const resposta =
+        respostaBot(texto);
+
+
+      adicionarMensagem(
+        resposta,
+        "bot"
+      );
+
+    }, 500);
+
+  }
+
+
+  /* =====================================================
+     ENTER PARA ENVIAR
+  ===================================================== */
+
+  document
+    .getElementById("chatbotInput")
+    .addEventListener(
+      "keydown",
+      function (event) {
+
+        if (event.key === "Enter") {
+
+          enviarMensagem();
+
+        }
+
+      }
+    );
+
+</script>
+
+
+<!-- SEU SCRIPT ORIGINAL -->
+
 
 </body>
- 
+
+
 </html>
- 

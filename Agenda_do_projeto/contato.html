@@ -4,375 +4,1156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sou o chatArais, seu assistente virtual!</title>
-   <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-        }
+    <link rel="stylesheet" href="estilo.css">
+     <style>
+        /* =========================================================
+           CHATBOT - BOTÃO DO ROBÔ
+        ========================================================= */
 
+        .btn-abrir-chat-principal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
 
-body {
-  background-color: transparent !important;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-end; 
-  align-items: flex-end;     
-  min-height: 100vh;         
-  box-sizing: border-box;    
-}
+            background-color: #5cb82a;
 
-
-        
-        .chat-container {
-            width: 330px;
-            height: 400px;
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            padding: 15px;
-            position: relative;
-        }
-
-        
-        .chat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #e8ede8;
-        }
-
-        .chat-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-
-        
-        .theme-toggle {
-            background: none;
             border: none;
+
+            width: 70px;
+            height: 70px;
+
+            border-radius: 50%;
+
             cursor: pointer;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+            z-index: 9999;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            transition: transform 0.2s, background-color 0.2s;
+
+            padding: 0;
+        }
+
+        .btn-abrir-chat-principal:hover {
+            background-color: #4da31f;
+            transform: scale(1.08);
+        }
+
+        .btn-abrir-chat-principal svg {
+            width: 58px;
+            height: 58px;
+        }
+
+
+        /* =========================================================
+           JANELA DO CHAT
+           TAMANHO FIXO: 300 X 380
+        ========================================================= */
+
+        .chatbot-principal {
+            position: fixed;
+
+            width: 300px;
+            height: 380px;
+
+            right: 20px;
+            bottom: 100px;
+
+            background: #242424;
+
+            border-radius: 14px;
+
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+            overflow: hidden;
+
+            display: none;
+
+            flex-direction: column;
+
+            z-index: 10000;
+        }
+
+
+        /* =========================================================
+           CABEÇALHO
+        ========================================================= */
+
+        .chatbot-header {
+            height: 55px;
+
+            padding: 10px 12px;
+
+            background: #5cb82a;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            flex-shrink: 0;
+        }
+
+        .chatbot-header strong {
+            display: block;
+
+            font-size: 16px;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .chatbot-header small {
+            display: block;
+
+            margin-top: 2px;
+
+            font-size: 11px;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================================================
+           BOTÃO FECHAR
+        ========================================================= */
+
+        .chatbot-fechar {
             width: 30px;
             height: 30px;
-            border-radius: 50%;
-        }
 
-        .theme-toggle:hover {
-            background-color: #f0f0f0;
-        }
-
-        .theme-toggle svg {
-            width: 20px;
-            height: 20px;
-            fill: #2e7d32;
-        }
-
-        .theme-toggle .sun-icon {
-            display: none;
-        }
-
-        
-        .chat-display {
-            flex: 1;
-            background-color: #f7f9f7;
-            border: 1px solid #e8ede8;
-            border-radius: 6px;
-            padding: 10px;
-            overflow-y: auto;
-            margin-bottom: 15px;
-            white-space: pre-wrap;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #2c3e2c;
-        }
-
-        
-        .input-area {
-            display: flex;
-            gap: 10px;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            background-color: #ffffff;
-            border: 1px solid #cbdccb;
-            color: #2c3e2c;
-            padding: 10px;
-            border-radius: 6px;
-            outline: none;
-        }
-
-        input[type="text"]:focus {
-            border-color: #2e7d32;
-        }
-
-        .btn-enviar {
-            background-color: #2e7d32;
-            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
+
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.15);
+
+            color: white;
+
+            font-size: 22px;
+
+            line-height: 30px;
+
             cursor: pointer;
-            font-weight: bold;
+
+            padding: 0;
         }
 
-        .btn-enviar:hover {
-            background-color: #1b5e20;
+        .chatbot-fechar:hover {
+            background: rgba(0, 0, 0, 0.3);
         }
 
-    
-        .modal-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+        /* =========================================================
+           ÁREA DAS MENSAGENS
+        ========================================================= */
+
+        .chatbot-mensagens {
+            flex: 1;
+
+            min-height: 0;
+
+            padding: 12px;
+
+            overflow-y: auto;
+
+            background: #303030;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================================================
+           BARRA DE ROLAGEM
+        ========================================================= */
+
+        .chatbot-mensagens::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .chatbot-mensagens::-webkit-scrollbar-track {
+            background: #292929;
+        }
+
+        .chatbot-mensagens::-webkit-scrollbar-thumb {
+            background: #5cb82a;
             border-radius: 10px;
-            z-index: 10;
         }
 
-        .modal-content {
-            background-color: #ffffff;
-            width: 350px;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            border: 1px solid #e0e0e0;
-            color: #2c3e2c;
+
+        /* =========================================================
+           MENSAGENS
+        ========================================================= */
+
+        .mensagem {
+            max-width: 85%;
+
+            padding: 8px 10px;
+
+            margin-bottom: 9px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+
+            color: white;
+
+            word-wrap: break-word;
         }
 
-        .modal-content h2 {
-            font-size: 16px;
-            margin-bottom: 15px;
-            color: #2e7d32;
-        }
-
-        .modal-content input {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        
-        .chat-container.dark {
-            background-color: #1b1b1b;
-            border-color: #3b3b3b;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .chat-container.dark .chat-header {
-            border-bottom-color: #2b2b2b;
-        }
-
-        .chat-container.dark .chat-title {
-            color: #ffffff;
-        }
-
-        .chat-container.dark .theme-toggle:hover {
-            background-color: #2b2b2b;
-        }
-
-        .chat-container.dark .theme-toggle svg {
-            fill: #ffffff;
-        }
-
-        .chat-container.dark .theme-toggle .moon-icon {
-            display: none;
-        }
-
-        .chat-container.dark .theme-toggle .sun-icon {
+        .mensagem span {
             display: block;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            margin-bottom: 3px;
         }
 
-        .chat-container.dark .chat-display {
-            background-color: #2b2b2b;
-            border-color: #3b3b3b;
-            color: #ffffff;
+
+        /* MENSAGEM DO BOT */
+
+        .mensagem.bot {
+            background: #3b3b3b;
+
+            border-bottom-left-radius: 3px;
         }
 
-        .chat-container.dark input[type="text"] {
-            background-color: #2b2b2b;
-            border-color: #3b3b3b;
-            color: #ffffff;
+        .mensagem.bot span {
+            color: #5cb82a;
         }
 
-        .chat-container.dark input[type="text"]:focus {
-            border-color: #e5e8ed;
+
+        /* MENSAGEM DO USUÁRIO */
+
+        .mensagem.usuario {
+            margin-left: auto;
+
+            background: #5cb82a;
+
+            border-bottom-right-radius: 3px;
         }
 
-        
-        .chat-container.dark .btn-enviar {
-            background-color: #2e7d32;
+        .mensagem.usuario span {
+            color: white;
         }
 
-        .chat-container.dark .btn-enviar:hover {
-            background-color: #1b5e20;
+
+        /* =========================================================
+           ÁREA DO INPUT
+        ========================================================= */
+
+        .chatbot-input-area {
+            height: 52px;
+
+            padding: 8px;
+
+            display: flex;
+
+            gap: 6px;
+
+            background: #242424;
+
+            border-top: 1px solid #444;
+
+            flex-shrink: 0;
         }
 
-    
-        .chat-container.dark .modal-content {
-            background-color: #2b2b2b;
-            border-color: #3b3b3b;
-            color: #ffffff;
+
+        /* INPUT */
+
+        .chatbot-input {
+            flex: 1;
+
+            min-width: 0;
+
+            height: 36px;
+
+            padding: 0 9px;
+
+            border-radius: 7px;
+
+            border: 1px solid #555;
+
+            outline: none;
+
+            background: #333;
+
+            color: white;
+
+            font-size: 12px;
+
+            font-family: Arial, sans-serif;
         }
 
-        .chat-container.dark .modal-content h2 {
-            color: #ffffff;
+        .chatbot-input::placeholder {
+            color: #aaa;
+        }
+
+        .chatbot-input:focus {
+            border-color: #5cb82a;
+        }
+
+
+        /* =========================================================
+           BOTÃO ENVIAR
+        ========================================================= */
+
+        .chatbot-enviar {
+            height: 36px;
+
+            padding: 0 10px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #5cb82a;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .chatbot-enviar:hover {
+            background: #4da31f;
+        }
+
+
+        /* =========================================================
+           RESPONSIVO
+        ========================================================= */
+
+        @media (max-width: 450px) {
+
+            .chatbot-principal {
+                width: 300px;
+                height: 380px;
+
+                right: 10px;
+                bottom: 95px;
+            }
+
+            .btn-abrir-chat-principal {
+                right: 15px;
+                bottom: 15px;
+            }
         }
     </style>
-
 </head>
+
+
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="Style.css">
+
+    <title>Solo em Equilíbrio</title>
+
+    <style>
+        /* =========================================================
+           CHATBOT - BOTÃO DO ROBÔ
+        ========================================================= */
+
+        .btn-abrir-chat-principal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+
+            background-color: #5cb82a;
+
+            border: none;
+
+            width: 70px;
+            height: 70px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+            z-index: 9999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: transform 0.2s, background-color 0.2s;
+
+            padding: 0;
+        }
+
+        .btn-abrir-chat-principal:hover {
+            background-color: #4da31f;
+            transform: scale(1.08);
+        }
+
+        .btn-abrir-chat-principal svg {
+            width: 58px;
+            height: 58px;
+        }
+
+
+        /* =========================================================
+           JANELA DO CHAT
+           TAMANHO FIXO: 300 X 380
+        ========================================================= */
+
+        .chatbot-principal {
+            position: fixed;
+
+            width: 300px;
+            height: 380px;
+
+            right: 20px;
+            bottom: 100px;
+
+            background: #242424;
+
+            border-radius: 14px;
+
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+            overflow: hidden;
+
+            display: none;
+
+            flex-direction: column;
+
+            z-index: 10000;
+        }
+
+
+        /* =========================================================
+           CABEÇALHO
+        ========================================================= */
+
+        .chatbot-header {
+            height: 55px;
+
+            padding: 10px 12px;
+
+            background: #5cb82a;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            flex-shrink: 0;
+        }
+
+        .chatbot-header strong {
+            display: block;
+
+            font-size: 16px;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .chatbot-header small {
+            display: block;
+
+            margin-top: 2px;
+
+            font-size: 11px;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================================================
+           BOTÃO FECHAR
+        ========================================================= */
+
+        .chatbot-fechar {
+            width: 30px;
+            height: 30px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.15);
+
+            color: white;
+
+            font-size: 22px;
+
+            line-height: 30px;
+
+            cursor: pointer;
+
+            padding: 0;
+        }
+
+        .chatbot-fechar:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* =========================================================
+           ÁREA DAS MENSAGENS
+        ========================================================= */
+
+        .chatbot-mensagens {
+            flex: 1;
+
+            min-height: 0;
+
+            padding: 12px;
+
+            overflow-y: auto;
+
+            background: #303030;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================================================
+           BARRA DE ROLAGEM
+        ========================================================= */
+
+        .chatbot-mensagens::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .chatbot-mensagens::-webkit-scrollbar-track {
+            background: #292929;
+        }
+
+        .chatbot-mensagens::-webkit-scrollbar-thumb {
+            background: #5cb82a;
+            border-radius: 10px;
+        }
+
+
+        /* =========================================================
+           MENSAGENS
+        ========================================================= */
+
+        .mensagem {
+            max-width: 85%;
+
+            padding: 8px 10px;
+
+            margin-bottom: 9px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+
+            color: white;
+
+            word-wrap: break-word;
+        }
+
+        .mensagem span {
+            display: block;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            margin-bottom: 3px;
+        }
+
+
+        /* MENSAGEM DO BOT */
+
+        .mensagem.bot {
+            background: #3b3b3b;
+
+            border-bottom-left-radius: 3px;
+        }
+
+        .mensagem.bot span {
+            color: #5cb82a;
+        }
+
+
+        /* MENSAGEM DO USUÁRIO */
+
+        .mensagem.usuario {
+            margin-left: auto;
+
+            background: #5cb82a;
+
+            border-bottom-right-radius: 3px;
+        }
+
+        .mensagem.usuario span {
+            color: white;
+        }
+
+
+        /* =========================================================
+           ÁREA DO INPUT
+        ========================================================= */
+
+        .chatbot-input-area {
+            height: 52px;
+
+            padding: 8px;
+
+            display: flex;
+
+            gap: 6px;
+
+            background: #242424;
+
+            border-top: 1px solid #444;
+
+            flex-shrink: 0;
+        }
+
+
+        /* INPUT */
+
+        .chatbot-input {
+            flex: 1;
+
+            min-width: 0;
+
+            height: 36px;
+
+            padding: 0 9px;
+
+            border-radius: 7px;
+
+            border: 1px solid #555;
+
+            outline: none;
+
+            background: #333;
+
+            color: white;
+
+            font-size: 12px;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .chatbot-input::placeholder {
+            color: #aaa;
+        }
+
+        .chatbot-input:focus {
+            border-color: #5cb82a;
+        }
+
+
+        /* =========================================================
+           BOTÃO ENVIAR
+        ========================================================= */
+
+        .chatbot-enviar {
+            height: 36px;
+
+            padding: 0 10px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #5cb82a;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .chatbot-enviar:hover {
+            background: #4da31f;
+        }
+
+
+        /* =========================================================
+           RESPONSIVO
+        ========================================================= */
+
+        @media (max-width: 450px) {
+
+            .chatbot-principal {
+                width: 300px;
+                height: 380px;
+
+                right: 10px;
+                bottom: 95px;
+            }
+
+            .btn-abrir-chat-principal {
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+
 <body>
 
-    <div class="chat-container" id="chatContainer">
-        <!-- Barra superior interna contendo o alternador de modo escuro -->
-        <div class="chat-header">
-            <span class="chat-title">chatArais</span>
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar Tema">
-                <!-- Ícone Lua (Exibido no modo Claro) -->
-                <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z"/></svg>
-                <!-- Ícone Sol (Exibido no modo Escuro) -->
-                <svg class="sun-icon" viewBox="0 0 24 24"><path d="M6.993 12c0 2.761 2.246 5 5.007 5s5.007-2.239 5.007-5-2.246-5-5.007-5-5.007 2.239-5.007 5zM11 2h2v3h-2zm0 14h2v3h-2zm-7-5h3v2H4zm13 0h3v2h-3zM5.637 5.635l2.121 2.122-1.414 1.414-2.122-2.122zm10.535 10.536 2.122 2.121-1.414 1.414-2.122-2.121zm-10.535 8.414l-2.122-2.122 1.414-1.414 2.122 2.122zm12.656-12.657 1.414-1.414 2.122 2.122-1.414 1.414z"/></svg>
-            </button>
-        </div>
 
-        <!-- Janela Pop-up de Nome -->
-        <div class="modal-overlay" id="janelaNome">
-            <div class="modal-content">
-                <h2>Oi! Estou aqui para te ajudar no que precisar. Me diz, qual é o seu nome?</h2>
-                <input type="text" id="entradaNome" placeholder="Digite seu nome..." autocomplete="off">
-                <button class="btn-enviar" onclick="salvarNome()">Confirmar</button>
+    <!-- =========================================================
+         MENU
+    ========================================================= -->
+
+    <!-- =========================================================
+         ROBÔ
+    ========================================================= -->
+
+    <button class="btn-abrir-chat-principal" onclick="alternarChat()" aria-label="Abrir Chatbot">
+
+
+        <svg viewBox="0 0 512 512">
+            <!-- Corpo e Pescoço -->
+            <path d="M256 310v35h20v-35z" fill="#e1f5fe" />
+            <path d="M236 310v35h20v-35z" fill="#b3e5fc" />
+            <path d="M256 328c-71.8 0-130 58.2-130 130v54h130V328z" fill="#e1f5fe" />
+            <path d="M256 328v184h130v-54c0-71.8-58.2-130-130-130z" fill="#90caf9" />
+            <!-- Cabeça Externa -->
+            <path d="M256 81c-82.3 0-142 55.4-142 110.5s59.7 110.5 142 110.5z" fill="#e1f5fe" />
+            <path d="M256 81v221c82.3 0 142-55.4 142-110.5S338.3 81 256 81z" fill="#b3e5fc" />
+            <!-- Visor Escuro -->
+            <path d="M256 125c-54.1 0-98 29.5-98 66s43.9 66 98 66z" fill="#1a0066" />
+            <path d="M256 125v132c54.1 0 98-29.5 98-66s-43.9-66-98-66z" fill="#12004d" />
+            <!-- Olhos Verdes -->
+            <path d="M210 143h16v40h-16z" fill="#5cb82a" />
+            <path d="M278 143h16v40h-16z" fill="#4da31f" />
+            <!-- Sorriso Verde -->
+            <path d="M214 209c0 10.5 18.8 19 42 19v-19z" fill="#5cb82a" />
+            <path d="M256 209v19c23.2 0 42-8.5 42-19z" fill="#4da31f" />
+            <!-- Orelhas/Fones Laterais -->
+            <path d="M116 172c-15.5 0-28 11.2-28 25s12.5 25 28 25z" fill="#311b92" />
+            <path d="M116 172v50c6.6 0 12-11.2 12-25s-5.4-25-12-25z" fill="#90caf9" />
+            <path d="M396 172v50c15.5 0 28-11.2 28-25s-12.5-25-28-25z" fill="#1a0066" />
+            <path d="M396 172c-6.6 0-12 11.2-12 25s5.4 25 12 25z" fill="#64b5f6" />
+            <!-- Microfone do Headset -->
+            <path d="M394 235c0 23.2-18.8 42-42 42h-40v-14h40c15.5 0 28-12.5 28-28z" fill="#1a0066" />
+            <path d="M312 263c-12.2 0-22 9.8-22 22s9.8 22 22 22 22-9.8 22-22-9.8-22-22-22z" fill="#1a0066" />
+        </svg>
+
+    </button>
+
+
+
+    <!-- =========================================================
+         CHATBOT
+         DIRETAMENTE NESTA PÁGINA
+    ========================================================= -->
+
+    <div class="chatbot-principal" id="chatbotPrincipal">
+
+
+        <!-- CABEÇALHO -->
+
+        <div class="chatbot-header">
+
+            <div>
+
+                <strong>chatArais</strong>
+
+                <small>Assistente virtual 🌱</small>
+
             </div>
+
+
+            <button class="chatbot-fechar" onclick="fecharChat()" aria-label="Fechar chatbot">
+
+                ×
+
+            </button>
+
         </div>
 
-        <!-- Tela Principal do Chat -->
-        <div class="chat-display" id="chatDisplay"></div>
-        
-        <div class="input-area">
-            <input type="text" id="inputField" placeholder="Digite sua mensagem..." autocomplete="off">
-            <button class="btn-enviar" onclick="sendMessage()">Enviar</button>
+
+
+        <!-- MENSAGENS -->
+
+        <div class="chatbot-mensagens" id="chatbotMensagens">
+
+
+            <div class="mensagem bot">
+
+                <span>Bot</span>
+
+                Olá! 👋 Como posso ajudar você?
+
+            </div>
+
         </div>
+
+
+
+        <!-- INPUT -->
+
+        <div class="chatbot-input-area">
+
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Digite sua mensagem..."
+                autocomplete="off">
+
+
+            <button class="chatbot-enviar" onclick="enviarMensagem()">
+
+                Enviar
+
+            </button>
+
+        </div>
+
     </div>
 
+
+
+    <!-- =========================================================
+         JAVASCRIPT DO CHATBOT
+    ========================================================= -->
+
     <script>
-        // Variáveis de Estado
-        let nomeUsuario = "usuário";
 
-        // Elementos do DOM
-        const chatContainer = document.getElementById('chatContainer');
-        const janelaNome = document.getElementById('janelaNome');
-        const entradaNome = document.getElementById('entradaNome');
-        const chatDisplay = document.getElementById('chatDisplay');
-        const inputField = document.getElementById('inputField');
+        /* =====================================================
+           ABRIR / FECHAR CHAT
+        ===================================================== */
 
-        // Foco inicial na janela de nome
-        entradaNome.focus();
+        function alternarChat() {
 
-        // Alternador manual do tema interno do bot
-        function toggleTheme() {
-            chatContainer.classList.toggle('dark');
-        }
+            const chat =
+                document.getElementById("chatbotPrincipal");
 
-        // Binds de Teclado (Tecla Enter)
-        entradaNome.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') salvarNome();
-        });
 
-        inputField.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') sendMessage();
-        });
+            if (chat.style.display === "flex") {
 
-        // Função para Salvar o Nome
-        function salvarNome() {
-            const nomeDigitado = entradaNome.getInputValue || entradaNome.value.trim();
-            if (nomeDigitado) {
-                nomeUsuario = nomeDigitado;
-                janelaNome.style.display = 'none'; // Fecha o modal
-                appendMessage(`Bot: Prazer em te conhecer, ${nomeUsuario}!`);
-                inputField.focus();
+                chat.style.display = "none";
+
+            } else {
+
+                chat.style.display = "flex";
+
+                document
+                    .getElementById("chatbotInput")
+                    .focus();
+
             }
+
         }
 
-        // Função para Adicionar Mensagem na Tela
-        function appendMessage(text) {
-            chatDisplay.innerText += text + "\n";
-            chatDisplay.scrollTop = chatDisplay.scrollHeight; // Auto-scroll
+
+        /* =====================================================
+           FECHAR CHAT
+        ===================================================== */
+
+        function fecharChat() {
+
+            document
+                .getElementById("chatbotPrincipal")
+                .style.display = "none";
+
         }
 
-        // Lógica de Resposta do Bot
-        function getBotResponse(userText) {
-            const text = userText.toLowerCase();
-            const nome = nomeUsuario;
 
-            if (text.includes("bom dia") || text.includes("oi") || text.includes("olá") || text.includes("ola")) {
-            return `Bot: Olá Bom dia! como posso ajudar você ${nome}?`;
-        } else if (text.includes("boa tarde")) {
-            return `Bot: Boa tarde! como posso ajudar você ${nome}?`;
-        } else if (text.includes("boa noite")) {
-            return `Bot: Boa noite! como posso ajudar você ${nome}?`;
-        } else if (text.includes("ajuda") || text.includes("apoio") || text.includes("suporte")) {
-            return `Bot: No que posso lhe ajudar ${nome}? sou feito 100% em javascript e estou para lhe ajudar no que for preciso.`;
-        } else if (text.includes("tchau") || text.includes("adeus")) {
-            return `Bot: Adeus! Tenha um ótimo dia ${nome}!`;
-        } else if (text.includes("tudo bem") || text.includes("estou bem") || text.includes("estou feliz")) {
-            return `Bot: Fico muito feliz em ouvir isso ${nome}! isso me alegra muito! se precisar de algo, estou aqui para ajudar.`;
-        } else if (text.includes("não estou bem") || text.includes("estou triste") || text.includes("estou mal")) {
-            return `Bot: Sinto muito em ouvir isso. ${nome} Se quiser conversar sobre o que está acontecendo, estou aqui para ouvir. Lembre-se de que é importante cuidar de si mesmo e procurar apoio se necessário.`;
-        } else if (text.includes("quero conversar") || text.includes("quero falar")) {
-            return `Bot: Claro! Estou aqui para conversar. Me conte o que lhe esta incomodando ${nome}?`;
-        } else if (text.includes("obrigado") || text.includes("obrigada")) {
-            return `Bot: De nada! Fico feliz em poder ajudar ${nome}. Se tiver mais perguntas ou precisar de algo, é só me chamar!`;
-        } else if (text.includes("sair") || text.includes("fechar")) {
-            const corEncerrado = chatContainer.classList.contains('dark') ? '#ffffff' : '#2e7d32';
-            document.body.innerHTML = `<h2 style='text-align:center; width:100%; color: ${corEncerrado}; margin-top: 50px;'>Chat encerrado.</h2>`;
-            return null;
-        } else {
-            return "Bot: Ainda estou aprendendo a entender isso, sinto muito por isso...";
-        }
-    }
+        /* =====================================================
+           ADICIONAR MENSAGEM
+        ===================================================== */
 
-    // Função de Envio de Mensagem
-    function sendMessage() {
-        const userText = inputField.value.trim();
-        if (userText) {
-            appendMessage(`Você: ${userText}`);
-            inputField.value = '';
+        function adicionarMensagem(texto, tipo) {
 
-            const response = getBotResponse(userText);
-            
-            if (response) {
-                setTimeout(() => {
-                    appendMessage(response);
-                }, 400);
+            const mensagens =
+                document.getElementById("chatbotMensagens");
+
+
+            const mensagem =
+                document.createElement("div");
+
+
+            mensagem.className =
+                "mensagem " + tipo;
+
+
+            const nome =
+                document.createElement("span");
+
+
+            if (tipo === "bot") {
+
+                nome.textContent = "Bot";
+
+            } else {
+
+                nome.textContent = "Você";
+
             }
-        }
-    }
 
-    // Escuta comandos externos de postMessage vindos do site principal (se houver)
-    window.addEventListener("message", function(event) {
-        if (event.data === "ativarModoEscuro") {
-            chatContainer.classList.add("dark");
-        } else if (event.data === "ativarModoClaro") {
-            chatContainer.classList.remove("dark");
+
+            mensagem.appendChild(nome);
+
+
+            const conteudo =
+                document.createTextNode(texto);
+
+
+            mensagem.appendChild(conteudo);
+
+
+            mensagens.appendChild(mensagem);
+
+
+            mensagens.scrollTop =
+                mensagens.scrollHeight;
+
         }
-    });
-</script>
+
+
+        /* =====================================================
+           RESPOSTAS DO CHATBOT
+        ===================================================== */
+
+        function respostaBot(texto) {
+
+            const mensagem =
+                texto.toLowerCase();
+
+
+            /* SAUDAÇÕES */
+
+            if (
+                mensagem.includes("oi") ||
+                mensagem.includes("olá") ||
+                mensagem.includes("ola")
+            ) {
+
+                return "Olá! 👋 Como posso ajudar você?";
+
+            }
+
+
+            /* BOM DIA */
+
+            if (
+                mensagem.includes("bom dia")
+            ) {
+
+                return "Bom dia! 🌱 Como posso ajudar?";
+
+            }
+
+
+            /* BOA TARDE */
+
+            if (
+                mensagem.includes("boa tarde")
+            ) {
+
+                return "Boa tarde! 🌱 Como posso ajudar?";
+
+            }
+
+
+            /* BOA NOITE */
+
+            if (
+                mensagem.includes("boa noite")
+            ) {
+
+                return "Boa noite! 🌙 Como posso ajudar?";
+
+            }
+
+
+            /* AJUDA */
+
+            if (
+                mensagem.includes("ajuda") ||
+                mensagem.includes("suporte")
+            ) {
+
+                return "Claro! Estou aqui para ajudar com informações sobre o Solo em Equilíbrio. 🌱";
+
+            }
+
+
+            /* SOLO */
+
+            if (
+                mensagem.includes("solo")
+            ) {
+
+                return "O solo é muito importante para o equilíbrio do meio ambiente, para as plantas e para a produção de alimentos. 🌱";
+
+            }
+
+
+            /* PLANTAS */
+
+            if (
+                mensagem.includes("planta") ||
+                mensagem.includes("plantas")
+            ) {
+
+                return "As plantas dependem de um solo saudável para crescer. Cuidar do solo também ajuda a preservar o meio ambiente. 🌿";
+
+            }
+
+
+            /* SUSTENTABILIDADE */
+
+            if (
+                mensagem.includes("sustentabilidade") ||
+                mensagem.includes("sustentável")
+            ) {
+
+                return "A sustentabilidade busca utilizar os recursos naturais de forma responsável, pensando também nas futuras gerações. 🌎";
+
+            }
+
+
+            /* MEIO AMBIENTE */
+
+            if (
+                mensagem.includes("meio ambiente") ||
+                mensagem.includes("ambiente")
+            ) {
+
+                return "Cuidar do meio ambiente envolve preservar o solo, a água, as plantas e os animais. 🌎🌱";
+
+            }
+
+
+            /* OBRIGADO */
+
+            if (
+                mensagem.includes("obrigado") ||
+                mensagem.includes("obrigada")
+            ) {
+
+                return "De nada! 😊 Estou sempre aqui para ajudar.";
+
+            }
+
+
+            /* TCHAU */
+
+            if (
+                mensagem.includes("tchau") ||
+                mensagem.includes("adeus")
+            ) {
+
+                return "Tchau! 👋 Até a próxima!";
+
+            }
+
+
+            /* RESPOSTA PADRÃO */
+
+            return "Ainda estou aprendendo! 🤖 Tente perguntar sobre solo, plantas, sustentabilidade ou meio ambiente.";
+
+        }
+
+
+        /* =====================================================
+           ENVIAR MENSAGEM
+        ===================================================== */
+
+        function enviarMensagem() {
+
+            const input =
+                document.getElementById("chatbotInput");
+
+
+            const texto =
+                input.value.trim();
+
+
+            if (texto === "") {
+
+                return;
+
+            }
+
+
+            /* MOSTRA MENSAGEM DO USUÁRIO */
+
+            adicionarMensagem(
+                texto,
+                "usuario"
+            );
+
+
+            /* LIMPA INPUT */
+
+            input.value = "";
+
+
+            /* RESPOSTA DO BOT */
+
+            setTimeout(function () {
+
+                const resposta =
+                    respostaBot(texto);
+
+
+                adicionarMensagem(
+                    resposta,
+                    "bot"
+                );
+
+            }, 500);
+
+        }
+
+
+        /* =====================================================
+           ENTER PARA ENVIAR
+        ===================================================== */
+
+        document
+            .getElementById("chatbotInput")
+            .addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (event.key === "Enter") {
+
+                        enviarMensagem();
+
+                    }
+
+                }
+            );
+
+    </script>
+
+
+    <!-- SEU SCRIPT ORIGINAL -->
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>

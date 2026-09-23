@@ -302,3 +302,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
  
+// =========================================
+// BOTÃO VOLTAR
+// =========================================
+function voltarPagina() {
+    window.history.back();
+}
