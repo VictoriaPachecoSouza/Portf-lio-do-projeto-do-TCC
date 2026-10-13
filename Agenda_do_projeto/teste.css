@@ -1,0 +1,87 @@
+/* Configurações Globais e Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Ativa o efeito de rolagem suave */
+    scroll-behavior: smooth;
+    font-family: Arial, sans-serif;
+}
+
+/* Menu de Navegação Fixo no Topo */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 15px 0;
+    z-index: 1000; /* Garante que o menu fique sempre visível por cima das seções */
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.menu ul li {
+    margin: 0 20px;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu ul li a:hover {
+    color: #ff7b00; /* Muda de cor ao passar o mouse */
+}
+
+/* Estilização das Seções Contínuas */
+.secao {
+    min-height: 100vh; /* Faz cada seção ocupar pelo menos 100% da altura da tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px; /* O padding superior impede que o menu fixo cubra o conteúdo */
+    text-align: center;
+}
+
+/* Diferenciando as seções por cores de fundo alternadas */
+#home {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#sobre {
+    background-color: #222;
+    color: #fff;
+}
+
+#servicos {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+#contato {
+    background-color: #111;
+    color: #fff;
+}
+
+.secao h1, .secao h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.secao p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}

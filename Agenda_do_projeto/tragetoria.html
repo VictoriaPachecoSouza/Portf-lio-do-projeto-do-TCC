@@ -257,7 +257,7 @@
             width: 100%;
             min-height: 100vh;
 
-            background: #f2f7f1;
+            background: #417833;
 
             padding: 100px 20px;
 
@@ -341,7 +341,7 @@
             font-size: 10px;
             font-weight: 700;
 
-            color: #6f9d68;
+            color: #16630b;
 
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -358,11 +358,11 @@
 
             letter-spacing: -2px;
 
-            color: #234d32;
+            color: #0c7208;
         }
 
         .desafio-content h2 span {
-            color: #6f9d68;
+            color: #20a10d;
         }
 
         .desafio-content>p {
@@ -374,7 +374,7 @@
 
             line-height: 1.8;
 
-            color: #536257;
+            color: #c2cbc5;
         }
 
         /* =========================================================
@@ -405,7 +405,7 @@
 
             border-radius: 10px;
 
-            background: #dcebdc;
+            background: #57a257;
             color: #4f7d50;
 
             font-size: 24px;
@@ -415,7 +415,7 @@
         }
 
         .desafio-item:hover .item-icon {
-            background: #4f7d50;
+            background: #133513;
             color: #ffffff;
             transform: scale(1.08);
         }
@@ -427,7 +427,7 @@
 
             font-size: 20px;
 
-            color: #34513c;
+            color: #254724;
         }
 
         .desafio-item small {
@@ -435,7 +435,7 @@
 
             font-size: 15px;
 
-            color: #718075;
+            color: #f4f4f4;
 
             line-height: 1.5;
         }
@@ -445,7 +445,7 @@
 ========================================================= */
 
         body.dark .desafio-section {
-            background: #101b14;
+            background: #22692e;
         }
 
         body.dark .desafio-content h2 {
@@ -1046,6 +1046,40 @@
                 max-width: 280px;
             }
         }
+
+        /*seção do aprendizado e da conclusão */
+        .secao {
+            min-height: 100vh;
+            /* Faz cada seção ocupar pelo menos 100% da altura da tela */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            /* O padding superior impede que o menu fixo cubra o conteúdo */
+            text-align: center;
+        }
+
+        /* Diferenciando as seções por cores de fundo alternadas */
+
+        #servicos {
+            color: #fef3f3;
+        }
+
+        #contato {
+            color: #fdfdfd;
+        }
+
+        .secao h1,
+        .secao h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .secao p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
     </style>
 
 </head>
@@ -1157,9 +1191,9 @@
 
     <section class="container">
 
-        <h2 class="destaque-title">
+        <h1 class="destaque-title">
             Tecnologias Utilizadas
-        </h2>
+        </h1>
 
         <p class="subtitle">
             Saiba o que cada uma faz dentro do site
@@ -1237,9 +1271,8 @@
     </section>
 
 
-    <br><br><br>
-
-
+    <br>
+    <br>
     <!-- =========================================
          DESAFIO
     ========================================= -->
@@ -1447,20 +1480,16 @@
          APRENDIZADOS
     ========================================= -->
 
-    <section id="aprendizados">
-
+    <section id="servicos" class="secao">
         <h2 class="titulo-trajetoria">
             Desafios & <span class="destaque">Aprendizados</span>
         </h2>
-
-        <p>
-            O maior desafio foi manipular o armazenamento local do
+        <p> O maior desafio foi manipular o armazenamento local do
             navegador (LocalStorage) para salvar os dados do usuário.
             Superar esse obstáculo ajudou a compreender melhor a
-            persistência de dados no Front-end.
-        </p>
-
+            persistência de dados no Front-end.</p>
     </section>
+
 
 
     <br><br>
@@ -1470,17 +1499,29 @@
          CONCLUSÃO
     ========================================= -->
 
-    <section id="conclusao">
-
-        <h2 class="titulo-trajetoria">
+    <section id="contato" class="secao">
+        <h2 style="color: #0c7208;">
             Resultados
         </h2>
+          <div class="desafio-image">
 
-        <p>
-            O projeto foi concluído no prazo e apresenta uma boa
-            performance nos testes realizados.
+                <div class="image-decoration"></div>
+
+                <img src="desafio.png" alt="Solo em Equilíbrio">
+
+            </div>
+        <p> Este projeto democratizou o acesso ao conhecimento botânico ao desenvolver uma plataforma web que traduz
+            termos científicos complexos em uma linguagem simples, visual e interativa. Alinhando design de experiência
+            do usuário (UX) e acessibilidade informacional, o site eliminou barreiras de aprendizado e provou que a
+            tecnologia pode aproximar a ciência do cotidiano.<br>
+            Durante a validação prática, ficou evidente que [inserir o principal resultado, ex: usuários iniciantes
+            compreenderam perfeitamente os cuidados de cada planta]. Como principal entrega, criamos uma ferramenta
+            digital inclusiva e gratuita que estimula o cultivo e a conscientização ambiental.<br>
+            Embora o escopo inicial tenha enfrentado limitações como [inserir limitação, ex: catálogo restrito de
+            espécies], o valor técnico e social da interface foi validado. Para os próximos passos, o projeto abre
+            caminho para melhorias futuras, como [inserir sugestão, ex: recursos de audiodescrição e expansão do
+            catálogo com IA], consolidando-se como uma base sólida para iniciativas de democratização do conhecimento.
         </p>
-
     </section>
 
 
@@ -1490,99 +1531,18 @@
     <!-- =========================================
          RODAPÉ
     ========================================= -->
+    <div class="footer-bottom">
 
-    <footer class="footer-portfolio">
-
-        <div class="footer-container">
-
-            <div class="footer-brand">
-
-                <h3>
-                    Solo em Equilíbrio
-                </h3>
-
-                <p>
-                    <strong>
-                        Trabalho de Conclusão de Curso
-                    </strong>
-                </p>
-
-                <p style="font-size: 0.8rem; margin-top: 5px;">
-                    Escola Estadual Culto à Ciência
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <div class="footer-group">
-
-                    <h4>
-                        Autores
-                    </h4>
-
-                    <ul>
-
-                        <li>
-                            Dualvid David Muñoz Santana
-                        </li>
-
-                        <li>
-                            Pedro Henrique Silvas Santos
-                        </li>
-
-                        <li>
-                            Victória Pacheco Souza
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <div class="footer-group">
-
-                    <h4>
-                        Contato
-                    </h4>
-
-                    <ul>
-
-                        <li>
-                            <a href="contato.html">
-                                Página de contato
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://www.instagram.com/cultoaciencia/" target="_blank"
-                                rel="noopener noreferrer">
-                                Instagram
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
+        <div>
+            &copy; 2026 Solo em Equilíbrio.
+            Todos os direitos reservados.
         </div>
 
-
-        <div class="footer-bottom">
-
-            <div>
-                &copy; 2026 Solo em Equilíbrio.
-                Todos os direitos reservados.
-            </div>
-
-            <div>
-                Banca Examinadora &bull; TCC
-            </div>
-
+        <div>
+            Banca Examinadora &bull; TCC
         </div>
+
+    </div>
 
     </footer>
 
