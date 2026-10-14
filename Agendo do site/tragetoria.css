@@ -1,0 +1,422 @@
+:root {
+    --main-color: #252c25;
+    --black: #13131a;
+    --bg: #171414;
+    --border: 0.1rem solid rgb(13, 77, 0);
+    --accent: #556B2F;
+    --accent_hover: #6B8E23;
+    --footer-muted: #6B8E23;
+    --footer-border: #0d6a1d;
+
+    /* Variáveis do Calendário */
+    --primary-color: #6ff163;
+    --bg-calendar: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #9ca3af;
+    --border-color: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.1s linear;
+}
+
+body {
+    background-color: #0d1117;
+    color: #ffffff;
+    min-height: 100vh;
+    padding-top: 80px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================================================
+   MODO ESCURO E CLARO
+========================================================= */
+body.dark {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+p {
+    text-align: justify;
+    max-width: 2050px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* NAVBAR FIXA NO TOPO */
+nav {
+    background: #228B22;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 10000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px;
+    display: block;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    background: #fff;
+    top: 40px;
+    min-width: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown a {
+    color: #333;
+    padding: 10px;
+}
+
+.dropdown a:hover {
+    background: #f2f2f2;
+}
+
+.menu li:hover .dropdown {
+    display: block;
+}
+
+/* Mobile */
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media(max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #008000;
+        display: none;
+        padding: 10px;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .search-box {
+        display: none;
+    }
+}
+
+
+/* INTERRUPTOR MODO ESCURO E CAIXA DE PESQUISA */
+.nav-bar .darkLight-searchBox {
+    display: flex;
+    align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    position: relative;
+}
+
+.dark-light svg,
+.searchToggle svg {
+    position: absolute;
+    color: #ffffff;
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dark-light svg.sun {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dark-light.active svg.sun {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dark-light.active svg.moon {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ==================== SEÇÃO KANBAN ==================== */
+#Kanban {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.kanban-title,
+.plantas-title,
+.equipe-title,
+h2, h3 {
+    color: #ffffff;
+}
+
+body.dark .kanban-title,
+body.dark .plantas-title,
+body.dark .equipe-title,
+body.dark h2,
+body.dark h3 {
+    color: #000000;
+}
+
+.kanban-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.kanban-column, .profile-card, .planta-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 280px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark .kanban-column,
+body.dark .profile-card,
+body.dark .planta-card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+}
+
+.column-header {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.column-header.todo { background-color: #30363d; }
+.column-header.doing { background-color: #9e6a03; }
+.column-header.done { background-color: #1f883d; }
+
+.kanban-card {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+body.dark .kanban-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dddddd;
+}
+
+.kanban-card h3 {
+    color: #f0f6fc;
+}
+
+body.dark .kanban-card h3 {
+    color: #000000;
+}
+
+.kanban-card p, .profile-card .bio, .planta-card p {
+    color: #8b949e;
+}
+
+body.dark .kanban-card p,
+body.dark .profile-card .bio,
+body.dark .planta-card p {
+    color: #555555;
+}
+
+/* ==================== SEÇÃO EQUIPE ==================== */
+#Equipe {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.equipe-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.profile-card {
+    width: 320px;
+    text-align: center;
+}
+
+.avatar-placeholder {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #30363d;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    border: 2px solid #8b949e;
+}
+
+body.dark .avatar-placeholder {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.profile-card .role {
+    font-size: 14px;
+    color: #2ea44f;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* ==================== SEÇÃO TIPOS DE PLANTAS ==================== */
+#TiposPlantas {
+    padding: 60px 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.plantas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .plantas-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+    .plantas-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .plantas-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+.footer-portfolio {
+    background-color: #0d1117;
+    color: #ffffff;
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid #0d6a1d;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .footer-container {
+        grid-template-columns: 2fr 3fr;
+    }
+}
+
+.footer-brand h3 {
+    color: #ffffff;
+}
+
+.footer-brand p, .footer-group h4, .footer-bottom {
+    color: #6B8E23;
+}
+
+.footer-group ul { list-style: none; padding: 0; }
+.footer-group a { color: #ffffff; text-decoration: none; }
+.footer-group a:hover { color: #6B8E23; }
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid #0d6a1d;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.85rem;
+}
+
+/* MODO CLARO NO RODAPÉ */
+body.dark .footer-portfolio {
+    background-color: #ffffff;
+    color: #000000;
+    border-top: 1px solid #009E60;
+}
+
+body.dark .footer-brand h3 { color: #000000; }
+body.dark .footer-brand p,
+body.dark .footer-group h4,
+body.dark .footer-bottom { color: #009E60; }
+body.dark .footer-group a { color: #000000; }
+body.dark .footer-group a:hover { color: #009E60; }

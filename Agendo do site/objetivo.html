@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conheça os objetivos</title>
+
+    <!-- Arquivos externos -->
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="botaoes.js" defer></script>
+
+    <style>
+        /* =============================
+           MODO ESCURO / CLARO INVERTIDO
+        ============================== */
+
+        /* MODO ESCURO - padrão */
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body .main-title,
+        body .plantas-title,
+        body .kanban-title,
+        body .equipe-title,
+        body h2,
+        body h3 {
+            color: #ffffff;
+        }
+
+        /* =============================
+           MODO CLARO
+        ============================== */
+
+        body.dark {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.dark .main-title,
+        body.dark .plantas-title,
+        body.dark .kanban-title,
+        body.dark .equipe-title,
+        body.dark h2,
+        body.dark h3 {
+            color: #000000;
+        }
+
+        /* =============================
+           TÍTULO CENTRALIZADO
+        ============================== */
+
+        .main-title {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        /* Textos secundários no modo claro */
+
+        body.dark .description,
+        body.dark .planta-card p,
+        body.dark .kanban-card p,
+        body.dark .profile-card .bio {
+            color: #555555;
+        }
+
+        /* =============================
+           CARDS
+        ============================== */
+
+        .planta-card,
+        .profile-card,
+        .kanban-column,
+        .kanban-card {
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        /* Cards no modo escuro */
+
+        .planta-card,
+        .profile-card,
+        .kanban-column {
+            background-color: #161b22;
+            border-color: #30363d;
+        }
+
+        .kanban-card {
+            background-color: #21262d;
+            border-color: #30363d;
+        }
+
+        /* Cards no modo claro */
+
+        body.dark .planta-card,
+        body.dark .profile-card,
+        body.dark .kanban-column {
+            background-color: #ffffff;
+            border-color: #dddddd;
+        }
+
+        body.dark .kanban-card {
+            background-color: #f8f9fa;
+            border-color: #dddddd;
+        }
+
+        /* =============================
+           LUA E SOL
+        ============================== */
+
+        .dark-light {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .dark-light .moon,
+        .dark-light .sun {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        /* Modo escuro = Lua */
+
+        .dark-light .moon {
+            opacity: 1;
+        }
+
+        .dark-light .sun {
+            opacity: 0;
+        }
+
+        /* Modo claro = Sol */
+
+        body.dark .dark-light .moon {
+            opacity: 0;
+        }
+
+        body.dark .dark-light .sun {
+            opacity: 1;
+        }
+
+        /* =============================
+           TÍTULO
+        ============================== */
+
+        .main-title {
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        /* Texto descritivo */
+
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #8b949e;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            text-align: justify;
+        }
+
+        /* =============================
+           BOTÕES
+        ============================== */
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition:
+                background-color 0.2s,
+                transform 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #1f883d;
+            color: #ffffff;
+            border: 1px solid rgba(240, 246, 252, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #2ea44f;
+        }
+
+        .btn-secondary {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #30363d;
+            color: #ffffff;
+        }
+
+        /* =============================
+           CATEGORIA
+        ============================== */
+
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .category-title::after {
+            content: " ■";
+            color: #2ea44f;
+        }
+
+        /* =============================
+           HERO
+        ============================== */
+
+        .hero-section {
+            max-width: 900px;
+            width: 100%;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        /* =============================
+           TÍTULO TRAJETÓRIA
+        ============================== */
+
+        .titulo-trajetoria {
+            color: #ffffff;
+        }
+
+        .titulo-trajetoria .destaque {
+            color: #556B2F;
+        }
+
+        /* Modo claro */
+
+        body.dark .titulo-trajetoria {
+            color: #000000;
+        }
+
+        body.dark .titulo-trajetoria .destaque {
+            color: #228B22;
+        }
+
+        /* =============================
+           CONTAINER
+        ============================== */
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* =============================
+           GRÁFICO
+        ============================== */
+
+        .grafico-container {
+            background-color: #f4f4f9;
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* =============================
+           SLIDER
+        ============================== */
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 45px;
+        }
+
+        .services-grid {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 15px 0;
+        }
+
+        .services-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =============================
+           CARDS DE SERVIÇOS
+        ============================== */
+
+        .service-card {
+            flex: 0 0 calc(33.333% - 16px);
+            min-width: 280px;
+            aspect-ratio: 1.15 / 1;
+            padding: 40px;
+            border-radius: 12px;
+
+            /* Borda verde */
+            border: 2px solid #2ea44f;
+
+            /* Interior verde mais claro */
+            background: #26312a;
+
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.15);
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            box-sizing: border-box;
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        /* =============================
+           HOVER DO CARD
+        ============================== */
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #31ce39;
+            background: #304036;
+
+            box-shadow:
+                0 10px 30px rgba(46, 164, 79, 0.18);
+        }
+
+        /* =============================
+           ÍCONE
+        ============================== */
+
+        .service-card .icon-circle {
+            margin-bottom: 24px;
+        }
+
+        .service-card .icon-circle img {
+            width: 42px;
+            height: 42px;
+        }
+
+        /* =============================
+           TÍTULO DO CARD
+        ============================== */
+
+        .service-card h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 10px 0 8px 0;
+        }
+
+        /* =============================
+           TEXTO DO CARD
+        ============================== */
+
+        .service-card p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #c9d1d9;
+            margin-bottom: 12px;
+        }
+
+        /* =============================
+           BOTÕES DAS SETAS
+        ============================== */
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            background: #21262d;
+            border: 1px solid #2ea44f;
+            color: #c9d1d9;
+
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 16px;
+            z-index: 10;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #2ea44f;
+            border-color: #31ce39;
+            color: #ffffff;
+        }
+
+        .prev-btn {
+            left: 5px;
+        }
+
+        .next-btn {
+            right: 5px;
+        }
+
+        /* =============================
+           BOTÃO LEARN
+        ============================== */
+
+        .btn-learn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            margin-top: auto;
+
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .btn-learn:hover {
+            color: #31ce39;
+        }
+
+        .arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .btn-learn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* =============================
+           MODO CLARO
+        ============================== */
+
+        body.dark .service-card {
+            background: #f5faf6;
+            border-color: #2ea44f;
+
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark .service-card:hover {
+            background: #eef8f0;
+            border-color: #228b22;
+        }
+
+        body.dark .service-card h2 {
+            color: #1f3d25;
+        }
+
+        body.dark .service-card p {
+            color: #536257;
+        }
+
+        /* =============================
+           SETAS - MODO CLARO
+        ============================== */
+
+        body.dark .nav-btn {
+            background: #f6f8fa;
+            border-color: #2ea44f;
+            color: #24292e;
+        }
+
+        body.dark .nav-btn:hover {
+            background: #2ea44f;
+            color: #ffffff;
+        }
+
+        /* =============================
+           BOTÃO LEARN - MODO CLARO
+        ============================== */
+
+        body.dark .btn-learn {
+            color: #1f3d25;
+        }
+
+        body.dark .btn-learn:hover {
+            color: #228b22;
+        }
+
+        /* =============================
+           RESPONSIVIDADE
+        ============================== */
+
+        @media (max-width: 900px) {
+
+            .service-card {
+                flex: 0 0 calc(50% - 12px);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .service-card {
+                flex: 0 0 85%;
+                padding: 30px;
+            }
+
+            .slider-wrapper {
+                padding: 0 10px;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .main-title {
+                font-size: 34px;
+            }
+
+            .hero-section {
+                padding: 0 20px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ==============================
+         MENU
+    ============================== -->
+
+    <nav>
+
+        <div class="logo">
+            <img src="Logotipo.png" height="50" alt="Logotipo">
+        </div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <ul class="menu" id="menu">
+
+            <li>
+                <a href="index.html">Início</a>
+            </li>
+
+            <li>
+                <a href="index.html#TiposPlantas">Plantas</a>
+            </li>
+
+            <li>
+                <a href="index.html#Kanban">Kanban</a>
+            </li>
+
+            <li>
+                <a href="index.html#Equipe">Equipe</a>
+            </li>
+
+            <li>
+                <a href="contato.html">Contato</a>
+            </li>
+
+        </ul>
+
+        <div class="darkLight-searchBox">
+
+            <div class="dark-light">
+
+                <!-- LUA -->
+
+                <svg class="moon" viewBox="0 0 24 24" fill="white">
+
+                    <path
+                        d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z">
+                    </path>
+
+                </svg>
+
+                <!-- SOL -->
+
+                <svg class="sun" viewBox="0 0 100 100" fill="none" stroke="#FFFFFF" stroke-width="7"
+                    stroke-linecap="square">
+
+                    <circle cx="50" cy="50" r="22">
+                    </circle>
+
+                    <g>
+
+                        <line x1="50" y1="8" x2="50" y2="18"></line>
+                        <line x1="50" y1="82" x2="50" y2="92"></line>
+
+                        <line x1="8" y1="50" x2="18" y2="50"></line>
+                        <line x1="82" y1="50" x2="92" y2="50"></line>
+
+                        <line x1="20.5" y1="20.5" x2="27.5" y2="27.5"></line>
+                        <line x1="72.5" y1="72.5" x2="79.5" y2="79.5"></line>
+
+                        <line x1="20.5" y1="79.5" x2="27.5" y2="72.5"></line>
+                        <line x1="72.5" y1="27.5" x2="79.5" y2="20.5"></line>
+
+                    </g>
+
+                </svg>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==============================
+         SEÇÃO PRINCIPAL
+    ============================== -->
+
+    <section class="hero-section" id="Inicio">
+
+        <p class="category-title">
+            Solo em equilíbrio
+        </p>
+
+        <h1 class="main-title">
+            Conheça os nossos objetivos
+        </h1>
+
+        <p class="description">
+
+            Este documento foi desenvolvido pelos acadêmicos
+            Dualvid David Muñoz Santana, Pedro Henrique Silvas Santos
+            e Victória Pacheco Souza, concluintes do curso de
+            Desenvolvimento de Sistemas da[cite: 3]
+
+            <a href="https://www.instagram.com/cultoaciencia/" target="_blank" rel="noopener noreferrer"
+                style="color: #58a6ff; text-decoration: underline;">
+
+                Escola Estadual Culto à Ciência[cite: 3]
+
+            </a>.
+
+            O objetivo deste portfólio é documentar o processo de criação,
+            a metodologia e os resultados do nosso TCC, intitulado[cite: 3]
+            <strong>Solo em equilíbrio</strong>[cite: 3].
+
+            Nossa pesquisa e desenvolvimento concentram-se em analisar
+            e transmitir conhecimentos sobre as plantas, onde, por sua vez,
+            cada planta mostra habilidades essenciais e úteis no cotidiano[cite: 3].
+
+            Através da colaboração mútua, unimos nossas competências individuais[cite: 3]
+            para entregar uma solução completa e fundamentada para este desafio[cite: 3].
+
+            A seguir, apresentamos os perfis profissionais de cada integrante,[cite: 3]
+            seguidos pelas etapas detalhadas do projeto, cronogramas de execução[cite: 3]
+            e as considerações finais do grupo[cite: 3].
+
+            <br><br>
+
+            <strong>Agradecemos a leitura.</strong>
+
+        </p>
+
+
+        <!-- ==============================
+             TRAJETÓRIA
+        ============================== -->
+
+        <div class="container">
+
+            <h1 class="titulo-trajetoria">
+
+                Nossa
+                <span class="destaque">
+                    Trajetória
+                </span>
+
+            </h1>
+
+            <br>
+            <br>
+
+            <h3>
+                Conheça toda a nossa trajetória até aqui
+            </h3>
+
+            <br>
+
+            <p>
+
+                A <strong>principal função</strong> deste site é centralizar
+                e simplificar o gerenciamento de dados em tempo real.
+
+                Nossa plataforma transforma métricas complexas em painéis
+                visuais intuitivos, permitindo que usuários tomem decisões
+                estratégicas com rapidez e precisão.
+
+            </p>
+
+            <br>
+
+
+            <!-- ==============================
+                 OBJETIVOS
+            ============================== -->
+
+            <h2 class="titulo-trajetoria">
+
+                Nossos
+                <span class="destaque">
+                    Objetivos
+                </span>
+
+            </h2>
+
+            <br>
+
+            <p>
+                Trabalhamos continuamente para entregar a melhor experiência
+                analítica. Nossas metas principais incluem:
+            </p>
+
+            <br>
+
+
+            <!-- ==============================
+                 CARDS
+            ============================== -->
+
+            <section class="services-section">
+
+                <div class="slider-wrapper">
+
+                    <!-- SETA ANTERIOR -->
+
+                    <button class="nav-btn prev-btn" aria-label="Anterior">
+
+                        &#10094;
+
+                    </button>
+
+
+                    <div class="services-grid" id="servicesGrid">
+
+                        <!-- CARD 1 -->
+
+                        <article class="service-card">
+
+                            <div class="icon-circle">
+
+                                <img width="100" height="100"
+                                    src="https://img.icons8.com/ios/100/40C057/accessibility2.png" alt="Acessibilidade">
+
+                            </div>
+
+                            <h2>
+                                Acessibilidade
+                            </h2>
+
+                            <p>
+                                Tornar a leitura de dados compreensível
+                                para qualquer nível de usuário.
+                            </p>
+
+                        </article>
+
+
+                        <!-- CARD 2 -->
+
+                        <article class="service-card">
+
+                            <div class="icon-circle">
+
+                                <img width="100" height="100"
+                                    src="https://img.icons8.com/ios-filled/100/40C057/sync-settings.png"
+                                    alt="Automação">
+
+                            </div>
+
+                            <h2>
+                                Automação
+                            </h2>
+
+                            <p>
+                                Reduzir o trabalho manual através da
+                                atualização automática de relatórios.
+                            </p>
+
+                        </article>
+
+
+                        <!-- CARD 3 -->
+
+                        <article class="service-card">
+
+                            <div class="icon-circle">
+
+                                <img width="100" height="100"
+                                    src="https://img.icons8.com/ios-filled/100/40C057/dashboard.png" alt="Performance">
+
+                            </div>
+
+                            <h2>
+                                Performance
+                            </h2>
+
+                            <p>
+                                Garantir carregamentos rápidos e segurança
+                                máxima das informações.
+                            </p>
+
+                        </article>
+
+
+                        <!-- CARD 4 -->
+
+                        <article class="service-card">
+
+                            <div class="icon-circle">
+
+                                <img width="100" height="100"
+                                    src="https://img.icons8.com/external-outline-lafs/100/40C057/external-ic_block_scale-crosschain-outline-lafs.png"
+                                    alt="Escalabilidade">
+
+                            </div>
+
+                            <h2>
+                                Escalabilidade
+                            </h2>
+
+                            <p>
+                                Adaptar a plataforma ao crescimento e às
+                                necessidades do seu negócio.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- SETA PRÓXIMA -->
+
+                    <button class="nav-btn next-btn" aria-label="Próximo">
+
+                        &#10095;
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <br>
+            <br>
+
+
+            <!-- ==============================
+                 VISUALIZAÇÃO DE DADOS
+            ============================== -->
+
+            <h2 class="titulo-trajetoria">
+
+                Visualização
+                <span class="destaque">
+                    de Dados
+                </span>
+
+            </h2>
+
+            <div class="grafico-container">
+
+                Área reservada para a renderização dos gráficos dinâmicos
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         RODAPÉ
+    ============================== -->
+
+    <footer class="footer-portfolio">
+
+        <div class="footer-container">
+
+            <!-- Identificação -->
+
+            <div class="footer-brand">
+
+                <h3>
+                    Solo em Equilíbrio
+                </h3>
+
+                <p>
+                    <strong>
+                        Trabalho de Conclusão de Curso
+                    </strong>
+                </p>
+
+                <p style="font-size: 0.8rem; margin-top: 5px;">
+                    Escola Estadual Culto à Ciência[cite: 3]
+                </p>
+
+            </div>
+
+
+            <!-- Links -->
+
+            <div class="footer-links">
+
+                <div class="footer-group">
+
+                    <h4>
+                        Autores
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Dualvid David Muñoz Santana[cite: 3]
+                        </li>
+
+                        <li>
+                            Pedro Henrique Silvas Santos[cite: 3]
+                        </li>
+
+                        <li>
+                            Victória Pacheco Souza[cite: 3]
+                        </li>
+
+                        <li>
+
+                            <span style="color: var(--footer-muted); font-size: 0.8rem;">
+                                Desenvolvimento de Sistemas[cite: 3]
+                            </span>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-group">
+
+                    <h4>
+                        Contato
+                    </h4>
+
+                    <ul>
+
+                        <li>
+
+                            <a href="contato.html">
+                                Página de contato
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="https://www.instagram.com/cultoaciencia/" target="_blank"
+                                rel="noopener noreferrer">
+
+                                Instagram
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Direitos autorais -->
+
+        <div class="footer-bottom">
+
+            <div>
+
+                &copy; 2026 Solo em Equilíbrio.[cite: 3]
+                Todos os direitos reservados.[cite: 3]
+
+            </div>
+
+            <div>
+
+                Banca Examinadora &bull; TCC[cite: 3]
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        /* ==============================
+           MENU HAMBÚRGUER (MOBILE)
+        ============================== */
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+
+
+        /* ==============================
+           MODO ESCURO / CLARO
+        ============================== */
+
+        const body = document.body;
+        const modeToggle = document.querySelector(".dark-light");
+
+        if (modeToggle) {
+
+            modeToggle.addEventListener("click", function () {
+
+                modeToggle.classList.toggle("active");
+                body.classList.toggle("dark");
+
+            });
+
+        }
+
+
+        /* ==============================
+           SLIDER DOS CARDS
+        ============================== */
+
+        const grid = document.getElementById("servicesGrid");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+
+        if (grid && prevBtn && nextBtn) {
+
+            function getScrollAmount() {
+
+                const card = grid.querySelector(".service-card");
+
+                if (!card) {
+                    return 0;
+                }
+
+                const style = window.getComputedStyle(grid);
+                const gap = parseInt(style.columnGap) || 24;
+
+                return card.offsetWidth + gap;
+
+            }
+
+
+            nextBtn.addEventListener("click", function () {
+
+                grid.scrollBy({
+                    left: getScrollAmount(),
+                    behavior: "smooth"
+                });
+
+            });
+
+
+            prevBtn.addEventListener("click", function () {
+
+                grid.scrollBy({
+                    left: -getScrollAmount(),
+                    behavior: "smooth"
+                });
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

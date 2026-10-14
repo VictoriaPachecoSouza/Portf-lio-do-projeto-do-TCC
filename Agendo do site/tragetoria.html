@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nossa trajetória</title>
+
+    <!-- Arquivos externos -->
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="botaoes.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =========================================
+         MENU
+    ========================================= -->
+    <nav>
+        <div class="logo">
+            <img src="Logotipo.png" height="50" alt="Logotipo">
+        </div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<ul class="menu" id="menu">
+    <li><a href="#">Início</a></li>
+    <li><a href="#TiposPlantas">Plantas</a></li>
+    <li><a href="#Kanban">Kanban</a></li>
+    <li><a href="#Equipe">Equipe</a></li>
+    <li><a href="contato.html">Contato</a></li>
+</ul>
+        <!-- REMOVIDO O </div> EXTRA QUE ESTAVA AQUI -->
+
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <!-- LUA -->
+                <svg class="moon" viewBox="0 0 24 24">
+                    <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.944 9.944 0 0 0-5.244 2.193C.961 7.472.71 13.568 4.212 17.07c3.5 3.5 9.597 3.25 12.877-.594A9.943 9.943 0 0 0 19.28 11.23a9.006 9.006 0 0 1-7.28.577z" />
+                </svg>
+
+                <!-- SOL -->
+                <svg class="sun" viewBox="0 0 100 100" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="square">
+                    <circle cx="50" cy="50" r="22" />
+                    <g>
+                        <line x1="50" y1="8" x2="50" y2="18" />
+                        <line x1="50" y1="82" x2="50" y2="92" />
+                        <line x1="8" y1="50" x2="18" y2="50" />
+                        <line x1="82" y1="50" x2="92" y2="50" />
+                        <line x1="20.5" y1="20.5" x2="27.5" y2="27.5" />
+                        <line x1="72.5" y1="72.5" x2="79.5" y2="79.5" />
+                        <line x1="20.5" y1="79.5" x2="27.5" y2="72.5" />
+                        <line x1="72.5" y1="27.5" x2="79.5" y2="20.5" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+
+    <br><br><br>
+
+
+    <!-- =========================================
+         TECNOLOGIAS UTILIZADAS
+    ========================================= -->
+
+    <section class="container">
+
+        <h1 class="destaque-title">
+            Tecnologias Utilizadas
+        </h1>
+
+        <p class="subtitle">
+            Saiba o que cada uma faz dentro do site
+        </p>
+
+
+        <div class="products-grid">
+
+            <!-- HTML -->
+            <div class="product-card">
+
+                <div class="product-icon">
+
+                    <img src="html5_icone_sem_letras.png" alt="Ícone do HTML5">
+
+                </div>
+
+                <h3 class="product-name">
+                    HTML5
+                </h3>
+
+                <p class="product-description">
+                    O HTML5 é a estrutura básica de qualquer site,
+                    funcionando como o esqueleto de uma casa.
+                </p>
+
+            </div>
+
+
+            <!-- CSS -->
+            <div class="product-card">
+
+                <div class="product-icon">
+
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="Ícone do CSS">
+
+                </div>
+
+                <h3 class="product-name">
+                    CSS
+                </h3>
+
+                <p class="product-description">
+                    O CSS (Cascading Style Sheets, ou Folhas de Estilo
+                    em Cascata) é a tecnologia usada para dar estilo,
+                    beleza e layout a uma página de internet.
+                </p>
+
+            </div>
+
+
+            <!-- JAVASCRIPT -->
+            <div class="product-card">
+
+                <div class="product-icon">
+
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="Ícone do JavaScript">
+
+                </div>
+
+                <h3 class="product-name">
+                    JavaScript
+                </h3>
+
+                <p class="product-description">
+                    O JavaScript é uma linguagem de programação usada
+                    para tornar páginas da internet interativas
+                    e dinâmicas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <br>
+    <br>
+    <!-- =========================================
+         DESAFIO
+    ========================================= -->
+    <section class="desafio-section">
+
+        <div class="desafio-wrapper">
+
+            <!-- IMAGEM -->
+            <div class="desafio-image">
+
+                <div class="image-decoration"></div>
+
+                <img src="desafio.png" alt="Solo em Equilíbrio">
+
+            </div>
+
+
+            <!-- CONTEÚDO -->
+            <div class="desafio-content">
+
+                <h2>
+                    O <span>Desafio</span>
+                </h2>
+
+                <p>
+                    Muitas pessoas perdem o foco no dia a dia devido a
+                    ferramentas de gestão complexas. O objetivo foi criar
+                    uma interface minimalista e direta.
+                </p>
+
+
+                <div class="desafio-items">
+
+                    <div class="desafio-item">
+
+                        <div class="item-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Interface simples
+                            </strong>
+
+                            <small>
+                                Uma experiência fácil de compreender.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="desafio-item">
+
+                        <div class="item-icon">
+                            ◇
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Organização
+                            </strong>
+
+                            <small>
+                                Informações apresentadas de forma clara.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="desafio-item">
+
+                        <div class="item-icon">
+                            ◎
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Usabilidade
+                            </strong>
+
+                            <small>
+                                Foco nas necessidades do usuário.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         LINHA DO TEMPO
+    ========================================= -->
+
+    <main class="timeline-container">
+
+        <h1 class="timeline-main-title">
+            Linha do Tempo do Desenvolvimento
+        </h1>
+
+
+        <div class="timeline">
+
+            <!-- ETAPA 1 -->
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span class="timeline-date">
+                        Semana 1
+                    </span>
+
+                    <h2 class="timeline-title">
+                        Concepção & Wireframes
+                    </h2>
+
+                    <p class="timeline-text">
+                        Desenho da arquitetura de informação e criação
+                        dos primeiros protótipos de baixa fidelidade
+                        para definir a jornada do usuário.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ETAPA 2 -->
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span class="timeline-date">
+                        Semana 2
+                    </span>
+
+                    <h2 class="timeline-title">
+                        Estruturação e Estilização
+                    </h2>
+
+                    <p class="timeline-text">
+                        Foco na escrita de um HTML5 semântico e acessível,
+                        seguido pela estilização com CSS moderno (Grid e
+                        Flexbox), garantindo responsividade.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ETAPA 3 -->
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span class="timeline-date">
+                        Semana 3
+                    </span>
+
+                    <h2 class="timeline-title">
+                        Interatividade e Testes
+                    </h2>
+
+                    <p class="timeline-text">
+                        Implementação das funções de adicionar e remover
+                        tarefas com JavaScript puro. Realização de testes
+                        de usabilidade em navegadores diferentes.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <br><br>
+
+
+    <!-- =========================================
+         APRENDIZADOS
+    ========================================= -->
+
+    <section id="servicos" class="secao">
+        <h2 class="titulo-trajetoria">
+            Desafios & <span class="destaque">Aprendizados</span>
+        </h2>
+        <p> O maior desafio foi manipular o armazenamento local do
+            navegador (LocalStorage) para salvar os dados do usuário.
+            Superar esse obstáculo ajudou a compreender melhor a
+            persistência de dados no Front-end.</p>
+    </section>
+
+
+
+    <br><br>
+
+
+    <!-- =========================================
+         CONCLUSÃO
+    ========================================= -->
+
+    <section id="contato" class="secao">
+        <h2 style="color: #0c7208;">
+            Resultados
+        </h2>
+        
+    
+        <p> Este projeto democratizou o acesso ao conhecimento botânico ao desenvolver uma plataforma web que traduz
+            termos científicos complexos em uma linguagem simples, visual e interativa. Alinhando design de experiência
+            do usuário (UX) e acessibilidade informacional, o site eliminou barreiras de aprendizado e provou que a
+            tecnologia pode aproximar a ciência do cotidiano.<br>
+            Durante a validação prática, ficou evidente que [inserir o principal resultado, ex: usuários iniciantes
+            compreenderam perfeitamente os cuidados de cada planta]. Como principal entrega, criamos uma ferramenta
+            digital inclusiva e gratuita que estimula o cultivo e a conscientização ambiental.<br>
+            Embora o escopo inicial tenha enfrentado limitações como [inserir limitação, ex: catálogo restrito de
+            espécies], o valor técnico e social da interface foi validado. Para os próximos passos, o projeto abre
+            caminho para melhorias futuras, como [inserir sugestão, ex: recursos de audiodescrição e expansão do
+            catálogo com IA], consolidando-se como uma base sólida para iniciativas de democratização do conhecimento.
+        </p>
+    
+    </section>
+
+
+    <br><br>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================= -->
+    <div class="footer-bottom">
+
+        <div>
+            &copy; 2026 Solo em Equilíbrio.
+            Todos os direitos reservados.
+        </div>
+
+        <div>
+            Banca Examinadora &bull; TCC
+        </div>
+
+    </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+<!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+    <script>
+        /* =========================================
+           MENU HAMBÚRGUER (MOBILE)
+        ========================================= */
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+
+        /* =========================================
+           MODO ESCURO / CLARO
+        ========================================= */
+        const body = document.body;
+        const modeToggle = document.querySelector(".dark-light");
+
+        if (modeToggle) {
+            modeToggle.addEventListener("click", function () {
+                modeToggle.classList.toggle("active");
+                body.classList.toggle("dark");
+            });
+        }
+    </script>
+
+</body>
+
+</html>

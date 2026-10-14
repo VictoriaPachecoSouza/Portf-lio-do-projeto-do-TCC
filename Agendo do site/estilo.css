@@ -1,0 +1,2076 @@
+root {
+    --main-color: #252c25;
+    --black: #13131a;
+    --bg: #171414;
+    --border: 0.1rem solid rgb(13, 77, 0);
+    --accent: #556B2F;
+    --accent_hover: #6B8E23;
+    --footer-muted: #6B8E23;
+    --footer-border: #0d6a1d;
+
+    /* Variáveis do Calendário */
+    --primary-color: #6ff163;
+    --bg-calendar: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #9ca3af;
+    --border-color: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.1s linear;
+}
+
+body {
+    background-color: #fff;
+    min-height: 100vh;
+    padding-top: 80px;
+    /* Margem para o conteúdo não sumir atrás do menu fixo */
+}
+
+body.dark {
+    --body-color: #1c1c1c;
+    --nav-color: #1a681a;
+    --side-nav: #1f1f1f;
+    --text-color: #fff;
+    --search-bar: #f2f2f2;
+}
+
+p {
+    text-align: justify;
+    /* Justifica o texto */
+    max-width: 2050px;
+    /* Limita a largura para criar as laterais livres */
+    margin: 0 auto;
+    /* Centraliza o bloco na horizontal */
+    padding: 20px;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* NAVBAR FIXA NO TOPO */
+nav {
+    background: #228B22;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    /* Fixa o menu na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 10000;
+    /* Mantém o menu acima de qualquer outro elemento */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px;
+    display: block;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    background: #fff;
+    top: 40px;
+    min-width: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown a {
+    color: #333;
+    padding: 10px;
+}
+
+.dropdown a:hover {
+    background: #f2f2f2;
+}
+
+.menu li:hover .dropdown {
+    display: block;
+}
+
+/* Mobile */
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media(max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #008000;
+        display: none;
+        padding: 10px;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .search-box {
+        display: none;
+    }
+}
+
+
+
+/* SEÇÃO AGENDA */
+#Agenda {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.calendario-mensal {
+    border-collapse: collapse;
+    width: 100%;
+    /* Ajustado para melhor responsividade */
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.calendario-mensal caption {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 15px;
+    background-color: rgb(13, 77, 0);
+    color: white;
+    text-transform: uppercase;
+}
+
+.calendario-mensal th {
+    background-color: #f8faf8;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.calendario-mensal td {
+    border: 1px solid #ddd;
+    width: 14.28%;
+    height: 80px;
+    vertical-align: top;
+    padding: 5px;
+    color: #555;
+    transition: background 0.3s;
+}
+
+.calendario-mensal td:hover {
+    background-color: rgb(233, 239, 233);
+    cursor: pointer;
+}
+
+.calendario-mensal .evento {
+    background-color: rgb(211, 241, 209);
+    color: #12600c;
+    font-size: 0.8em;
+    padding: 2px 4px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border-left: 3px solid rgb(13, 77, 0);
+}
+
+.calendar {
+    display: none !important;
+}
+
+.menu-lateral .calendario-item {
+    display: none;
+}
+
+/* Container do Calendário Novo */
+.calendar-mensal {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--bg-calendar);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+    color: var(--text-main);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.day-name {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    padding-bottom: 8px;
+}
+
+.day {
+    color: var(--text-main);
+    background-color: transparent;
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+.day:not(.empty):hover {
+    background-color: var(--border-color);
+}
+
+.day.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.day.empty {
+    border: none;
+    cursor: default;
+}
+
+@media (max-width: 400px) {
+    .calendar-container {
+        padding: 8px;
+    }
+
+    .calendar-grid {
+        gap: 4px;
+    }
+}
+
+/* INTERRUPTOR MODO ESCURO E CAIXA DE PESQUISA */
+.nav-bar .darkLight-searchBox {
+    display: flex;
+    align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    position: relative;
+}
+
+.dark-light svg,
+.searchToggle svg {
+    position: absolute;
+    color: var(--text-color);
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dark-light svg.sun {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dark-light.active svg.sun {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dark-light.active svg.moon {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle svg.cancel {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle.active svg.cancel {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchToggle.active svg.search {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox {
+    position: relative;
+}
+
+.searchBox .search-field {
+    position: absolute;
+    bottom: -85px;
+    right: 5px;
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-color);
+    padding: 3px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.searchToggle.active~.search-field {
+    bottom: -74px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-field::before {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    background-color: var(--nav-color);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.search-field input {
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--search-text);
+    background-color: var(--search-bar);
+}
+
+.search-field .input-search-icon {
+    position: absolute;
+    color: var(--nav-color);
+    fill: currentColor;
+    right: 15px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+
+
+
+/* ==================== SEÇÃO KANBAN ==================== */
+#Kanban {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.kanban-title {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Container que alinha as colunas lado a lado */
+.kanban-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Colunas individuais */
+.kanban-column {
+    flex: 1;
+    background-color: #161b22;
+    /* Fundo ligeiramente mais claro que o body */
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 280px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalhos das colunas */
+.column-header {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Cores temáticas para cada status */
+.column-header.todo {
+    background-color: #30363d;
+    /* Cinza escuro */
+}
+
+.column-header.doing {
+    background-color: #9e6a03;
+    /* Amarelo/Laranja queimado */
+}
+
+.column-header.done {
+    background-color: #1f883d;
+    /* Verde GitHub */
+}
+
+/* Lista de cartões */
+.kanban-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Estilo do cartão individual */
+.kanban-card {
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 16px;
+    cursor: grab;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.kanban-card:hover {
+    transform: translateY(-2px);
+    border-color: #8b949e;
+}
+
+.kanban-card h3 {
+    font-size: 16px;
+    color: #f0f6fc;
+    margin: 8px 0;
+}
+
+.kanban-card p {
+    font-size: 14px;
+    color: #8b949e;
+    line-height: 1.4;
+    padding: 0;
+    /* Reseta o padding herdado do 'p' global */
+    margin: 0;
+    text-align: left;
+}
+
+/* Etiquetas/Tags coloridas dentro dos cartões */
+.card-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.tag-pesquisa {
+    background-color: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+}
+
+.tag-doc {
+    background-color: rgba(236, 72, 153, 0.2);
+    color: #fbcfe8;
+}
+
+.tag-dev {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #bbf7d0;
+}
+
+.tag-design {
+    background-color: rgba(234, 179, 8, 0.2);
+    color: #fef08a;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 900px) {
+    .kanban-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+
+/* ==================== SEÇÃO EQUIPE ==================== */
+#Equipe {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.equipe-title {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Alinhamento dos cards */
+.equipe-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Garante que quebre linha em telas pequenas */
+}
+
+/* Card de perfil individual */
+.profile-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 30px 24px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    border-color: #2ea44f;
+    /* Destaca com o verde do projeto ao passar o mouse */
+}
+
+/* Círculo para foto ou iniciais */
+.avatar-placeholder {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #30363d;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    border: 2px solid #8b949e;
+}
+
+.profile-card h3 {
+    font-size: 18px;
+    color: #f0f6fc;
+    margin-bottom: 6px;
+}
+
+/* Cargo/Função */
+.profile-card .role {
+    font-size: 14px;
+    color: #2ea44f;
+    /* Verde para destacar a profissão */
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: none;
+    padding: 0;
+}
+
+/* Biografia profissional */
+.profile-card .bio {
+    font-size: 14px;
+    color: #8b949e;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+/* Links das redes sociais */
+.profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.profile-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    padding: 6px 16px;
+    border-radius: 6px;
+    background-color: #21262d;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-links a:hover {
+    background-color: #30363d;
+    color: #ffffff;
+}
+
+
+/* ==================== SEÇÃO TIPOS DE PLANTAS ==================== */
+#TiposPlantas {
+    padding: 60px 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.plantas-title {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Configuração do Grid de 5 colunas */
+.plantas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* Cria exatamente 5 colunas iguais */
+    gap: 20px;
+}
+
+/* Card individual de tipo de planta */
+.planta-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.planta-card:hover {
+    transform: translateY(-4px);
+    background-color: #1f242c;
+    border-color: #2ea44f;
+}
+
+/* Ícone em destaque */
+.planta-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.planta-card h3 {
+    font-size: 18px;
+    color: #f0f6fc;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.planta-card p {
+    font-size: 14px;
+    color: #8b949e;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Responsividade: Quebra as colunas conforme a tela diminui */
+@media (max-width: 1024px) {
+    .plantas-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 colunas em tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .plantas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 colunas em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .plantas-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna empilhada em celulares */
+    }
+}
+
+
+/* =========================================================
+   CORREÇÃO APENAS DO TEXTO DE APRENDIZADO/CONCLUSÃO NO MODO CLARO
+   ========================================================= */
+
+body.dark #servicos p,
+body.dark #contato p {
+    color: #000000 !important;
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.footer-portfolio {
+    background-color: #0d1117;
+    color: #ffffff;
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        sans-serif;
+
+    border-top: 1px solid #0d6a1d;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* =========================================================
+   CONTAINER DO RODAPÉ
+   ========================================================= */
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 768px) {
+
+    .footer-container {
+        grid-template-columns: 2fr 3fr;
+    }
+
+}
+
+
+/* =========================================================
+   MARCA / PROJETO
+   ========================================================= */
+
+.footer-brand h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.footer-brand p {
+    margin: 0;
+    color: #6B8E23;
+}
+
+
+/* =========================================================
+   LINKS DO RODAPÉ
+   ========================================================= */
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(140px, 1fr)
+    );
+
+    gap: 2rem;
+}
+
+
+/* Títulos dos grupos */
+
+.footer-group h4 {
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    color: #6B8E23;
+}
+
+
+/* Lista */
+
+.footer-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-group li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* Links */
+
+.footer-group a {
+    color: #ffffff;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.footer-group a:hover {
+    color: #6B8E23;
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   PARTE INFERIOR DO RODAPÉ
+   ========================================================= */
+
+.footer-bottom {
+    max-width: 1200px;
+
+    margin: 3rem auto 0 auto;
+
+    padding-top: 1.5rem;
+
+    border-top: 1px solid #0d6a1d;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    font-size: 0.85rem;
+
+    color: #6B8E23;
+}
+
+
+/* =========================================================
+   RODAPÉ NO MODO CLARO
+   ========================================================= */
+
+body.dark .footer-portfolio {
+    background-color: #ffffff;
+    color: #000000;
+    border-top: 1px solid #009E60;
+}
+
+body.dark .footer-brand h3 {
+    color: #000000;
+}
+
+body.dark .footer-brand p {
+    color: #009E60;
+}
+
+body.dark .footer-group h4 {
+    color:#009E60;
+}
+
+body.dark .footer-group a {
+    color: #000000;
+}
+
+body.dark .footer-group a:hover {
+    color: #009E60;
+}
+
+body.dark .footer-bottom {
+    border-top: 1px solid #0d6a1d;
+    color: #009E60;
+}
+
+
+/* =========================================================
+   RODAPÉ RESPONSIVO
+   ========================================================= */
+
+@media (min-width: 576px) {
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE DO HERO
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .main-title {
+        font-size: 34px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .main-title {
+        font-size: 28px;
+    }
+
+    .hero-section {
+        padding: 0 20px;
+    }
+
+}
+
+        /* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* =========================================================
+   MODO CLARO
+   A classe "dark" está sendo usada pelo seu JavaScript
+   para ativar o tema claro.
+========================================================= */
+
+        body.dark {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* =========================================================
+   CONTAINER
+========================================================= */
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        /* =========================================================
+   TÍTULOS GERAIS
+========================================================= */
+
+        body h2,
+        body h3 {
+            color: #ffffff;
+        }
+
+        body.dark h2,
+        body.dark h3 {
+            color: #000000;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #228b22;
+        }
+
+        .destaque-title {
+            font-size: 27px;
+            color: #2b632b;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        body.dark .subtitle {
+            color: #555555;
+        }
+
+        
+
+        /* =========================================================
+   LUA E SOL
+========================================================= */
+
+        .dark-light {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark-light .moon,
+        .dark-light .sun {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .dark-light .moon {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        .dark-light .sun {
+            opacity: 0;
+            transform: rotate(-90deg);
+        }
+
+        body.dark .dark-light .moon {
+            opacity: 0;
+            transform: rotate(90deg);
+        }
+
+        body.dark .dark-light .sun {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+        
+
+        /* =========================================================
+   TÍTULO TRAJETÓRIA
+========================================================= */
+
+        .titulo-trajetoria {
+            color: #ffffff;
+        }
+
+        .titulo-trajetoria .destaque {
+            color: #556b2f;
+        }
+
+        body.dark .titulo-trajetoria {
+            color: #000000;
+        }
+
+        body.dark .titulo-trajetoria .destaque {
+            color: #228b22;
+        }
+
+        /* =========================================================
+   TECNOLOGIAS / CARDS
+========================================================= */
+
+        .products-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .product-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 24px 16px;
+            text-align: center;
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            transition:
+                transform 0.2s ease,
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            background-color: #1f242c;
+            border-color: #2ea44f;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 16px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #5f9f68;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #8b949e;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Modo claro */
+
+        body.dark .product-card {
+            background-color: #ffffff;
+            border-color: #dddddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark .product-card:hover {
+            background-color: #f8f9fa;
+            border-color: #2ea44f;
+        }
+
+        body.dark .product-name {
+            color: #2b632b;
+        }
+
+        body.dark .product-description {
+            color: #555555;
+        }
+
+        /* =========================================================
+   DESAFIO
+========================================================= */
+
+        .desafio-section {
+            width: 100%;
+            min-height: 100vh;
+
+            background: #417833;
+
+            padding: 100px 20px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        .desafio-wrapper {
+            width: 100%;
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 42% 58%;
+
+            align-items: center;
+
+            gap: 60px;
+        }
+
+        /* =========================================================
+   IMAGEM DO DESAFIO
+========================================================= */
+
+        .desafio-image {
+            position: relative;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-decoration {
+            position: absolute;
+
+            width: 280px;
+            height: 300px;
+
+            background: #dcebdc;
+
+            border-radius: 8px;
+
+            top: -20px;
+            right: 30px;
+
+            z-index: 0;
+        }
+
+        .desafio-image img {
+            position: relative;
+            z-index: 1;
+
+            width: 270px;
+            height: 270px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+
+            box-shadow: 0 15px 35px rgba(35, 77, 50, 0.18);
+        }
+
+        /* =========================================================
+   CONTEÚDO DO DESAFIO
+========================================================= */
+
+        .desafio-content {
+            width: 100%;
+            max-width: 550px;
+        }
+
+        .mini-title {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            color: #16630b;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .desafio-content h2 {
+            margin: 0 0 20px;
+
+            font-size: clamp(40px, 5vw, 64px);
+
+            line-height: 1.05;
+
+            font-weight: 700;
+
+            letter-spacing: -2px;
+
+            color: #0c7208;
+        }
+
+        .desafio-content h2 span {
+            color: #20a10d;
+        }
+
+        .desafio-content>p {
+            margin: 0 0 30px;
+
+            max-width: 500px;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #c2cbc5;
+        }
+
+        /* =========================================================
+   ITENS DO DESAFIO
+========================================================= */
+
+        .desafio-items {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .desafio-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .item-icon {
+            width: 45px;
+            height: 45px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #57a257;
+            color: #4f7d50;
+
+            font-size: 24px;
+            font-weight: bold;
+
+            transition: 0.3s ease;
+        }
+
+        .desafio-item:hover .item-icon {
+            background: #133513;
+            color: #ffffff;
+            transform: scale(1.08);
+        }
+
+        .desafio-item strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            font-size: 20px;
+
+            color: #254724;
+        }
+
+        .desafio-item small {
+            display: block;
+
+            font-size: 15px;
+
+            color: #f4f4f4;
+
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+   DESAFIO - MODO CLARO
+========================================================= */
+
+        body.dark .desafio-section {
+            background: #22692e;
+        }
+
+        body.dark .desafio-content h2 {
+            color: #e8f3e9;
+        }
+
+        body.dark .desafio-content h2 span {
+            color: #91c58a;
+        }
+
+        body.dark .desafio-content>p {
+            color: #aebcaf;
+        }
+
+        body.dark .desafio-item strong {
+            color: #dcebdd;
+        }
+
+        body.dark .desafio-item small {
+            color: #91a092;
+        }
+
+        body.dark .item-icon {
+            background: #203725;
+            color: #9dcc91;
+        }
+
+        body.dark .image-decoration {
+            background: #1d3022;
+        }
+
+        /* =========================================================
+   LINHA DO TEMPO
+========================================================= */
+
+        .timeline-section {
+            width: 100%;
+
+            padding: 100px 20px;
+
+            background: #0d1117;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: background-color 0.3s ease;
+            max-width: none;
+            width: 100%;
+            min-height: calc(100vh - 120px);
+        }
+
+        .timeline-container {
+            width: 100%;
+            max-width: 1000px;
+
+            margin: 0 auto;
+            padding: 40px;
+
+            background: var();
+
+            border-radius: 16px;
+
+
+            transition:
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        /* Modo claro */
+
+        body.dark .timeline-section {
+            background: #ffffff;
+        }
+
+        body.dark .timeline-container {
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* =========================================================
+   TÍTULO DA LINHA DO TEMPO
+========================================================= */
+
+        .timeline-main-title {
+            text-align: center;
+
+            font-size: 2rem;
+            font-weight: 700;
+
+            color: #31ce39;
+
+            margin-bottom: 50px;
+
+            position: relative;
+        }
+
+        body.dark .timeline-main-title {
+            color: #215d1a;
+        }
+
+        .timeline-main-title::after {
+            content: "";
+
+            display: block;
+
+            width: 50px;
+            height: 4px;
+
+            background: #31ce39;
+
+            margin: 12px auto 0;
+
+            border-radius: 2px;
+        }
+
+        /* =========================================================
+   LINHA
+========================================================= */
+
+        .timeline {
+            position: relative;
+
+            padding-left: 35px;
+
+            border-left: 3px solid #30363d;
+        }
+
+        body.dark .timeline {
+            border-left-color: #1d5e2b;
+        }
+
+        /* =========================================================
+   ITEM DA LINHA
+========================================================= */
+
+        .timeline-item {
+            position: relative;
+
+            margin-bottom: 40px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* =========================================================
+   BOLINHA
+========================================================= */
+
+        .timeline-dot {
+            position: absolute;
+
+            left: -47px;
+            top: 5px;
+
+            width: 20px;
+            height: 20px;
+
+            border-radius: 50%;
+
+            background-color: #161b22;
+
+            border: 4px solid #31ce3e;
+
+            box-shadow: 0 0 0 5px #161b22;
+
+            transition:
+                background-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        body.dark .timeline-dot {
+            background-color: #ffffff;
+            box-shadow: 0 0 0 5px #ffffff;
+        }
+
+        /* =========================================================
+   CONTEÚDO DA ETAPA
+========================================================= */
+
+        .timeline-content {
+            background: #21262d;
+
+            padding: 24px;
+
+            border-radius: 12px;
+
+            border: 1px solid #30363d;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease,
+                background-color 0.3s ease;
+        }
+
+        body.dark .timeline-content {
+            background: #fcfafa;
+            border-color: #3c9618;
+        }
+
+        /* =========================================================
+   HOVER DA TIMELINE
+========================================================= */
+
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-3px);
+
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+
+            border-color: #31ce39;
+
+            background: #1f242c;
+        }
+
+        body.dark .timeline-item:hover .timeline-content {
+            background: #f0f0f0;
+
+            border-color: #cee0cb;
+
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background-color: #31ce39;
+            transform: scale(1.1);
+        }
+
+        /* =========================================================
+   DATA
+========================================================= */
+
+        .timeline-date {
+            display: inline-block;
+
+            font-size: 0.85rem;
+            font-weight: 700;
+
+            color: #31ce43;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 6px;
+        }
+
+        /* =========================================================
+   TÍTULO DA ETAPA
+========================================================= */
+
+        .timeline-title {
+            font-size: 1.3rem;
+
+            font-weight: 600;
+
+            color: #ffffff;
+
+            margin-bottom: 12px;
+
+            line-height: 1.4;
+        }
+
+        body.dark .timeline-title {
+            color: #2d3748;
+        }
+
+        /* =========================================================
+   TEXTO DA ETAPA
+========================================================= */
+
+        .timeline-text {
+            font-size: 1rem;
+
+            color: #c9d1d9;
+
+            line-height: 1.6;
+        }
+
+        body.dark .timeline-text {
+            color: #030303;
+        }
+
+        /* =========================================================
+   APRENDIZADOS / CONCLUSÃO
+========================================================= */
+
+        #aprendizados,
+        #conclusao {
+            width: 100%;
+            max-width: 800px;
+
+            margin: 60px auto;
+
+            padding: 0 20px;
+
+            text-align: center;
+        }
+
+        #aprendizados p,
+        #conclusao p {
+            color: #8b949e;
+
+            line-height: 1.6;
+        }
+
+        body.dark #aprendizados p,
+        body.dark #conclusao p {
+            color: #555555;
+        }
+
+        /* =========================================================
+   DESCRIÇÃO
+========================================================= */
+
+        .description {
+            max-width: 800px;
+
+            margin: 0 auto 40px;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            color: #8b949e;
+
+            text-align: justify;
+        }
+
+        body.dark .description {
+            color: #555555;
+        }
+
+        /* =========================================================
+   BOTÕES
+========================================================= */
+
+        .project-footer {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 16px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 12px 24px;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            background-color: #21262d;
+
+            color: #c9d1d9;
+
+            border: 1px solid #30363d;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #30363d;
+
+            color: #ffffff;
+
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: #1f883d;
+
+            color: #ffffff;
+
+            border: 1px solid rgba(240, 246, 252, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #2ea44f;
+        }
+
+        /* =========================================================
+   RESPONSIVIDADE - TABLET
+========================================================= */
+
+        @media (max-width: 900px) {
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .desafio-wrapper {
+                grid-template-columns: 1fr;
+
+                gap: 70px;
+
+                text-align: center;
+            }
+
+            .desafio-content {
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .desafio-content>p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .desafio-image {
+                order: 1;
+            }
+
+            .desafio-content {
+                order: 2;
+            }
+
+            .desafio-items {
+                text-align: left;
+            }
+        }
+
+        /* =========================================================
+   RESPONSIVIDADE - CELULAR
+========================================================= */
+
+        @media (max-width: 750px) {
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .desafio-section {
+                min-height: auto;
+                padding: 80px 20px;
+            }
+
+            .desafio-wrapper {
+                gap: 60px;
+            }
+
+            .image-decoration {
+                width: 240px;
+                height: 260px;
+
+                right: calc(50% - 120px);
+            }
+
+            .desafio-image img {
+                width: 230px;
+                height: 230px;
+            }
+
+            .desafio-content h2 {
+                font-size: 42px;
+            }
+
+            .desafio-content>p {
+                font-size: 17px;
+            }
+
+            .desafio-item {
+                gap: 15px;
+            }
+
+            .desafio-item strong {
+                font-size: 18px;
+            }
+
+            .desafio-item small {
+                font-size: 14px;
+            }
+
+            .timeline-section {
+                min-height: auto;
+                padding: 70px 15px;
+            }
+
+            .timeline-container {
+                padding: 30px 20px;
+            }
+
+            .timeline-main-title {
+                font-size: 1.6rem;
+                margin-bottom: 40px;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .timeline-dot {
+                left: -37px;
+
+                width: 16px;
+                height: 16px;
+
+                top: 7px;
+            }
+
+            .timeline-content {
+                padding: 20px;
+            }
+
+            .timeline-title {
+                font-size: 1.1rem;
+            }
+
+            .timeline-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+        @media (max-width: 480px) {
+
+            .title {
+                font-size: 30px;
+            }
+
+            .destaque-title {
+                font-size: 23px;
+            }
+
+            .desafio-section {
+                padding: 70px 15px;
+            }
+
+            .desafio-content h2 {
+                font-size: 38px;
+            }
+
+            .desafio-content>p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .desafio-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .image-decoration {
+                width: 210px;
+                height: 230px;
+            }
+
+            .timeline-section {
+                padding: 60px 10px;
+            }
+
+            .timeline-container {
+                padding: 25px 15px;
+                border-radius: 12px;
+            }
+
+            .timeline-main-title {
+                font-size: 1.4rem;
+            }
+
+            .timeline-content {
+                padding: 16px;
+            }
+
+            .timeline-title {
+                font-size: 1rem;
+            }
+
+            .timeline-text {
+                font-size: 0.88rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /*seção do aprendizado e da conclusão */
+        .secao {
+            min-height: 100vh;
+            /* Faz cada seção ocupar pelo menos 100% da altura da tela */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            /* O padding superior impede que o menu fixo cubra o conteúdo */
+            text-align: center;
+        }
+
+        /* Diferenciando as seções por cores de fundo alternadas */
+
+        #servicos {
+            color: #fef3f3;
+        }
+
+        #contato {
+            color: #fdfdfd;
+        }
+
+        .secao h1,
+        .secao h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .secao p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+  
